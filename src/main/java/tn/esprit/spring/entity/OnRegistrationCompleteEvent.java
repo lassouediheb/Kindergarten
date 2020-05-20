@@ -18,6 +18,16 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
         this.appUrl = appUrl;
     }
 
+	
+
+	public OnRegistrationCompleteEvent(User user, String appUrl) {
+		super(user);
+		this.appUrl = appUrl;
+		this.user = user;
+	}
+
+
+
 	public String getAppUrl() {
 		return appUrl;
 	}
