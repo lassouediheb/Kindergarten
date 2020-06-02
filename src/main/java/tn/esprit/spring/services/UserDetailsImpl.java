@@ -103,4 +103,6 @@ if (o == null || getClass() != o.getClass())
 UserDetailsImpl user = (UserDetailsImpl) o;
 return Objects.equals(id, user.id);
 }
+
+
 }

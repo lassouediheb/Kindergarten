@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.UserRepository;
 
@@ -34,6 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public User findOne(long id){
 		return userRepository.getOne(id);
 	}
+	
 	
 	
 
