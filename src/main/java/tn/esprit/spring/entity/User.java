@@ -46,19 +46,6 @@ public class User {
 	@Email
 	private String email;
 	
-	@Temporal(TemporalType.DATE)
-	private Date datedenaissance;
-	
-	
-	@NotBlank
-	@Size(max = 50)
-	private String adresseuser;
-	
-	@NotBlank
-	@Size(max = 8)
-	private Long numtel;
-	
-	
 	@NotBlank
 	@Size(max = 120)
 	private String password;
@@ -89,74 +76,7 @@ public class User {
 
 
 
-	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,@NotBlank @Size(max = 120) String password,
-			 @NotBlank @Size(max = 50) String adresseuser, Date datedenaissance,
-			@NotBlank @Size(max = 8) Long numtel) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		
-		this.adresseuser = adresseuser;
-		this.datedenaissance = datedenaissance;
-		
-		this.numtel = numtel;
-	}
 
-	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
-			Date datedenaissance, @NotBlank @Size(max = 50) String adresseuser, @NotBlank @Size(max = 8) Long numtel,
-			@NotBlank @Size(max = 120) String password, Boolean etatAcc, boolean enabled, Set<Role> roles) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.datedenaissance = datedenaissance;
-		this.adresseuser = adresseuser;
-		this.numtel = numtel;
-		this.password = password;
-		EtatAcc = etatAcc;
-		this.enabled = enabled;
-		this.roles = roles;
-	}
-
-	public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
-			Date datedenaissance, @NotBlank @Size(max = 50) String adresseuser, @NotBlank @Size(max = 8) Long numtel,
-			@NotBlank @Size(max = 120) String password, Boolean etatAcc, boolean enabled, Set<Role> roles) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.datedenaissance = datedenaissance;
-		this.adresseuser = adresseuser;
-		this.numtel = numtel;
-		this.password = password;
-		EtatAcc = etatAcc;
-		this.enabled = enabled;
-		this.roles = roles;
-	}
-
-	public Date getDatedenaissance() {
-		return datedenaissance;
-	}
-
-	public void setDatedenaissance(Date datedenaissance) {
-		this.datedenaissance = datedenaissance;
-	}
-
-	public String getAdresseuser() {
-		return adresseuser;
-	}
-
-	public void setAdresseuser(String adresseuser) {
-		this.adresseuser = adresseuser;
-	}
-
-	public Long getNumtel() {
-		return numtel;
-	}
-
-	public void setNumtel(Long numtel) {
-		this.numtel = numtel;
-	}
 
 	public User(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
 			@NotBlank @Size(max = 120) String password, Boolean etatAcc, Set<Role> roles) {
