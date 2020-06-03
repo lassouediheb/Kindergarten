@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 xmlns:p="http://primefaces.org/ui"
+	  >
 
 <h:head>
 
@@ -33,9 +35,10 @@
 	<h:outputStylesheet library="login" name="Registre1/css/util.css"/>
 	<h:outputStylesheet library="login" name="Registre1/css/main.css"/>
 <!--===============================================================================================-->
+
 </h:head>
 <h:body style="background-color: #999999;">
-	
+	       
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="login100-more" style="background-image: url('login/Registre1/images/1907625.jpg');"></div>
@@ -43,6 +46,14 @@
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<div class="login100-form validate-form">
 				<h:form class="registre">
+				   <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+ 
+
+    
+    
+    
+   
+				
 					<span class="login100-form-title p-b-59">
 						Sign Up
 					</span>
@@ -63,7 +74,27 @@
 						<h:inputText class="input100" type="text" name="email" value="#{registreController.email}" />
 						<span class="focus-input100"></span>
 					</div>
-
+		             
+		            
+                         
+                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<span class="label-input100">Date de naissance</span>
+						<h:inputText class="input100" type="date" name="date" value="#{registreController.datedenaissance}" />
+						<span class="focus-input100"></span>
+					</div>
+	
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<span class="label-input100">Adresse</span>
+						<h:inputText class="input100" type="text" name="adresse" value="#{registreController.adresseuser}" />
+						<span class="focus-input100"></span>
+					</div>
+					
+						<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<span class="label-input100">Numero de telephone</span>
+						<h:inputText class="input100" type="text" name="numtel" value="#{registreController.numtel}" />
+						<span class="focus-input100"></span>
+					</div>
 
 					<div class="flex-m w-full p-b-33">
 						<div class="contact100-form-checkbox">

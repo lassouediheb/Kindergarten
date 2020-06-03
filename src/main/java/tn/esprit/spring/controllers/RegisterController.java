@@ -4,6 +4,7 @@ package tn.esprit.spring.controllers;
 
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,7 +46,9 @@ public class RegisterController {
 		private String username;
 		private String password;
 		private String email;
-	
+		private String adresseuser;
+		private Date datedenaissance;
+		private long numtel ;
 
 		
 
@@ -71,7 +74,7 @@ public class RegisterController {
 			{
 				User user = new User(username, 
 						 email,
-						 encoder.encode(password));
+						 encoder.encode(password),adresseuser,datedenaissance,numtel);
 				Set<Role> roles = new HashSet<>();
 				Role userRole = roleRepository.findByName(ERole.ROLE_JARDINDENFANT)
 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -114,7 +117,7 @@ public class RegisterController {
 			{
 				User user = new User(username, 
 						 email,
-						 encoder.encode(password));
+						 encoder.encode(password),adresseuser,datedenaissance,numtel);
 				Set<Role> roles = new HashSet<>();
 				Role userRole = roleRepository.findByName(ERole.ROLE_PARENT)
 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -135,6 +138,36 @@ public class RegisterController {
 			
 		}
 
+
+
+		public String getAdresseuser() {
+			return adresseuser;
+		}
+
+
+		public void setAdresseuser(String adresseuser) {
+			this.adresseuser = adresseuser;
+		}
+
+
+		public Date getDatedenaissance() {
+			return datedenaissance;
+		}
+
+
+		public void setDatedenaissance(Date datedenaissance) {
+			this.datedenaissance = datedenaissance;
+		}
+
+
+		public long getNumtel() {
+			return numtel;
+		}
+
+
+		public void setNumtel(long numtel) {
+			this.numtel = numtel;
+		}
 
 
 		public UserRepository getUserRepository() {

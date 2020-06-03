@@ -1,5 +1,6 @@
 package tn.esprit.spring.controllers;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -63,7 +64,9 @@ UserRepository userRepository;
 	private String password;
 	private User user;
 	private Boolean loggedIn;
-	
+	private String adresseuser;
+	private Date datedenaissance;
+	private long numtel ;
 	
 	public String doLogin() {
 		
@@ -112,6 +115,36 @@ UserRepository userRepository;
 		
 		
 	
+	public long getNumtel() {
+			return numtel;
+		}
+
+
+		public void setNumtel(long numtel) {
+			this.numtel = numtel;
+		}
+
+
+	public String getAdresseuser() {
+			return adresseuser;
+		}
+
+
+		public void setAdresseuser(String adresseuser) {
+			this.adresseuser = adresseuser;
+		}
+
+
+		public Date getDatedenaissance() {
+			return datedenaissance;
+		}
+
+
+		public void setDatedenaissance(Date datedenaissance) {
+			this.datedenaissance = datedenaissance;
+		}
+
+
 	public UserDetailsServiceImpl getUserDetails() {
 		return userDetails;
 	}
