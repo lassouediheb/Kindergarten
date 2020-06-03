@@ -28,6 +28,7 @@ import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.payload.request.LoginRequest;
 import tn.esprit.spring.payload.response.MessageResponse;
+import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.security.jwt.JwtUtils;
 import tn.esprit.spring.services.UserDetailsImpl;
@@ -46,7 +47,14 @@ UserDetailsServiceImpl userDetails;
 AuthenticationManager authenticationManager;
 
 @Autowired
+RoleRepository roleRepository;
+
+
+@Autowired
 JwtUtils jwtUtils;
+
+
+
 
 @Autowired
 UserRepository userRepository;
@@ -71,9 +79,21 @@ UserRepository userRepository;
 				.collect(Collectors.toList());
 		User user = userRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userDetails.getUsername()));
-		if (user != null) {
+		
+				
+		if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 1 ) {
 		navigateTo = "/welcome.xhtml?faces-redirect=true";
 		loggedIn = true; }
+		
+		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 2 )   {
+				navigateTo = "/welcomeclient.xhtml?faces-redirect=true";
+				loggedIn = true; }
+		
+		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 3 )   {
+			navigateTo = "/welcomeclient.xhtml?faces-redirect=true";
+			loggedIn = true; }
+		
+		
 		else {
 		FacesMessage facesMessage =
 		new FacesMessage("Login Failed: please check your username/password and try again.");

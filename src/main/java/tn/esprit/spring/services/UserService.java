@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.entity.VerificationToken;
@@ -41,4 +42,8 @@ public class UserService implements IUserService {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
+    
+   
+   
+	
 }

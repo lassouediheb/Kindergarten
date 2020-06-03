@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,9 +44,6 @@ public class Evenements implements Serializable {
 	
 	@ManyToMany(mappedBy="evenements", cascade = CascadeType.ALL)
 	private Set<Participants> participants;
-	
-	@ManyToOne 
-	Jardin jardin; 
 
 	public long getIdEvent() {
 		return idEvent;
@@ -186,6 +182,7 @@ public class Evenements implements Serializable {
 		this.nbPlace = nbPlace;
 		this.statutE = statutE;
 	}
+<<<<<<< HEAD
 
 	public Jardin getJardin() {
 		return jardin;
@@ -243,6 +240,8 @@ public class Evenements implements Serializable {
 	
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
 	
 	
 

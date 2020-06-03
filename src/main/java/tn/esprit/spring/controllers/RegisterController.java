@@ -50,7 +50,7 @@ public class RegisterController {
 		
 
 
-		public String doSignup() {
+		public String doSignupjardin() {
 			String navigateTo = "null";
 			if (userRepository.existsByUsername(username)) {
 				FacesMessage facesMessage =
@@ -93,6 +93,47 @@ public class RegisterController {
 		}
 
 
+		public String doSignupparent() {
+			String navigateTo = "null";
+			if (userRepository.existsByUsername(username)) {
+				FacesMessage facesMessage =
+
+						new FacesMessage("Error: Username is already taken!");
+
+						FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
+			}
+
+			else if (userRepository.existsByEmail(email)) {
+				FacesMessage facesMessage =
+
+						new FacesMessage("Error: Email is already in use!");
+
+						FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
+			}
+			else
+			{
+				User user = new User(username, 
+						 email,
+						 encoder.encode(password));
+				Set<Role> roles = new HashSet<>();
+				Role userRole = roleRepository.findByName(ERole.ROLE_PARENT)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+				roles.add(userRole);
+				user.setRoles(roles);
+				userRepository.save(user);
+				String appUrl = "";
+				User registered= user;
+				eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, appUrl));
+				navigateTo="login1.xhtml?faces-redirect=true";
+				FacesMessage facesMessage =
+
+						new FacesMessage("Registered successfully, please verify your account!");
+
+						FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
+			}
+			return navigateTo;
+			
+		}
 
 
 
