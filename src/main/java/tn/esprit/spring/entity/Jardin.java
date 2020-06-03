@@ -42,6 +42,7 @@ public class Jardin extends User implements Serializable{
 	@OneToOne
 	private Directeurs directeurs;
 	
+<<<<<<< HEAD
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Bus> Bus;
 	
@@ -258,3 +259,178 @@ public class Jardin extends User implements Serializable{
 	
 
 }
+=======
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
+	private Set<Evenements> Evenements ;
+
+	public String getNomJ() {
+		return nomJ;
+	}
+
+	public void setNomJ(String nomJ) {
+		this.nomJ = nomJ;
+	}
+
+	public String getLogoJ() {
+		return logoJ;
+	}
+
+	public void setLogoJ(String logoJ) {
+		this.logoJ = logoJ;
+	}
+
+	public String getAdresseJ() {
+		return adresseJ;
+	}
+
+	public void setAdresseJ(String adresseJ) {
+		this.adresseJ = adresseJ;
+	}
+
+	public String getNumJ() {
+		return numJ;
+	}
+
+	public void setNumJ(String numJ) {
+		this.numJ = numJ;
+	}
+
+	public Date getDateCrea() {
+		return dateCrea;
+	}
+
+	public void setDateCrea(Date dateCrea) {
+		this.dateCrea = dateCrea;
+	}
+
+	public String getDescripJ() {
+		return descripJ;
+	}
+
+	public void setDescripJ(String descripJ) {
+		this.descripJ = descripJ;
+	}
+
+	public float getTarifJ() {
+		return tarifJ;
+	}
+
+	public void setTarifJ(float tarifJ) {
+		this.tarifJ = tarifJ;
+	}
+
+	public Directeurs getDirecteurs() {
+		return directeurs;
+	}
+
+	public void setDirecteurs(Directeurs directeurs) {
+		this.directeurs = directeurs;
+	}
+
+	public Set<Evenements> getEvenements() {
+		return Evenements;
+	}
+
+	public void setEvenements(Set<Evenements> evenements) {
+		Evenements = evenements;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Jardin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, Boolean etatAcc, Set<Role> roles) {
+		super(id, username, email, password, etatAcc, roles);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password) {
+		super(id, username, email, password);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, Boolean etatAcc) {
+		super(username, email, password, etatAcc);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(String username, String email, String password) {
+		super(username, email, password);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ,
+			float tarifJ) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+	}
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Directeurs directeurs) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.directeurs = directeurs;
+	}
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Set<tn.esprit.spring.entity.Evenements> evenements) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		Evenements = evenements;
+	}
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Directeurs directeurs, Set<tn.esprit.spring.entity.Evenements> evenements) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.directeurs = directeurs;
+		Evenements = evenements;
+	}
+
+	@Override
+	public String toString() {
+		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
+				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs
+				+ ", Evenements=" + Evenements + "]";
+	}
+	
+	
+	
+	
+	
+	
+	
+}
+>>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten.git
