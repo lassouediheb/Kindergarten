@@ -225,6 +225,22 @@ public class Evenements implements Serializable {
 		this.participants = participants;
 		this.jardin = jardin;
 	}
+
+	public Evenements(long idEvent, String nomE, String adresseE, Date dateE, String descripE, String etatE,
+			String imageE, Integer nbPlace, String statutE) {
+		super();
+		this.idEvent = idEvent;
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+	}
+	
+	
 	
 	
 	
