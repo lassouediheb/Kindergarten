@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,6 +46,9 @@ public class Evenements implements Serializable {
 	@ManyToMany(mappedBy="evenements", cascade = CascadeType.ALL)
 	private Set<Participants> participants;
 
+	@ManyToOne
+	Jardin jardin;
+	
 	public long getIdEvent() {
 		return idEvent;
 	}
@@ -182,6 +186,62 @@ public class Evenements implements Serializable {
 		this.nbPlace = nbPlace;
 		this.statutE = statutE;
 	}
+
+
+	public Jardin getJardin() {
+		return jardin;
+	}
+
+	public void setJardin(Jardin jardin) {
+		this.jardin = jardin;
+	}
+
+	public Evenements(long idEvent, String nomE, String adresseE, Date dateE, String descripE, String etatE,
+			String imageE, Integer nbPlace, String statutE, Set<Participants> participants, Jardin jardin) {
+		super();
+		this.idEvent = idEvent;
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+		this.participants = participants;
+		this.jardin = jardin;
+	}
+
+	public Evenements(String nomE, String adresseE, Date dateE, String descripE, String etatE, String imageE,
+			Integer nbPlace, String statutE, Set<Participants> participants, Jardin jardin) {
+		super();
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+		this.participants = participants;
+		this.jardin = jardin;
+	}
+
+	public Evenements(long idEvent, String nomE, String adresseE, Date dateE, String descripE, String etatE,
+			String imageE, Integer nbPlace, String statutE) {
+		super();
+		this.idEvent = idEvent;
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+	}
+	
+
 	
 	
 

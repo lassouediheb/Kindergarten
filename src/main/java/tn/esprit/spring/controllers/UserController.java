@@ -93,7 +93,7 @@ UserRepository userRepository;
 				loggedIn = true; }
 		
 		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 3 )   {
-			navigateTo = "/welcomeclient.xhtml?faces-redirect=true";
+			navigateTo = "/welcomejardin.xhtml?faces-redirect=true";
 			loggedIn = true; }
 		
 		

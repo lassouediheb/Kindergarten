@@ -13,12 +13,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="T_JARDIN")
-@DiscriminatorValue(value="jd")
-public class Jardin extends User implements Serializable {
-	
+@DiscriminatorValue(value="jardin")
+public class Jardin extends User implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name="NOM_J")
@@ -28,74 +31,29 @@ public class Jardin extends User implements Serializable {
 	@Column(name="ADRESSE_J")
 	String adresseJ;
 	@Column(name="NUM_J")
-	String numJ;
+	String numJ; 
 	@Temporal(TemporalType.DATE)
 	private Date dateCrea;
-	@Column(name="DESCRIPTION_J")
+	@Column(name="DESCRIP_J")
 	String descripJ;
 	@Column(name="TARIF_J")
 	float tarifJ;
 	
-	
 	@OneToOne
-	private Directeurs directeurs; 
+	private Directeurs directeurs;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
-	private Set<Evenements> Evenements;
-    
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Bus> Bus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Activités> Activités;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
+	private Set<Evenements> Evenements ;
+
 	public String getNomJ() {
 		return nomJ;
 	}
-	
-
-
-	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
-			Directeurs directeurs, Set<tn.esprit.spring.entity.Evenements> evenements,
-			Set<tn.esprit.spring.entity.Bus> bus, Set<tn.esprit.spring.entity.Activités> activités) {
-		super();
-		this.nomJ = nomJ;
-		this.logoJ = logoJ;
-		this.adresseJ = adresseJ;
-		this.numJ = numJ;
-		this.dateCrea = dateCrea;
-		this.descripJ = descripJ;
-		this.tarifJ = tarifJ;
-		this.directeurs = directeurs;
-		Evenements = evenements;
-		Bus = bus;
-		Activités = activités;
-	}
-
-
-
-	public Set<Bus> getBus() {
-		return Bus;
-	}
-
-
-
-	public void setBus(Set<Bus> bus) {
-		Bus = bus;
-	}
-
-
-
-	public Set<Activités> getActivités() {
-		return Activités;
-	}
-
-
-
-	public void setActivités(Set<Activités> activités) {
-		Activités = activités;
-	}
-
-
 
 	public void setNomJ(String nomJ) {
 		this.nomJ = nomJ;
@@ -123,6 +81,40 @@ public class Jardin extends User implements Serializable {
 
 	public void setNumJ(String numJ) {
 		this.numJ = numJ;
+	}
+
+	
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Directeurs directeurs, Set<tn.esprit.spring.entity.Bus> bus,
+			Set<tn.esprit.spring.entity.Activités> activités, Set<tn.esprit.spring.entity.Evenements> evenements) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.directeurs = directeurs;
+		Bus = bus;
+		Activités = activités;
+		Evenements = evenements;
+	}
+
+	public Set<Bus> getBus() {
+		return Bus;
+	}
+
+	public void setBus(Set<Bus> bus) {
+		Bus = bus;
+	}
+
+	public Set<Activités> getActivités() {
+		return Activités;
+	}
+
+	public void setActivités(Set<Activités> activités) {
+		Activités = activités;
 	}
 
 	public Date getDateCrea() {
@@ -174,8 +166,29 @@ public class Jardin extends User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, Boolean etatAcc, Set<Role> roles) {
+		super(id, username, email, password, etatAcc, roles);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password) {
+		super(id, username, email, password);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, Boolean etatAcc) {
+		super(username, email, password, etatAcc);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Jardin(String username, String email, String password) {
+		super(username, email, password);
+		// TODO Auto-generated constructor stub
+	}
+
 	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ,
 			float tarifJ) {
 		super();
@@ -186,6 +199,32 @@ public class Jardin extends User implements Serializable {
 		this.dateCrea = dateCrea;
 		this.descripJ = descripJ;
 		this.tarifJ = tarifJ;
+	}
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Directeurs directeurs) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.directeurs = directeurs;
+	}
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Set<tn.esprit.spring.entity.Evenements> evenements) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		Evenements = evenements;
 	}
 
 	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
@@ -205,10 +244,17 @@ public class Jardin extends User implements Serializable {
 	@Override
 	public String toString() {
 		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
-				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs
-				+ ", Evenements=" + Evenements + "]";
+				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs + ", Bus="
+				+ Bus + ", Activités=" + Activités + ", Evenements=" + Evenements + "]";
 	}
-	
-	
 
+
+	
+	
+	
+	
+	
+	
+	
 }
+

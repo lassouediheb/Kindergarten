@@ -54,37 +54,7 @@
 		</h:head>
 
 		<h:body>
-			<h:form>
-				<div class="container">
-					<div class="row">
-						<ui:repeat var="event" value="#{evenementsController.getEvenements()}">
-							<div class="col-lg-4 col-md-6 mb-4">
-								<div class="card h-100">
-									<a href="#"><img class="card-img-top"
-										src="http://placehold.it/700x400" alt=""></img></a>
-									<div class="card-body">
-										<h4 class="card-title">
-										<h:commandLink
-												action="./evenementadmin.jsf"
-												value="#{event.nomE}" />
-										</h4>
-										<h5>
-											<h:outputText value="#{event.jardin.nomJ}" />
-										</h5>
-										<p class="card-text">
-											<h:outputText value="#{event.dateE}" />
-										</p>
-										<p class="card-text">
-											<h:outputText value="#{event.adresseE}" />
-										</p>
-									</div>
-								</div>
-								<br></br>
-							</div>
-						</ui:repeat>
-					</div>
-				</div>
-			</h:form>
+			
 		</h:body>
 	</ui:define>
 </ui:composition>
