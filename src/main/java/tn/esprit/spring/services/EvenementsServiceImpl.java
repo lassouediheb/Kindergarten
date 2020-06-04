@@ -60,6 +60,13 @@ public class EvenementsServiceImpl implements EvenementsService {
 		return event;
 	}
 	
+	@Override
+	public  Evenements getEvenementByIdEvent(long idEvent){
+		Evenements event =evenementsRepository.findById(idEvent).orElse(null);
+		return event;
+		
+	}
+	
 	
 	
 

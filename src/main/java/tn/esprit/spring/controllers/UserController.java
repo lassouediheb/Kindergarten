@@ -85,14 +85,16 @@ UserRepository userRepository;
 		
 				
 		if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 1 ) {
+			
 		navigateTo = "/welcome.xhtml?faces-redirect=true";
 		loggedIn = true; }
 		
 		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 2 )   {
+			
 				navigateTo = "/welcomeclient.xhtml?faces-redirect=true";
 				loggedIn = true; }
 		
-		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 3 )   {
+		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 3 ) {
 			navigateTo = "/welcomejardin.xhtml?faces-redirect=true";
 			loggedIn = true; }
 		

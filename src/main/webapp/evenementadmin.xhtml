@@ -201,14 +201,16 @@
 									<td><h:outputText value="Statut"></h:outputText></td>
 									<td><h:inputText value="#{evenementsController.statutE}"></h:inputText></td>
 								</tr>
-								<tr>
-									<td colspan="2"><h:commandButton value="Ajouter Event"
+								
+							</table>
+							<br></br>
+								<br></br>
+							<tr>
+									<td><h:commandButton value="Ajouter Event"
 											action="#{evenementsController.addEvent()}" /></td>
-									<td colspan="2"><h:commandButton value="Modifier Event"
+									<td><h:commandButton value="Modifier Event"
 											action="#{evenementsController.updateEvent()}" /></td>
 								</tr>
-							</table>
-
 
 						</h:form>
 					</h:panelGroup>

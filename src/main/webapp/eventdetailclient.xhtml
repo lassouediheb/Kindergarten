@@ -57,15 +57,15 @@
 			<div class="well profile">
 				<div class="col-sm-12">
 					<div class="col-xs-12 col-sm-8">
-						<h2>Nicole Pearson</h2>
+						<h2><h:outputText value="#{event.nomE}" /></h2>
 						<p>
-							<strong>Adresse: </strong> Web Designer / UI.
+							<strong>Adresse: </strong><h:outputText value="#{event.adresseE}" />
 						</p>
 						<p>
-							<strong>Numéro: </strong> Read, out
+							<strong>Numéro: </strong><h:outputText value="#{evenementController.getEvenementByIdEvent().event.numE}" />
 						</p>
 						<p>
-							<strong>Date de création:</strong> Read,
+							<strong>Date de l'évènement:</strong><h:outputText value="#{evenementController.getDetailEvent().dateE}" />
 						</p>
 						<p>
 							<strong>Nom du directeur: </strong> nmdirec
@@ -76,46 +76,13 @@
 				<div class="col-xs-12 divider text-center">
 					<div class="col-xs-12 col-sm-4 emphasis">
 						<h2>
-							<strong> +200 </strong>
-						</h2>
-						<p>
-							<small>Inscrits</small>
-						</p>
-						<button class="btn btn-success btn-block">
-							<span class="fa fa-plus-circle"></span> Inscrivez-Vous
-						</button>
-					</div>
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<h2>
 							<strong>+30</strong>
 						</h2>
 						<p>
-							<small>Event/Année</small>
+							<small>Participants</small>
 						</p>
 						<button class="btn btn-info btn-block">
-							<span class="fa fa-user"></span> Evènements
-						</button>
-					</div>
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<h2>
-							<strong> 6 </strong>
-						</h2>
-						<p>
-							<small>Bus à votre dispostion</small>
-						</p>
-						<button class="btn btn-success btn-block">
-							<span class="fa fa-plus-circle"></span> Inscrivez-Vous
-						</button>
-					</div>
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<h2>
-							<strong>+15</strong>
-						</h2>
-						<p>
-							<small>Acitivités</small>
-						</p>
-						<button class="btn btn-info btn-block">
-							<span class="fa fa-user"></span> Activités
+							<span class="fa fa-user"></span> Participer
 						</button>
 					</div>
 				</div>

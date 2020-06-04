@@ -140,8 +140,16 @@
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{jardinController.removeJardin(user.id)}"
+										action="#{jardinController.removeJardin(jardin.user.id)}"
 										value="Supprimer" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Action" />
+									</f:facet>
+									<h:commandButton
+										action="#{jardinController.displayJardin(jardin)}"
+										value="Modifier" />
 								</h:column>
 							</h:dataTable>
 							<br></br>
@@ -176,12 +184,16 @@
 									<td><h:outputText value="Tarifs"></h:outputText></td>
 									<td><h:inputText value="#{jardinController.tarifJ}"></h:inputText></td>
 								</tr>
-								<tr>
-									<td colspan="2"><h:commandButton value="Ajouter Jardin"
-											action="#{jardinController.addJardin()}" /></td>
-								</tr>
+								
 							</table>
-
+<br></br>
+								<br></br>
+								<tr>
+									<td><h:commandButton value="Ajouter Jardin"
+											action="#{jardinController.addJardin()}" /></td>
+											<td><h:commandButton value="Modifier Jardin"
+											action="#{jardinsontroller.updateJardin()}" /></td>
+								</tr>
 
 						</h:form>
 					</h:panelGroup>

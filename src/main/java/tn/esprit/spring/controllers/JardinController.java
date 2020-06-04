@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-
+import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.User;
 
@@ -26,13 +26,13 @@ import tn.esprit.spring.services.UserService;
 @ELBeanName(value = "jardinController")
 @Join(path = "/jardin", to = "/jardin.jsf")
 public class JardinController {
-	
+
 	@Autowired
 	JardinService jardinService;
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	private String nomJ;
 	private String logoJ;
 	private String adresseJ;
@@ -43,30 +43,54 @@ public class JardinController {
 	private Jardin jardin;
 	private User user;
 	private long id;
-	
-	private List<Jardin> jardins; 
-	
-	public List<Jardin> getJardin() { 
-		jardins = jardinService.getAllJardin(); 
+	private long jardinIdToBeUpdated;
+
+	private List<Jardin> jardins;
+
+	public List<Jardin> getJardin() {
+		jardins = jardinService.getAllJardin();
 		return jardins;
-		}
-	
-	public void removeJardin(String id) { 
-		jardinService.deleteJardin(id);
-		}
-	
-	public void addJardin() { 
+	}
+
+	public void addJardin() {
 		jardinService.addJardin(new Jardin(nomJ, logoJ, adresseJ, numJ, dateCrea, descripJ, tarifJ));
 	}
-	
-	public String afficherJardin(Jardin jardin ) 
-	{ 	
+
+	public void removeJardin(String id) {
+		jardinService.deleteJardin(id);
+	}
+
+	public void displayJardin(Jardin jardin) {
+		this.setNomJ(jardin.getNomJ());
+		this.setLogoJ(jardin.getLogoJ());
+		this.setAdresseJ(jardin.getAdresseJ());
+		this.setNumJ(jardin.getNumJ());
+		this.setDateCrea(jardin.getDateCrea());
+		this.setDescripJ(jardin.getDescripJ());
+		this.setTarifJ(jardin.getTarifJ());
+		this.setJardinIdToBeUpdated(jardin.getId());
+	}
+
+	public String afficherJardin(Jardin jardin) {
 		this.setJardin(jardin);
 		this.setId(jardin.getId());
-	return "/WEB-INF/jardinadmin.xhtml?faces-redirect=true"; 
+		return "/WEB-INF/jardinadmin.xhtml?faces-redirect=true";
 	}
 	
 	
+
+	public Jardin afficherProfil(String id) {
+		jardin = jardinService.retrieveJardin(id);
+		return jardin;
+	}
+
+	public long getJardinIdToBeUpdated() {
+		return jardinIdToBeUpdated;
+	}
+
+	public void setJardinIdToBeUpdated(long jardinIdToBeUpdated) {
+		this.jardinIdToBeUpdated = jardinIdToBeUpdated;
+	}
 
 	public JardinService getJardinService() {
 		return jardinService;
@@ -202,8 +226,5 @@ public class JardinController {
 		super();
 		this.jardins = jardins;
 	}
-	
-	
-	
 
 }

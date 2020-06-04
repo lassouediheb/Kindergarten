@@ -11,6 +11,8 @@ public interface EvenementsService {
 	Evenements updateEvenements(Evenements e);
 	Evenements retrieveEvenements(String id);
 	List<Evenements> getAllEvenements();
+	Evenements getEvenementByIdEvent(long idEvent);
+	
 
 
 }
