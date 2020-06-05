@@ -2,7 +2,9 @@ package tn.esprit.spring.controllers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import javax.faces.context.FacesContext;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,6 +53,8 @@ public class JardinController {
 		jardins = jardinService.getAllJardin();
 		return jardins;
 	}
+	
+	
 
 	public void addJardin() {
 		jardinService.addJardin(new Jardin(nomJ, logoJ, adresseJ, numJ, dateCrea, descripJ, tarifJ));
@@ -91,6 +95,32 @@ public class JardinController {
 	public void setJardinIdToBeUpdated(long jardinIdToBeUpdated) {
 		this.jardinIdToBeUpdated = jardinIdToBeUpdated;
 	}
+	
+	String a;
+	private String getCountryFromJSF(FacesContext context) {
+		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+		return parameters.get("idjj");
+	}
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a);
+		return Integer.parseInt(a);
+	}
+	
+	
+	
+	public String getA() {
+		return a;
+	}
+
+
+
+	public void setA(String a) {
+		this.a = a;
+	}
+
+
 
 	public JardinService getJardinService() {
 		return jardinService;
