@@ -22,7 +22,7 @@ import tn.esprit.spring.entity.ReactionPub;
 import tn.esprit.spring.entity.TypeReaction;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.PublicationRepository;
-import tn.esprit.spring.service.PublicationService;
+import tn.esprit.spring.services.PublicationService;
 
 
 @Scope(value = "session") 

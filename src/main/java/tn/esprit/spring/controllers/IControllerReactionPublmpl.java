@@ -19,7 +19,7 @@ import tn.esprit.spring.entity.TypeReaction;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.PublicationRepository;
 import tn.esprit.spring.repository.ReactionPubRepository;
-import tn.esprit.spring.service.ReactionPubService;
+import tn.esprit.spring.services.ReactionPubService;
 
 @Scope(value = "session") 
 @Controller(value = "reactionPubController") 

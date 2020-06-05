@@ -17,7 +17,7 @@ import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.entity.ReactionPub;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.CommentaireRepository;
-import tn.esprit.spring.service.CommentaireService;
+import tn.esprit.spring.services.CommentaireService;
 
 
 

@@ -20,7 +20,7 @@ import tn.esprit.spring.entity.TypeReaction;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.CommentaireRepository;
 import tn.esprit.spring.repository.ReactionComRepository;
-import tn.esprit.spring.service.ReactionComService;
+import tn.esprit.spring.services.ReactionComService;
 
 
 @Scope(value = "session") 
