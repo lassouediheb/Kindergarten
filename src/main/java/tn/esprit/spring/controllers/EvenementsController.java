@@ -2,6 +2,9 @@ package tn.esprit.spring.controllers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -90,23 +93,37 @@ public class EvenementsController {
 		this.idEventDet = idEventDet;
 	}
 
-	public String detailevent(Evenements e) {
-		this.setIdEventDet(e.getIdEvent());
-		return "/eventdetailclient.xhtml?faces-redirect=true";
+	public Evenements detailevent(String idEvent ) {
+		return evenementsService.retrieveEvenements(idEvent);
 	}
 	
-	public Evenements getDetailEvent(String idEventDet) {
-		return evenementsService.retrieveEvenements(idEventDet);
-
+	
+	
+	String a;
+	private String getCountryFromJSF(FacesContext context) {
+		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+		return parameters.get("idev");
 	}
-
-
-	public Evenements getEvenementByIdEvent(long idEventDet) {
-		event = evenementsRepository.getEvenementByIdEvent(idEventDet);
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a);
+		return Integer.parseInt(a);
+	}
+	
+	public Evenements getEvenementByIdEvent(String idEvent) {
+		event = evenementsService.retrieveEvenements(idEvent);
 		return event;
 	}
 	
-	
+
+	public String getA() {
+		return a;
+	}
+
+	public void setA(String a) {
+		this.a = a;
+	}
 
 	public EvenementsService getEvenementsService() {
 		return evenementsService;

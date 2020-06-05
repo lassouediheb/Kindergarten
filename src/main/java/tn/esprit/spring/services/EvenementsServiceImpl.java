@@ -36,6 +36,11 @@ public class EvenementsServiceImpl implements EvenementsService {
 		}
 	
 	@Override
+	public Evenements retrieveEvenements(String id) {
+		return evenementsRepository.findById(Long.parseLong(id)).orElse(null);
+	}
+	
+	@Override
 	public Evenements addEvenements(Evenements e) {
 		Evenements event =evenementsRepository.save(e);
 		return event;
@@ -54,11 +59,6 @@ public class EvenementsServiceImpl implements EvenementsService {
 		return event;
 	}
 
-	@Override
-	public Evenements retrieveEvenements(String id) {
-		Evenements event =evenementsRepository.findById(Long.parseLong(id)).orElse(null);
-		return event;
-	}
 	
 	@Override
 	public  Evenements getEvenementByIdEvent(long idEvent){

@@ -19,11 +19,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.ERole;
+import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.OnRegistrationCompleteEvent;
 import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.repository.JardinRepository;
 import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
+import tn.esprit.spring.services.UserService;
 
 
 @Controller(value = "registreController")
@@ -37,6 +40,9 @@ public class RegisterController {
 		UserRepository userRepository;
 		@Autowired
 		RoleRepository roleRepository;
+		@Autowired
+		JardinRepository jardinRepository;
+		
 
 		@Autowired
 		PasswordEncoder encoder;
@@ -46,6 +52,7 @@ public class RegisterController {
 		private String username;
 		private String password;
 		private String email;
+		
 
 		
 
@@ -69,17 +76,17 @@ public class RegisterController {
 			}
 			else
 			{
-				User user = new User(username, 
+				Jardin jardin = new Jardin(username, 
 						 email,
 						 encoder.encode(password));
 				Set<Role> roles = new HashSet<>();
 				Role userRole = roleRepository.findByName(ERole.ROLE_JARDINDENFANT)
 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 				roles.add(userRole);
-				user.setRoles(roles);
-				userRepository.save(user);
+				jardin.setRoles(roles);
+				userRepository.save(jardin);
 				String appUrl = "";
-				User registered= user;
+				Jardin registered= jardin;
 				eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, appUrl));
 				navigateTo="login1.xhtml?faces-redirect=true";
 				FacesMessage facesMessage =
@@ -88,6 +95,7 @@ public class RegisterController {
 
 						FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
 			}
+			
 			return navigateTo;
 			
 		}

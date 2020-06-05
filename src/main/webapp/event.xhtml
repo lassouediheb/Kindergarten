@@ -65,8 +65,10 @@
 									<div class="card-body">
 										<h4 class="card-title">
 										<h:commandLink
-												action="./evenementadmin.jsf"
+												action="eventdetailclient.jsf"
 												value="#{event.nomE}" />
+												<f:param name="idev" value="#{event.idEvent}"/>
+												
 										</h4>
 										<h5>
 											<h:outputText value="#{event.jardin.nomJ}" />
