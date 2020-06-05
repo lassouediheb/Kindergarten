@@ -67,7 +67,18 @@ UserRepository userRepository;
 	private String adresseuser;
 	private Date datedenaissance;
 	private long numtel ;
+	private User autheticatedUser;
 	
+	public User getAutheticatedUser() {
+		return autheticatedUser;
+	}
+
+
+	public void setAutheticatedUser(User autheticatedUser) {
+		this.autheticatedUser = autheticatedUser;
+	}
+
+
 	public String doLogin() {
 		
 		String navigateTo = "null";
@@ -80,21 +91,21 @@ UserRepository userRepository;
 		List<String> roles = userDetails.getAuthorities().stream()
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
-		User user = userRepository.findByUsername(userDetails.getUsername())
+		autheticatedUser = userRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userDetails.getUsername()));
 		
 				
-		if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 1 ) {
+		if (autheticatedUser != null && (autheticatedUser.getRoles().stream().findFirst().get().getId() ) == 1 ) {
 			
 		navigateTo = "/welcome.xhtml?faces-redirect=true";
 		loggedIn = true; }
 		
-		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 2 )   {
+		else if (autheticatedUser != null && (autheticatedUser.getRoles().stream().findFirst().get().getId() ) == 2 )   {
 			
 				navigateTo = "/welcomeclient.xhtml?faces-redirect=true";
 				loggedIn = true; }
 		
-		else if (user != null && (user.getRoles().stream().findFirst().get().getId() ) == 3 ) {
+		else if (autheticatedUser != null && (autheticatedUser.getRoles().stream().findFirst().get().getId() ) == 3 ) {
 			navigateTo = "/welcomejardin.xhtml?faces-redirect=true";
 			loggedIn = true; }
 		
