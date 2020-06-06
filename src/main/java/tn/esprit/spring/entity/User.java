@@ -2,6 +2,7 @@ package tn.esprit.spring.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -27,6 +28,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(	name = "users", 
 		uniqueConstraints = { 
@@ -48,7 +51,28 @@ public class User {
 	@Size(max = 50)
 	@Email
 	private String email;
+	@OneToMany(mappedBy="User",cascade = CascadeType.ALL)
+	private List<Publicity> publicity;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+	private List<Enfant> enfant;
+	public List<Enfant> getEnfant() {
+		return enfant;
+	}
+
+	public void setEnfant(List<Enfant> enfant) {
+		this.enfant = enfant;
+	}
+
+	public List<Publicity> getPublicity() {
+		return publicity;
+	}
+
+	public void setPublicity(List<Publicity> publicity) {
+		this.publicity = publicity;
+	}
+
 	@NotBlank
 	@Size(max = 120)
 	private String password;

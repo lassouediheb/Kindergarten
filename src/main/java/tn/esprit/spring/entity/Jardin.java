@@ -2,12 +2,14 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -51,6 +53,30 @@ public class Jardin extends User implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Evenements> Evenements ;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
+	private List<Enfant> enfant;
+	
+	@ManyToOne(cascade = CascadeType.ALL) 
+	Parent parent;
+
+	public Parent getParent() {
+		return parent;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+
+	public List<Enfant> getEnfant() {
+		return enfant;
+	}
+
+	public void setEnfant(List<Enfant> enfant) {
+		this.enfant = enfant;
+	}
+
+	
 
 	public String getNomJ() {
 		return nomJ;
