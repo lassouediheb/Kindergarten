@@ -202,9 +202,12 @@ public class User {
 	
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	
 =======
 >>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
+=======
+>>>>>>> refs/remotes/origin/master
 	
 }
