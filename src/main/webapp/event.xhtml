@@ -64,11 +64,10 @@
 										src="http://placehold.it/700x400" alt=""></img></a>
 									<div class="card-body">
 										<h4 class="card-title">
-										<h:commandLink
-												action="eventdetailclient.jsf"
-												value="#{event.nomE}" />
-												<f:param name="idev" value="#{event.idEvent}"/>
-												
+										<h:link
+												value="#{event.nomE}" 
+												outcome="eventdetailjardin.jsf">
+												<f:param name="idev" value="#{event.idEvent}"/></h:link>
 										</h4>
 										<h5>
 											<h:outputText value="#{event.jardin.nomJ}" />
