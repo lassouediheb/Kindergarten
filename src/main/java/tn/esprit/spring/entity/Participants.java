@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -39,8 +40,8 @@ public class Participants implements Serializable{
 		this.nomEvent = nomEvent;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Evenements> evenements;
+	@ManyToOne
+	Evenements evenements;
 
 	public long getIdParticip() {
 		return idParticip;
@@ -58,11 +59,13 @@ public class Participants implements Serializable{
 		this.nomParticip = nomParticip;
 	}
 
-	public Set<Evenements> getEvenements() {
+	
+
+	public Evenements getEvenements() {
 		return evenements;
 	}
 
-	public void setEvenements(Set<Evenements> evenements) {
+	public void setEvenements(Evenements evenements) {
 		this.evenements = evenements;
 	}
 
@@ -76,7 +79,9 @@ public class Participants implements Serializable{
 				+ ", evenements=" + evenements + "]";
 	}
 
-	public Participants(long idParticip, String nomParticip, String nomEvent, Set<Evenements> evenements) {
+	
+
+	public Participants(long idParticip, String nomParticip, String nomEvent, Evenements evenements) {
 		super();
 		this.idParticip = idParticip;
 		this.nomParticip = nomParticip;

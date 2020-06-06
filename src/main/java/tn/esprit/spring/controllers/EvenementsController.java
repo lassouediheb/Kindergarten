@@ -46,6 +46,8 @@ public class EvenementsController {
 	private String imageE;
 	private Integer nbPlace;
 	private String statutE;
+	
+
 
 	private Participants participants;
 
@@ -61,9 +63,9 @@ public class EvenementsController {
 	}
 
 	// Ajouter un event
-	public void addEvent() {
+	public void addEvent(Jardin jardin) {
 		evenementsService
-				.addEvenements(new Evenements(nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
+				.addEvenements(new Evenements(nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE,jardin));
 	}
 
 	// Modifier un event
@@ -108,6 +110,25 @@ public class EvenementsController {
 		a = getCountryFromJSF(context);
 		System.out.println("(((((((((((((((((" + a);
 		return Integer.parseInt(a);
+	}
+	
+	// Passer paramètre idEvent pour afficher liste participants
+	private long idE;
+	public String listeparEvent(Evenements event ) 
+	{ 	
+		this.setEvent(event);
+		this.setIdE(event.getIdEvent());
+	return "listeparticipjardin.xhtml?faces-redirect=true"; 
+	}
+	
+	
+
+	public long getIdE() {
+		return idE;
+	}
+
+	public void setIdE(long idE) {
+		this.idE = idE;
 	}
 
 	public EvenementsService getEvenementsService() {

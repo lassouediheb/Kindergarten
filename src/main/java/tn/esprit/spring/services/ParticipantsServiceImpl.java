@@ -5,8 +5,11 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import tn.esprit.spring.entity.Commentaire;
 import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Participants;
 import tn.esprit.spring.repository.EvenementsRepository;
@@ -33,7 +36,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 		if (nbPlaces>0){
 			participManagedEntity.setNomEvent(name);
 			evenementsManagedEntity.setNbPlace(nbPlaces-1);
-			participManagedEntity.getEvenements().add(evenementsManagedEntity);
+			//participManagedEntity.getEvenements().add(evenementsManagedEntity);
 
 		}
 		if (nbPlaces-1==0){
@@ -77,6 +80,11 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 		Participants particip =participantsRepository.findById(Long.parseLong(id)).orElse(null);
 		return particip;
 	}
+	
+	public List<Participants> getAllParticipantsByIdEvent(long idEvent){
+		return participantsRepository.getAllParticipantsByIdEvent(idEvent);
+	}
+	
 	
 	
 	
