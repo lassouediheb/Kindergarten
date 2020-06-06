@@ -34,10 +34,10 @@ public class EvenementsController {
 	@Autowired
 	EvenementsRepository evenementsRepository;
 
-	private long idEvent;
 	private long eventIdToBeUpdated;
+
 	private Evenements event;
-	private Participants participants;
+	private long idEvent;
 	private String nomE;
 	private String adresseE;
 	private Date dateE;
@@ -46,9 +46,13 @@ public class EvenementsController {
 	private String imageE;
 	private Integer nbPlace;
 	private String statutE;
-	private String nomJ;
-	private Jardin jardin;
 
+	private Participants participants;
+
+	private Jardin jardin;
+	private String nomJ;
+
+	// Afficher liste des events
 	private List<Evenements> events;
 
 	public List<Evenements> getEvenements() {
@@ -56,15 +60,24 @@ public class EvenementsController {
 		return events;
 	}
 
-	public void removeEvent(String idEvent) {
-		evenementsService.deleteEvenements(idEvent);
-	}
-
+	// Ajouter un event
 	public void addEvent() {
 		evenementsService
 				.addEvenements(new Evenements(nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
 	}
 
+	// Modifier un event
+	public void updateEvent() {
+		evenementsService.updateEvenements(
+				new Evenements(eventIdToBeUpdated, nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
+	}
+
+	// Supprimer un event
+	public void removeEvent(String idEvent) {
+		evenementsService.deleteEvenements(idEvent);
+	}
+
+	// Display event
 	public void displayEvent(Evenements event) {
 		this.setNomE(event.getNomE());
 		this.setAdresseE(event.getAdresseE());
@@ -77,52 +90,24 @@ public class EvenementsController {
 		this.setEventIdToBeUpdated(event.getIdEvent());
 	}
 
-	public void updateEvent() {
-		evenementsService.updateEvenements(
-				new Evenements(eventIdToBeUpdated, nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
-
-	}
-
-	private long idEventDet;
-
-	public long getIdEventDet() {
-		return idEventDet;
-	}
-
-	public void setIdEventDet(long idEventDet) {
-		this.idEventDet = idEventDet;
-	}
-
-	public Evenements detailevent(String idEvent ) {
+	// Get event by id
+	public Evenements detailevent(String idEvent) {
 		return evenementsService.retrieveEvenements(idEvent);
 	}
-	
-	
-	
+
+	// Passer le param idEvent à une autre view
 	String a;
+
 	private String getCountryFromJSF(FacesContext context) {
 		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
 		return parameters.get("idev");
 	}
+
 	public int outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
-		System.out.println("((((((((((((((((("+a);
+		System.out.println("(((((((((((((((((" + a);
 		return Integer.parseInt(a);
-	}
-	
-	public Evenements getEvenementByIdEvent(String idEvent) {
-		event = evenementsService.retrieveEvenements(idEvent);
-		return event;
-	}
-	
-
-	public String getA() {
-		return a;
-	}
-
-	public void setA(String a) {
-		this.a = a;
 	}
 
 	public EvenementsService getEvenementsService() {
@@ -141,12 +126,12 @@ public class EvenementsController {
 		this.jardinService = jardinService;
 	}
 
-	public long getIdEvent() {
-		return idEvent;
+	public EvenementsRepository getEvenementsRepository() {
+		return evenementsRepository;
 	}
 
-	public void setIdEvent(long idEvent) {
-		this.idEvent = idEvent;
+	public void setEvenementsRepository(EvenementsRepository evenementsRepository) {
+		this.evenementsRepository = evenementsRepository;
 	}
 
 	public long getEventIdToBeUpdated() {
@@ -165,12 +150,12 @@ public class EvenementsController {
 		this.event = event;
 	}
 
-	public Participants getParticipants() {
-		return participants;
+	public long getIdEvent() {
+		return idEvent;
 	}
 
-	public void setParticipants(Participants participants) {
-		this.participants = participants;
+	public void setIdEvent(long idEvent) {
+		this.idEvent = idEvent;
 	}
 
 	public String getNomE() {
@@ -237,12 +222,12 @@ public class EvenementsController {
 		this.statutE = statutE;
 	}
 
-	public String getNomJ() {
-		return nomJ;
+	public Participants getParticipants() {
+		return participants;
 	}
 
-	public void setNomJ(String nomJ) {
-		this.nomJ = nomJ;
+	public void setParticipants(Participants participants) {
+		this.participants = participants;
 	}
 
 	public Jardin getJardin() {
@@ -253,12 +238,28 @@ public class EvenementsController {
 		this.jardin = jardin;
 	}
 
+	public String getNomJ() {
+		return nomJ;
+	}
+
+	public void setNomJ(String nomJ) {
+		this.nomJ = nomJ;
+	}
+
 	public List<Evenements> getEvents() {
 		return events;
 	}
 
 	public void setEvents(List<Evenements> events) {
 		this.events = events;
+	}
+
+	public String getA() {
+		return a;
+	}
+
+	public void setA(String a) {
+		this.a = a;
 	}
 
 	public EvenementsController() {
@@ -278,6 +279,62 @@ public class EvenementsController {
 		this.imageE = imageE;
 		this.nbPlace = nbPlace;
 		this.statutE = statutE;
+	}
+
+	public EvenementsController(String nomE, String adresseE, Date dateE, String descripE, String etatE, String imageE,
+			Integer nbPlace, String statutE) {
+		super();
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+	}
+
+	public EvenementsController(String nomE, String adresseE, Date dateE, String descripE, String etatE, String imageE,
+			Integer nbPlace, String statutE, Participants participants, Jardin jardin) {
+		super();
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+		this.participants = participants;
+		this.jardin = jardin;
+	}
+
+	public EvenementsController(String nomE, String adresseE, Date dateE, String descripE, String etatE, String imageE,
+			Integer nbPlace, String statutE, Participants participants) {
+		super();
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+		this.participants = participants;
+	}
+
+	public EvenementsController(String nomE, String adresseE, Date dateE, String descripE, String etatE, String imageE,
+			Integer nbPlace, String statutE, Jardin jardin) {
+		super();
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+		this.jardin = jardin;
 	}
 
 }
