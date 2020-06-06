@@ -92,7 +92,20 @@
 				<div class="content">
 					<h:panelGroup>
 						<h:form>
-							<h:dataTable value="#{jardinController.getJardin()}" var="jardin" border="1">
+							<h:dataTable value="#{jardinController.getJardin()}" var="jardin"
+								border="1">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Username" />
+									</f:facet>
+									<h:outputText value="#{jardin.username}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Jardin password" />
+									</f:facet>
+									<h:outputText value="#{jardin.password}" />
+								</h:column>
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Jardin" />
@@ -137,10 +150,16 @@
 								</h:column>
 								<h:column>
 									<f:facet name="header">
+										<h:outputText value="Mail" />
+									</f:facet>
+									<h:outputText value="#{jardin.email}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{jardinController.removeJardin(jardin.user.id)}"
+										action="#{jardinController.removeJardin(jardin.id)}"
 										value="Supprimer" />
 								</h:column>
 								<h:column>
@@ -157,12 +176,20 @@
 
 							<table>
 								<tr>
-									<td><h:outputText value="Nom Event"></h:outputText></td>
+									<td><h:outputText value="Username"></h:outputText></td>
+									<td><h:inputText value="#{jardinController.username}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Password"></h:outputText></td>
+									<td><h:inputSecret value="#{jardinController.password}"></h:inputSecret></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Nom Jardin"></h:outputText></td>
 									<td><h:inputText value="#{jardinController.nomJ}"></h:inputText></td>
 								</tr>
 								<tr>
 									<td><h:outputText value="Logo"></h:outputText></td>
-									<td><h:inputSecret value="#{jardinController.logoJ}"></h:inputSecret></td>
+									<td><h:inputText value="#{jardinController.logoJ}"></h:inputText></td>
 								</tr>
 								<tr>
 									<td><h:outputText value="Adresse"></h:outputText></td>
@@ -174,7 +201,9 @@
 								</tr>
 								<tr>
 									<td><h:outputText value="Date de création"></h:outputText></td>
-									<td><h:inputText value="#{jardinController.dateCrea}"><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></td>
+									<td><h:inputText value="#{jardinController.dateCrea}">
+											<f:convertDateTime pattern="yyyy-MM-dd" />
+										</h:inputText></td>
 								</tr>
 								<tr>
 									<td><h:outputText value="Décrire"></h:outputText></td>
@@ -184,16 +213,18 @@
 									<td><h:outputText value="Tarifs"></h:outputText></td>
 									<td><h:inputText value="#{jardinController.tarifJ}"></h:inputText></td>
 								</tr>
-								
-							</table>
-<br></br>
-								<br></br>
 								<tr>
-									<td><h:commandButton value="Ajouter Jardin"
-											action="#{jardinController.addJardin()}" /></td>
-											<td><h:commandButton value="Modifier Jardin"
-											action="#{jardinsontroller.updateJardin()}" /></td>
+									<td><h:outputText value="Email"></h:outputText></td>
+									<td><h:inputText value="#{jardinController.email}"></h:inputText></td>
 								</tr>
+
+							</table>
+							<br></br>
+							<br></br>
+							<tr>
+								<td><h:commandButton value="Modifier Jardin"
+										action="#{jardinController.updateJardin()}" /></td>
+							</tr>
 
 						</h:form>
 					</h:panelGroup>

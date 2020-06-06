@@ -11,12 +11,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tn.esprit.spring.entity.Jardin;
+import tn.esprit.spring.entity.User;
+
 import tn.esprit.spring.repository.JardinRepository;
+import tn.esprit.spring.repository.UserRepository;
 
 @Service
 public class JardinServiceImpl implements JardinService {
 	@Autowired
 	JardinRepository jardinRepository;
+	@Autowired
+	UserRepository userRepository;
 	
 	private static final Logger L = LogManager.getLogger(EvenementsServiceImpl.class);
 
@@ -45,7 +50,6 @@ public class JardinServiceImpl implements JardinService {
 	@Override
 	public void deleteJardin(String id) {
 		jardinRepository.deleteById(Long.parseLong(id));
-		
 	}
 
 	@Override

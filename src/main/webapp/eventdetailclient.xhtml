@@ -57,21 +57,61 @@
 			<div class="well profile">
 				<div class="col-sm-12">
 					<div class="col-xs-12 col-sm-8">
+					
+						<table value="#{evenementsController.detailevent(event.idEvent)}"
+								var="event">
+								<tr>
+									<td><h:outputText value="Nom Event"></h:outputText></td>
+									<td><h:inputText value="#{event.nomE}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Adresse"></h:outputText></td>
+									<td><h:outputText value="#{event.adresseE}"></h:outputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Date"></h:outputText></td>
+									<td><h:inputText value="#{event.dateE}"><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Décrire"></h:outputText></td>
+									<td><h:inputText value="#{event.descripE}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Etat"></h:outputText></td>
+									<td><h:inputText value="#{event.etatE}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Image"></h:outputText></td>
+									<td><h:inputText value="#{event.imageE}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Nombre de places"></h:outputText></td>
+									<td><h:inputText value="#{event.nbPlace}"></h:inputText></td>
+								</tr>
+								<tr>
+									<td><h:outputText value="Statut"></h:outputText></td>
+									<td><h:inputText value="#{event.statutE}"></h:inputText></td>
+								</tr>
+								
+							</table>
+							<br></br>
+							<br></br>
+							
 						<h2><h:outputText value="#{event.nomE}" /></h2>
 						<p>
-							<strong>Programmé par: </strong><h:outputText value="#{eventController.detailevent(idEvent).nomE}" />
+							<strong>Programmé par: </strong>
 						</p>
 						<p>
-							<strong>Adresse: </strong><h:outputText value="#{event.adresseE}" />
+							<strong>Adresse: </strong>
 						</p>
 						<p>
-							<strong>Date de l'évènement:</strong><h:outputText value="#{event.dateE}" />
+							<strong>Date de l'évènement:</strong>
 						</p>
 						<p>
-							<strong>Nombre de place: </strong><h:outputText value="#evenementController.detailevent().nbPlace}" />
+							<strong>Nombre de place: </strong>
 						</p>
 						<p>
-							<strong>Statut: </strong><h:outputText value="#{evenementController.detailevent(idev).statutE}" />
+							<strong>Statut: </strong>
 						</p>
 					</div>
 
