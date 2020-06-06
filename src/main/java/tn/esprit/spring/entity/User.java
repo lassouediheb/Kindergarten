@@ -201,7 +201,10 @@ public class User {
 	private Set<Reclamation> Reclamations;
 	
 	
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
 	
 }
