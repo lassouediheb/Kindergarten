@@ -1,0 +1,126 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templatejardin.xhtml">
+	<ui:param name="welcomejardin" value="Accueil" />
+	<ui:define name="welcomejardin">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+			<h:form>
+				<div class="container"></div>
+				<h2>Page De Reclamation</h2>
+				<table>
+					<tr>
+						<td><h:outputText value="Sujet de Reclamation"></h:outputText></td>
+						<td><h:inputText value="#{reclamationController.sujetRec}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Description"></h:outputText></td>
+						<td><h:inputTextarea
+								value="#{reclamationController.contenuRec}"></h:inputTextarea></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h:commandButton value="Envoyer Reclamation"
+								action="#{reclamationController.addrec()}" /></td>
+					</tr>
+				</table>
+				<br></br>
+				<br></br>
+				<h2>Vos Reclamation</h2>
+				<br></br>
+			
+				<h:dataTable value="#{reclamationController.reclamations}"
+					var="recl" border="2">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Sujet" />
+						</f:facet>
+						<h:outputText value="#{recl.sujetRec}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Description" />
+						</f:facet>
+						<h:outputText value="#{recl.contenuRec}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Date De Reclamation" />
+						</f:facet>
+						<h:outputText value="#{recl.dateRec}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Date de traitement" />
+						</f:facet>
+						<h:outputText value="#{recl.dateT}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Etat" />
+						</f:facet>
+						<h:outputText value="#{recl.etat}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton  value="Afficher" href="./reclamationdetail.jsf"/>
+					</h:column>
+
+
+				</h:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
