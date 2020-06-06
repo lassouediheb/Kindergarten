@@ -179,9 +179,30 @@ public class Bus implements Serializable {
 	public Bus() {
 		super();
 	}
+
 	
 
-
+	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace) {
+		super();
+		NomChauf = nomChauf;
+		Depart = depart;
+		this.arrivee = arrivee;
+		this.trajet = trajet;
+		TarifB = tarifB;
+		this.nbrPlace = nbrPlace;
+		
+	}
+	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace,
+			Jardin jardin) {
+		super();
+		NomChauf = nomChauf;
+		Depart = depart;
+		this.arrivee = arrivee;
+		this.trajet = trajet;
+		TarifB = tarifB;
+		this.nbrPlace = nbrPlace;
+		this.jardin = jardin;
+	}
 
 	
 
