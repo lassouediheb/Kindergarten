@@ -201,16 +201,6 @@ public class User {
 	private Set<Reclamation> Reclamations;
 	
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
-=======
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
+
 	
 }
