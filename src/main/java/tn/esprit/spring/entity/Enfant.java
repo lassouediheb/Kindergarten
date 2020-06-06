@@ -29,15 +29,15 @@ public class Enfant implements Serializable {
 	private Niveau niveau;
 	@ManyToOne 
 	private Classe classe;
-	@ManyToOne(cascade = CascadeType.ALL) 
-	User user;
+	@ManyToOne
+	Parent parent;
 	//@ManyToOne(cascade = CascadeType.ALL)
 	//Jardin jardin;
 	private String loisir;
 	public Enfant() {
 		super();
 	}
-	public Enfant(String nom, String prenom, Date dateNaissance, Niveau  niveau, Classe  classe, User user, String loisir
+	public Enfant(String nom, String prenom, Date dateNaissance, Niveau  niveau, Classe  classe, Parent parent, String loisir
 			) {
 		super();
 		this.nom = nom;
@@ -45,10 +45,10 @@ public class Enfant implements Serializable {
 		this.dateNaissance = dateNaissance;
 		this.niveau = niveau;
 		this.classe = classe;
-		this.user = user;
+		this.parent = parent;
 		this.loisir = loisir;
 	}
-	public Enfant(Long id, String nom, String prenom, Date dateNaissance, Niveau  niveau, Classe  classe, User user
+	public Enfant(Long id, String nom, String prenom, Date dateNaissance, Niveau  niveau, Classe  classe, Parent parent
 			) {
 		super();
 		this.id = id;
@@ -57,7 +57,7 @@ public class Enfant implements Serializable {
 		this.dateNaissance = dateNaissance;
 		this.niveau = niveau;
 		this.classe = classe;
-		this.user = user;
+		this.parent = parent;
 	}
 	public Long getId() {
 		return id;
@@ -95,13 +95,14 @@ public class Enfant implements Serializable {
 	public void setClasse(Classe  classe) {
 		this.classe = classe;
 	}
-	public User getUser() {
-		return user;
+	
+public Parent getParent() {
+		return parent;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
-/*	public Jardin getJardin() {
+	/*	public Jardin getJardin() {
 		return jardin;
 	}
 	public void setJardin(Jardin jardin) {
