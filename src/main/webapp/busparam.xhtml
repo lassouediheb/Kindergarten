@@ -54,35 +54,34 @@
 		</h:head>
 
 		<h:body>
-			<div class="content">
-				<h:panelGroup>
-					<h:form>
-						<center>
-							<h2>
-								<strong>Liste des participants</strong>
-							</h2>
-							<br></br>
-							<h:dataTable value="#{participantsController.getAllParticipantsByIdEvent(evenementsController.event.idEvent)}"
-								var="participants" border="1">
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Participant" />
-									</f:facet>
-									<h:outputText value="#{participants.nomParticip}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Action" />
-									</f:facet>
-									<h:commandButton
-										action="./event.jsf"
-										value="Supprimer" />
-								</h:column>
-							</h:dataTable>
-						</center>
-					</h:form>
-				</h:panelGroup>
-			</div>
+		
+	
+		
+		<h:panelGroup columns="2"><h:form><table>
+<tr><td><h:outputText value="Login (Email)"></h:outputText></td><td><h:inputText
+value="#{busController.nomChauf}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Mot de Passe"></h:outputText></td>
+<td><h:inputText value="#{busController.depart}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Nom"></h:outputText></td>
+<td><h:inputText value="#{busController.arrivee}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Prenom"></h:outputText></td>
+<td><h:inputText value="#{busController.trajet}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Prenom"></h:outputText></td>
+<td><h:inputText value="#{busController.tarifB}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Prenom"></h:outputText></td>
+<td><h:inputText value="#{busController.nbrPlace}"></h:inputText></td></tr>
+
+
+<tr><td colspan="1">
+<h:commandButton value="Ajouter Bus"
+action="#{busController.addBus1(userController.autheticatedUser)}" />
+ </td> </tr>
+
+</table>
+		
+		
+			</h:form>
+			</h:panelGroup>
 		</h:body>
 	</ui:define>
 </ui:composition>

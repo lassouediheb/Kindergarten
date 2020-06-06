@@ -54,35 +54,52 @@
 		</h:head>
 
 		<h:body>
-			<div class="content">
-				<h:panelGroup>
-					<h:form>
-						<center>
-							<h2>
-								<strong>Liste des participants</strong>
-							</h2>
-							<br></br>
-							<h:dataTable value="#{participantsController.getAllParticipantsByIdEvent(evenementsController.event.idEvent)}"
-								var="participants" border="1">
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Participant" />
+			<h:form>
+			
+			
+			<div class="col-sm-12 col-md-12 col-lg-3">
+			<ui:repeat var="buss" value="#{busController.getBus1()}">
+				<div class="container">
+						<div class="events-widget">
+							<div class="widget-title"><f:facet name="header">
+										<h:outputText value="Nom Chauffeur" />
 									</f:facet>
-									<h:outputText value="#{participants.nomParticip}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Action" />
-									</f:facet>
-									<h:commandButton
-										action="./event.jsf"
-										value="Supprimer" />
-								</h:column>
-							</h:dataTable>
-						</center>
-					</h:form>
-				</h:panelGroup>
-			</div>
+									<h:outputText value="#{buss.nomChauf}" /></div>
+							<dl>
+								<dt>99 S.t Jomblo Park Pekanbaru 28292. Indonesia</dt> 
+								<dt>Phone:</dt>
+								<dd>074574217447</dd>
+								<dt>Website:</dt>
+								<dd><a href="#">http://www.website.com</a></dd>
+							</dl>
+
+							<div class="widget-title">Detail</div>
+							<dl>
+								<dt>Start:</dt>
+								<dd>July 16 @ 11:00 am</dd>
+								<dt>End:</dt>
+								<dd>July 29 @ 4:00 pm</dd>
+							</dl>
+
+							<div class="widget-title">Organizer</div>
+							<dl>
+								<dt>Max Organizer</dt>
+								<dt>Phone:</dt>
+								<dd>074574217447</dd>
+								<dt>Website:</dt>
+								<dd><a href="#">http://www.website.com</a></dd>
+							</dl>
+							<div class="spacer-30"></div>
+							<a href="#" class="btn btn-primary btn-block">JOIN</a>
+							<div class="spacer-30"></div>
+						</div>
+						</div>
+						</ui:repeat>
+						
+					</div>
+			  
+			</h:form>
+			
 		</h:body>
 	</ui:define>
 </ui:composition>
