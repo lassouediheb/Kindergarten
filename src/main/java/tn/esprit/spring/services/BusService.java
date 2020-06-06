@@ -15,5 +15,6 @@ public interface BusService {
 	Bus retrieveBus(String matricule);
 	public int getNombreBus();
 	List<Bus> getAllBus();
+	public long addbus(Bus bus);
 
 }

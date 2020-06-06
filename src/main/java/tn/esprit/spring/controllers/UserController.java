@@ -67,6 +67,8 @@ UserRepository userRepository;
 	private String adresseuser;
 	private Date datedenaissance;
 	private long numtel ;
+	
+	
 	private User autheticatedUser;
 	
 	public User getAutheticatedUser() {
@@ -94,8 +96,13 @@ UserRepository userRepository;
 		autheticatedUser = userRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userDetails.getUsername()));
 		
-				
-		if (autheticatedUser != null && (autheticatedUser.getRoles().stream().findFirst().get().getId() ) == 1 ) {
+		if(autheticatedUser != null && !autheticatedUser.isEnabled() )		{
+			FacesMessage facesMessage =
+					new FacesMessage("Login Failed: please verify your account !.");
+			
+					FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
+		}
+		else if (autheticatedUser != null && (autheticatedUser.getRoles().stream().findFirst().get().getId() ) == 1 ) {
 			
 		navigateTo = "/welcome.xhtml?faces-redirect=true";
 		loggedIn = true; }

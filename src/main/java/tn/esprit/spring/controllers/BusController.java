@@ -1,8 +1,9 @@
 package tn.esprit.spring.controllers;
 
 import java.util.List;
+import java.util.Map;
 
-
+import javax.faces.context.FacesContext;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -10,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+
 import tn.esprit.spring.entity.Bus;
 import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Inscrits;
 import tn.esprit.spring.entity.Jardin;
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.BusRepository;
 import tn.esprit.spring.services.BusService;
 
@@ -52,6 +55,11 @@ public class BusController {
 
 
 
+
+
+
+
+
 	public void setBuss(Bus buss) {
 		this.buss = buss;
 	}
@@ -60,8 +68,11 @@ public class BusController {
 		return inscrits;
 	}
 
-
-
+	public String addBus1(Jardin jardin) {
+		busService.addbus(new Bus(NomChauf, Depart, arrivee, trajet, TarifB, nbrPlace,jardin));
+		return "null";
+		}
+	
 
 	public void setInscrits(Inscrits inscrits) {
 		this.inscrits = inscrits;
@@ -87,20 +98,22 @@ public class BusController {
 		return bus;
 		}
 	
-	
-	
-	
-	public void displayEvent(Bus bus) {
-		this.setMatricule(bus.getMatricule());
-		this.setNomChauf(bus.getNomChauf());
-		this.setDepart(bus.getDepart());
-		this.setArrivee(bus.getArrivee());
-		this.setTrajet(bus.getTrajet());
-		this.setTarifB(bus.getTarifB());
-		this.setNbrPlace(bus.getNbrPlace());
-		this.setEtat(bus.getEtat());
-		
+	String a;
+	private String getCountryFromJSF(FacesContext context) {
+		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+		return parameters.get("matricule");
 	}
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a);
+		return Integer.parseInt(a);
+	}
+	
+	
+
+	
+
 	
 	
 	public BusRepository getBusRepository() {

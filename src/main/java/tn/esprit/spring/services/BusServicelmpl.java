@@ -65,6 +65,12 @@ public class BusServicelmpl implements BusService {
 		public int getNombreBus() {
 			return busRepository.countBus();
 		}
+		
+		@Override
+		public long addbus(Bus bus) {
+			busRepository.save(bus);
+		return bus.getMatricule();
+		}
 	
 	
 	
