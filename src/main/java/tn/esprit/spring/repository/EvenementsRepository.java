@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import tn.esprit.spring.entity.Commentaire;
 import tn.esprit.spring.entity.Evenements;
 
 public interface EvenementsRepository extends CrudRepository<Evenements, Long>{

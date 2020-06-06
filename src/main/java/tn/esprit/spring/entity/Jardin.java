@@ -267,6 +267,76 @@ public class Jardin extends User implements Serializable{
 		this.directeurs = directeurs;
 		Evenements = evenements;
 	}
+	
+	
+	
+	
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, boolean enabled, String nomJ, String logoJ, String adresseJ,
+			String numJ, Date dateCrea, String descripJ, float tarifJ) {
+		super(id, username, email, password, enabled);
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+	}
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, String nomJ, String logoJ, String adresseJ, String numJ,
+			Date dateCrea, String descripJ, float tarifJ) {
+		super(id, username, email, password);
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+	}
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ) {
+		super(id, username, email);
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+	}
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, Boolean etatAcc, Set<Role> roles, String nomJ, String logoJ,
+			String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ) {
+		super(id, username, email, password, etatAcc, roles);
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+	}
+	
+	
+
+	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, boolean enabled, Set<Role> roles, String nomJ, String logoJ,
+			String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ) {
+		super(id, username, email, password, enabled, roles);
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+	}
 
 	@Override
 	public String toString() {
@@ -274,6 +344,8 @@ public class Jardin extends User implements Serializable{
 				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs + ", Bus="
 				+ Bus + ", Activités=" + Activités + ", Evenements=" + Evenements + "]";
 	}	
+	
+	
 	
 	
 	
