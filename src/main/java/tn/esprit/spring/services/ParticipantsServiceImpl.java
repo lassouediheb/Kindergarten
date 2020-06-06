@@ -85,6 +85,10 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 		return participantsRepository.getAllParticipantsByIdEvent(idEvent);
 	}
 	
+	public int getNombreParticipantsByidEvent(long idEvent ){
+		return participantsRepository.nbPartcip(idEvent);
+	}
+	
 	
 	
 	

@@ -12,5 +12,7 @@ public interface ParticipantsRepository extends CrudRepository<Participants, Lon
 	
 	@Query("SELECT p FROM Participants p where p.evenements.idEvent=?1")
 	 public List<Participants> getAllParticipantsByIdEvent(long idEvent);
+	 @Query("SELECT count(p) FROM Participants p where p.evenements.idEvent=?1")
+	    public int nbPartcip(long idEvent);
 
 }
