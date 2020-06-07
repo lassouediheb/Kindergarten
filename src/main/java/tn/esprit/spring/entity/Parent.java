@@ -14,6 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="T_PARENT")
@@ -141,5 +144,27 @@ public class Parent extends User implements Serializable{
 		super(username, email, password);
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+
+	public Parent(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, boolean enabled, String nomP, String prenomP, String adresseJ,
+			String numP) {
+		super(id, username, email, password, enabled);
+		this.nomP = nomP;
+		this.prenomP = prenomP;
+		this.adresseJ = adresseJ;
+		this.numP = numP;
+	}
+
+
+
+
+	public Parent() {
+		super();
+	}
+	
+	
 	
 }

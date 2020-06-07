@@ -15,7 +15,7 @@ public interface PlanningSerivce {
 	 public List<Planning> GetPlByDate(Date date);
 	// public List<User> parents(Long id);
 		public List<Planning> Getallplan();
-		
+	public	List<Planning> getAllPlansByIdJardin(long idJardin);
 
 	
 	 public String EnvoiPlanning();
