@@ -11,7 +11,7 @@ public interface ParticipantsService {
 	Participants updateParticipants(Participants p);
 	Participants retrieveParticipants(String id);
 	
-	public void affecterEvenementsAParticipants(String idEvent, String idParticip);
+	//public void affecterEvenementsAParticipants(String idEvent, String idParticip);
 	
 	public List<Participants> getAllParticipantsByIdEvent(long idEvent);
 	public int getNombreParticipantsByidEvent(long idEvent );

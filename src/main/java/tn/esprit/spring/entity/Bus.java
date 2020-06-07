@@ -1,7 +1,6 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,41 +14,43 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-
-
-
 @Entity
 @Table(name = "T_Bus")
 public class Bus implements Serializable {
 	
-	
-	
-	
-
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="MATRICULE")
 	long matricule;
+	
 	@Column(name="NOMCHAUF")
 	private String NomChauf; // 
+	
 	@Column(name="DEPART")
 	private String Depart; // 
+	
 	@Column(name="ARRIVEE")
 	private String arrivee; // 
+	
 	@Column(name="TRAJET")
 	private String trajet; // 
+	
 	@Column(name="TARIFB")
 	private String TarifB;//
+	
 	@Column(name="NBRPLACE")
 	Integer nbrPlace;
+	
 	@Column(name="ETAT")
 	String Etat="Dispo";
 	
 	@ManyToOne 
 	Jardin jardin; 
+	
+	@ManyToMany(mappedBy="bus", cascade = CascadeType.ALL)
+	private Set<Inscrits> inscrits ;
 	
 	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace,
 			String etat, Jardin jardin, Set<Inscrits> inscrits) {
@@ -64,6 +65,7 @@ public class Bus implements Serializable {
 		this.jardin = jardin;
 		this.inscrits = inscrits;
 	}
+	
 	public Bus(long matricule, String nomChauf, String depart, String arrivee, String trajet, String tarifB,
 			Integer nbrPlace, String etat, Jardin jardin, Set<Inscrits> inscrits) {
 		super();
@@ -78,6 +80,8 @@ public class Bus implements Serializable {
 		this.jardin = jardin;
 		this.inscrits = inscrits;
 	}
+	
+	
 	public Jardin getJardin() {
 		return jardin;
 	}
@@ -96,9 +100,6 @@ public class Bus implements Serializable {
 	public void setNbrPlace(Integer nbrPlace) {
 		this.nbrPlace = nbrPlace;
 	}
-	@ManyToMany(mappedBy="bus", cascade = CascadeType.ALL)
-	
-	private Set<Inscrits> inscrits ;
 
 	public String getEtat() {
 		return Etat;
@@ -176,11 +177,10 @@ public class Bus implements Serializable {
 		this.Etat = etat;
 		this.inscrits = inscrits;
 	}
+	
 	public Bus() {
 		super();
 	}
-
-	
 
 	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace) {
 		super();
@@ -192,6 +192,7 @@ public class Bus implements Serializable {
 		this.nbrPlace = nbrPlace;
 		
 	}
+	
 	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace,
 			Jardin jardin) {
 		super();
