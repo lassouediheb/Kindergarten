@@ -170,6 +170,10 @@ public class BusController {
 
 
 
+	public List<Bus> getBus1() { 
+		bus = busService.getAllBus(); 
+		return bus;
+		}
 	
 	
 	String a;
