@@ -16,5 +16,6 @@ public interface BusService {
 	public int getNombreBus();
 	List<Bus> getAllBus();
 	public long addbus(Bus bus);
+	
 
 }
