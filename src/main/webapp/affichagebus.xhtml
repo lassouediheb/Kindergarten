@@ -67,19 +67,18 @@
 							<!--  	<img src="images/dummy-img-600x400.jpg" alt="" class="img-fluid"></img >-->
 							</div>
 							<div class="body-box">
-								<div class="title"><h:outputText value="#{buss.jardin.nomJ}" /></div>
-								<div class="meta-date"><h:outputText value="#{buss.trajet}" /></div>
-								<p><h:outputText value="#{buss.tarifB}" /></p>
+								<div class="title"><h:outputText value="nom Jardin:" /> <h:outputText value="#{buss.jardin.nomJ}" /></div>
+								<div class="meta-date"><h:outputText value="Trajet:" /><h:outputText value="#{buss.trajet}" /></div>
+								<p><h:outputText value="Tarif:" /> <h:outputText value="#{buss.tarifB}" /></p>
 								<div class="text-center">
-									<a href="busdetails.jsf" class="btn btn-primary">More details
-                                           <f:param name="matricule" value="#{buss.matricule}"/>									
-									</a>
+									<h:link outcome="busdetails.jsf" class="btn btn-primary">More details
+									
+                                           <f:param name="matricule1" value="#{buss.matricule}"/></h:link>				
+									                            
 								</div>
 							</div>
 						</div>
 					</div>
-					
-				
 				</ui:repeat>
 				</div>
 				</div>

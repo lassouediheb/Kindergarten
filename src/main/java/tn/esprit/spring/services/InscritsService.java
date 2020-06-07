@@ -12,8 +12,8 @@ public interface InscritsService {
 	void deleteInscrits(String matricule);
 	Inscrits updateInscrits(Inscrits B);
 	Inscrits retrieveInscrits(String Idinscrip);
-	public void inscr(String matricule, String Idinscrip);
-	public void desinscr(String matricule, String Idinscrip);
+//	public void inscr(String matricule, String Idinscrip);
+//	public void desinscr(String matricule, String Idinscrip);
 	
 	
 

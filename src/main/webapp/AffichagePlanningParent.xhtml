@@ -1,3 +1,6 @@
+
+
+	
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -54,55 +57,31 @@
 		</h:head>
 
 		<h:body>
-			<h:form>
-			
-			
-			<div class="col-sm-12 col-md-12 col-lg-3">
-			
-				<div class="container">
-						<div class="events-widget">
-							<div class="widget-title">Nom chauffeur :
-									</div>
-							<dl>
-							<h:outputText value="#{busController.getBusBymatricule().nomChauf}" />
-							</dl>
+			<h:panelGroup>
+<h:form>
+<h:dataTable style="text-align: center;" class="table table-hover"  var="planning" value="#{planController.getPlans()}" scrollable="true" scrollWidth="400">
 
-							<div class="widget-title">Depart :</div>
-							<dl>
-							<h:outputText value="#{busController.getBusBymatricule().depart}" />
-							</dl>
+<h:column><f:facet name="header"><h:outputText value="Start Date" /></f:facet>
+<h:outputText value="#{planning.date_debut}" /></h:column>
 
-							<div class="widget-title">Arrivée:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().arrivee}" />
-							</dl>
-							<div class="widget-title">Trajet:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().trajet}" />
-							</dl>
-							<div class="widget-title">Tarif(dt):</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().tarifB}" />
-							</dl>
-								<div class="widget-title">Etat:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().etat}" />
-							</dl>
-								<div class="widget-title">Nombre de place:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().nbrPlace}" />
-							</dl>
-							<div class="spacer-30"></div>
-							<a href="#" class="btn btn-primary btn-block">JOIN</a>
-							<div class="spacer-30"></div>
-						</div>
-						</div>
-						
-						
-					</div>
-			  
-			</h:form>
-			
+<h:column><f:facet name="header"><h:outputText value="End Date" /></f:facet>
+<h:outputText value="#{planning.date_fin}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Jardin" /></f:facet>
+</h:column>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+
 		</h:body>
 	</ui:define>
 </ui:composition>
+
+
+
+
+
+
+
+	 
+
+
