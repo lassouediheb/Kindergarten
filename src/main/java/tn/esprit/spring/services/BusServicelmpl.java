@@ -30,6 +30,7 @@ public class BusServicelmpl implements BusService {
 		return B;
 	}
 	
+	
 	@Override
     public Bus addBus(Bus B) {
      return busRepository.save(B);
@@ -71,6 +72,9 @@ public class BusServicelmpl implements BusService {
 			busRepository.save(bus);
 		return bus.getMatricule();
 		}
+		
+		
+	
 	
 	
 	
