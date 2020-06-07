@@ -60,6 +60,8 @@
 						<h2></h2>
 						<p>
 							<strong>Nom du jardin: </strong>
+							<h:outputText
+								value="#{jardinController.jardinprofil(jardinController.jardin.id).nomJ}"></h:outputText>
 						</p>
 						<p>
 							<strong>Adresse: </strong>
@@ -80,7 +82,6 @@
 							<strong>Tarif: </strong>
 						</p>
 					</div>
-
 				</div>
 				<div class="col-xs-12 divider text-center">
 					<div class="col-xs-12 col-sm-4 emphasis">
