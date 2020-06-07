@@ -121,8 +121,8 @@ public class EvenementsController {
 	}
 	
 	//Affiche liste event par jardin
-	public List<Evenements> getEventByIdJ(long id){
-		return evenementsRepository.getAllEventByIdJardin(id);
+	public List<Evenements> getEventByIdJ(Jardin jardin){
+		return evenementsRepository.getAllEventByIdJardin(jardin.getId());
 	} 
 	
 	
