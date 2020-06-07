@@ -27,7 +27,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 	
 	private static final Logger L = LogManager.getLogger(ParticipantsServiceImpl.class);
 	
-	@Transactional	
+	/*@Transactional	
 	public void affecterEvenementsAParticipants(String idEvent, String idParticip) {
 		Participants participManagedEntity = participantsRepository.findById(Long.parseLong(idParticip)).get();
 		Evenements evenementsManagedEntity = evenementsRepository.findById(Long.parseLong(idEvent)).get();
@@ -43,7 +43,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 			evenementsManagedEntity.setStatutE("Complet");
 		}
 		
-	}
+	}*/
 
 
 	@Override
@@ -86,7 +86,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 	}
 	
 	public int getNombreParticipantsByidEvent(long idEvent ){
-		return participantsRepository.nbPartcip(idEvent);
+		return participantsRepository.nbParticip(idEvent);
 	}
 	
 	

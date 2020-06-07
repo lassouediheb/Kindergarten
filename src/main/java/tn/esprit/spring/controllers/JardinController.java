@@ -7,9 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.faces.context.FacesContext;
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -394,6 +391,30 @@ public class JardinController {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public RoleRepository getRoleRepository() {
+		return roleRepository;
+	}
+
+	public void setRoleRepository(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
+	}
+
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	public JardinRepository getJardinRepository() {
+		return jardinRepository;
+	}
+
+	public void setJardinRepository(JardinRepository jardinRepository) {
+		this.jardinRepository = jardinRepository;
 	}
 	
 	

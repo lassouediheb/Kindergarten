@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entity.Commentaire;
 import tn.esprit.spring.entity.Publication;
-import tn.esprit.spring.entity.ReactionPub;;
+import tn.esprit.spring.entity.ReactionPub;
 
 public interface CommentaireRepository extends CrudRepository<Commentaire,Long> {
 	 @Query("SELECT c FROM Commentaire c where c.publication.id=:id And c.user.id=:iduser")

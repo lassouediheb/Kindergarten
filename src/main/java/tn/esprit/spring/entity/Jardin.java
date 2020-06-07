@@ -322,18 +322,35 @@ public class Jardin extends User implements Serializable{
 		this.descripJ = descripJ;
 		this.tarifJ = tarifJ;
 	}
+	
+	
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Directeurs directeurs, Set<tn.esprit.spring.entity.Bus> bus,
+			Set<tn.esprit.spring.entity.Activités> activités, Set<tn.esprit.spring.entity.Evenements> evenements,
+			Set<Parent> parent) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.directeurs = directeurs;
+		Bus = bus;
+		Activités = activités;
+		Evenements = evenements;
+		this.parent = parent;
+	}
 
 	@Override
 	public String toString() {
 		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
 				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs + ", Bus="
-				+ Bus + ", Activités=" + Activités + ", Evenements=" + Evenements + "]";
-	}	
-	
-	
-	
-	
-	
+				+ Bus + ", Activités=" + Activités + ", Evenements=" + Evenements + ", parent=" + parent + "]";
+	}
+
 	
 
 
