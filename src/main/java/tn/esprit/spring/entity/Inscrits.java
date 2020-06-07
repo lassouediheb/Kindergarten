@@ -29,77 +29,110 @@ public class Inscrits implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="IDINSCRIP")
 	long Idinscrip;
-	@Column(name="IDENF")
-	private String Idenf;
-	@Column(name="FRAISINSCRIT")
-	private String fraisinscrit;
 	@Column(name="Etat")
 	private String etat="non paye";
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@Column(name="Nominscrit")
+	String nominscrit;
+
+	@Column(name="Prenominscrit")
+	String prenominscrit;
 	
-	private Set<Bus> bus;
+	@Column(name="Numeroinsc")
+	String numinsc;
 	
 	
+	@ManyToOne
+	Bus bus;
 
 
-	public String getIdenf() {
-		return Idenf;
-	}
-	public void setIdenf(String idenf) {
-		Idenf = idenf;
+	public long getIdinscrip() {
+		return Idinscrip;
 	}
 
-	public String getFraisinscrit() {
-		return fraisinscrit;
+
+	public void setIdinscrip(long idinscrip) {
+		Idinscrip = idinscrip;
 	}
 
-	public void setFraisinscrit(String fraisinscrit) {
-		this.fraisinscrit = fraisinscrit;
-	}
 
 	public String getEtat() {
 		return etat;
 	}
 
+
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
 
-	@Override
-	public String toString() {
-		return "Inscrits [Idinscrip=" + Idinscrip + ", Idenf=" + Idenf + ", fraisinscrit=" + fraisinscrit + ", etat="
-				+ etat + ", bus=" + bus + "]";
+
+	public String getNominscrit() {
+		return nominscrit;
 	}
 
-	public Set<Bus> getBus() {
+
+	public void setNominscrit(String nominscrit) {
+		this.nominscrit = nominscrit;
+	}
+
+
+	public String getPrenominscrit() {
+		return prenominscrit;
+	}
+
+
+	public void setPrenominscrit(String prenominscrit) {
+		this.prenominscrit = prenominscrit;
+	}
+
+
+	public String getNuminsc() {
+		return numinsc;
+	}
+
+
+	public void setNuminsc(String numinsc) {
+		this.numinsc = numinsc;
+	}
+
+
+	public Bus getBus() {
 		return bus;
 	}
 
-	public void setBus(Set<Bus> bus) {
+
+	public void setBus(Bus bus) {
 		this.bus = bus;
 	}
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public long getIdinscrip() {
-		return Idinscrip;
-	}
-	public void setIdinscrip(long idinscrip) {
-		Idinscrip = idinscrip;
-	}
-	public Inscrits(long idinscrip, String idenf, String fraisinscrit, String etat, Set<Bus> bus) {
+
+
+	public Inscrits(long idinscrip, String etat, String nominscrit, String prenominscrit, String numinsc, Bus bus) {
 		super();
-		this.Idinscrip = idinscrip;
-		this.Idenf = idenf;
-		this.fraisinscrit = fraisinscrit;
+		Idinscrip = idinscrip;
 		this.etat = etat;
+		this.nominscrit = nominscrit;
+		this.prenominscrit = prenominscrit;
+		this.numinsc = numinsc;
 		this.bus = bus;
 	}
-	public Inscrits() {
+
+
+	public Inscrits(String etat, String nominscrit, String prenominscrit, String numinsc, Bus bus) {
 		super();
+		this.etat = etat;
+		this.nominscrit = nominscrit;
+		this.prenominscrit = prenominscrit;
+		this.numinsc = numinsc;
+		this.bus = bus;
 	}
+	
+	
+
 
 
 

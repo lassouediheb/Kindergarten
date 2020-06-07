@@ -58,17 +58,17 @@
 	
 		
 		<h:panelGroup columns="2"><h:form><table>
-<tr><td><h:outputText value="Login (Email)"></h:outputText></td><td><h:inputText
+<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="Nom chauffeur:"></h:outputText></h6></td><td><h:inputText
 value="#{busController.nomChauf}"></h:inputText></td></tr>
-<tr><td><h:outputText value="Mot de Passe"></h:outputText></td>
+<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="depart"></h:outputText></h6></td>
 <td><h:inputText value="#{busController.depart}"></h:inputText></td></tr>
-<tr><td><h:outputText value="Nom"></h:outputText></td>
+<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="arrivee"></h:outputText></h6></td>
 <td><h:inputText value="#{busController.arrivee}"></h:inputText></td></tr>
-<tr><td><h:outputText value="Prenom"></h:outputText></td>
+<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="trajet"></h:outputText></h6></td>
 <td><h:inputText value="#{busController.trajet}"></h:inputText></td></tr>
-<tr><td><h:outputText value="Prenom"></h:outputText></td>
+<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="tarif"></h:outputText></h6></td>
 <td><h:inputText value="#{busController.tarifB}"></h:inputText></td></tr>
-<tr><td><h:outputText value="Prenom"></h:outputText></td>
+<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="Nombre de place"></h:outputText></h6></td>
 <td><h:inputText value="#{busController.nbrPlace}"></h:inputText></td></tr>
 
 
@@ -77,7 +77,7 @@ value="#{busController.nomChauf}"></h:inputText></td></tr>
 action="#{busController.addBus1(userController.autheticatedUser)}" />
  </td> </tr><tr><td colspan="1" >
 <h:commandButton value="modifier bus"
-action="#{busController.modifierBus1()}" />
+action="#{busController.modifierBus1(userController.autheticatedUser)}" />
 </td></tr>
 
 </table>
@@ -97,8 +97,8 @@ action="#{busController.modifierBus1()}" />
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="0">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"><label>Search:<h:inputText type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></h:inputText></label></div></div></div><div class="row"><div class="col-sm-12">
-	<h:dataTable value="#{busController.getBus1()}"
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12">
+	<h:dataTable value="#{busController.getBusByIdJ(userController.autheticatedUser)}"
 								var="buss" border="1"  class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
 								
 							
@@ -148,7 +148,7 @@ action="#{busController.modifierBus1()}" />
 								</h:column>
 								<h:column>
 <f:facet name="header"><h:outputText value="Action" /></f:facet>
-<h:commandButton action="#{busController.supprimerbus(buss.matricule)}"
+<h:commandButton class="login100-form-btn" action="#{busController.supprimerbus(buss.matricule)}"
 value="Supprimer" />
 <h:commandButton action="#{busController.displayBus(buss)}"
 value="Modifier" />
