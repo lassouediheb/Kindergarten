@@ -120,11 +120,13 @@ public class EvenementsController {
 	return "listeparticipjardin.xhtml?faces-redirect=true"; 
 	}
 	
+
 	//Affiche liste event par jardin
 	public List<Evenements> getEventByIdJ(Jardin jardin){
 		return evenementsRepository.getAllEventByIdJardin(jardin.getId());
 	} 
 	
+
 	
 
 	public long getIdE() {
