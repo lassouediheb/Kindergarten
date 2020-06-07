@@ -34,15 +34,38 @@ public class Bus implements Serializable {
 	@Column(name="MATRICULE")
 	long matricule;
 	@Column(name="NOMCHAUF")
+
 	private String NomChauf; // 
+
+	 
+	
+
 	@Column(name="DEPART")
-	private String Depart; // 
+
+
+	private String Depart;  
+	
+
 	@Column(name="ARRIVEE")
-	private String arrivee; // 
+
+	
+
+	private String arrivee;  
+	
+
 	@Column(name="TRAJET")
-	private String trajet; // 
+
+	
+
+	private String trajet; 
+	
+
 	@Column(name="TARIFB")
-	private String TarifB;//
+
+
+	private String TarifB;
+	
+
 	@Column(name="NBRPLACE")
 	Integer nbrPlace;
 	@Column(name="ETAT")

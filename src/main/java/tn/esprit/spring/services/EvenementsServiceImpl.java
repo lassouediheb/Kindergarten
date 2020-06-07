@@ -67,7 +67,9 @@ public class EvenementsServiceImpl implements EvenementsService {
 		
 	}
 	
-	
+	 /*public List<Evenements> getAllEventByIdJardin(long id){
+		 return evenementsRepository.getAllEventByIdJardin(id);
+	 }*/
 	
 
 	

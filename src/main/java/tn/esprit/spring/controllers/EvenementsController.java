@@ -69,9 +69,8 @@ public class EvenementsController {
 	}
 
 	// Modifier un event
-	public void updateEvent() {
-		evenementsService.updateEvenements(
-				new Evenements(eventIdToBeUpdated, nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
+	public void updateEvent(Jardin jardin) {
+		evenementsService.updateEvenements(new Evenements(eventIdToBeUpdated, nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, jardin));
 	}
 
 	// Supprimer un event
@@ -121,6 +120,13 @@ public class EvenementsController {
 	return "listeparticipjardin.xhtml?faces-redirect=true"; 
 	}
 	
+
+	//Affiche liste event par jardin
+	public List<Evenements> getEventByIdJ(long id){
+		return evenementsRepository.getAllEventByIdJardin(id);
+	} 
+	
+
 	
 
 	public long getIdE() {
@@ -357,5 +363,7 @@ public class EvenementsController {
 		this.statutE = statutE;
 		this.jardin = jardin;
 	}
+	
+	
 
 }

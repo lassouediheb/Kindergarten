@@ -347,13 +347,18 @@ public class Jardin extends User implements Serializable{
 	@Override
 	public String toString() {
 		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
-				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs + ", Bus="
-				+ Bus + ", Activités=" + Activités + ", Evenements=" + Evenements + ", parent=" + parent + "]";
+				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + "]";
 	}
+	
+	
+
+	
+	
 
 	
 
-
+	
+	
 	
 }
 

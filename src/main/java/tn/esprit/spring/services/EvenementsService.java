@@ -12,6 +12,7 @@ public interface EvenementsService {
 	Evenements retrieveEvenements(String id);
 	List<Evenements> getAllEvenements();
 	Evenements getEvenementByIdEvent(long idEvent);
+	//public List<Evenements> getAllEventByIdJardin(long id);
 	
 
 
