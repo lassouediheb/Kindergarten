@@ -3,152 +3,172 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
-    <!-- Basic Page Needs
+		<!-- Basic Page Needs
     ================================================== -->
-    <meta charset="utf-8"/>
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <title>KIDS - Kindergarten and Child Care Html Templates</title>
-    <meta name="description" content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
-    <meta name="keywords" content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
-    <meta name="author" content="rometheme.net"></meta>
-	
-	<!-- ==============================================
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<title>KIDS - Kindergarten and Child Care Html Templates</title>
+		<meta name="description"
+			content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+		<meta name="keywords"
+			content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+		<meta name="author" content="rometheme.net"></meta>
+
+		<!-- ==============================================
 	Favicons
 	=============================================== -->
-	<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
-	<link rel="apple-touch-icon" href="login/client/images/apple-touch-icon.png"></link>
-	<link rel="apple-touch-icon" sizes="72x72" href="login/client/images/apple-touch-icon-72x72.png"></link>
-	<link rel="apple-touch-icon" sizes="114x114" href="login/client/images/apple-touch-icon-114x114.png"></link>
-	
-	<!-- ==============================================
+		<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+		<link rel="apple-touch-icon"
+			href="login/client/images/apple-touch-icon.png"></link>
+		<link rel="apple-touch-icon" sizes="72x72"
+			href="login/client/images/apple-touch-icon-72x72.png"></link>
+		<link rel="apple-touch-icon" sizes="114x114"
+			href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+		<!-- ==============================================
 	CSS VENDOR
 	=============================================== -->
-	<h:outputStylesheet library="login" name="client/css/vendor/bootstrap.min.css" />
-	<h:outputStylesheet library="login" name="client/css/vendor/font-awesome.min.css"/>
-	<h:outputStylesheet library="login" name="client/css/vendor/owl.carousel.min.css"/>
-	<h:outputStylesheet library="login" name="client/css/vendor/owl.theme.default.min.css"/>
-	<h:outputStylesheet library="login" name="client/css/vendor/magnific-popup.css"/>
-	<h:outputStylesheet library="login" name="client/css/vendor/animate.min.css"/>
-	
-	<!-- ==============================================
+		<h:outputStylesheet library="login"
+			name="client/css/vendor/bootstrap.min.css" />
+		<h:outputStylesheet library="login"
+			name="client/css/vendor/font-awesome.min.css" />
+		<h:outputStylesheet library="login"
+			name="client/css/vendor/owl.carousel.min.css" />
+		<h:outputStylesheet library="login"
+			name="client/css/vendor/owl.theme.default.min.css" />
+		<h:outputStylesheet library="login"
+			name="client/css/vendor/magnific-popup.css" />
+		<h:outputStylesheet library="login"
+			name="client/css/vendor/animate.min.css" />
+
+		<!-- ==============================================
 	Custom Stylesheet
 	=============================================== -->
-	<h:outputStylesheet library="login" name="client/css/style.css" />
-	
-    <script src="login/client/js/vendor/modernizr.min.js"></script>
+		<h:outputStylesheet library="login" name="client/css/style.css" />
 
-</h:head>
-<h:body>
-<!-- LOAD PAGE -->
-	<div class="animationload">
-		<div class="loader"></div>
-	</div>
-	
-	<!-- BACK TO TOP SECTION -->
-	<a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a>
-<!-- HEADER -->
-    <div class="header header-1">
+		<script src="login/client/js/vendor/modernizr.min.js"></script>
 
-    	<!-- TOPBAR -->
-    	<div class="topbar">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-sm-8 col-md-6">
-						<div class="info">
-							<div class="info-item">
-								<i class="fa fa-phone"></i> +216 25 84 59 25
-							</div>
-							<div class="info-item">
-								<i class="fa fa-envelope-o"></i> <a href="mailto:support@kids.com" title="">rawda@gmail.com</a>
+	</h:head>
+	<h:body>
+		<!-- LOAD PAGE -->
+		<div class="animationload">
+			<div class="loader"></div>
+		</div>
+
+		<!-- BACK TO TOP SECTION -->
+		<a href="#0" class="cd-top cd-is-visible cd-fade-out">Top</a>
+		<!-- HEADER -->
+		<div class="header header-1">
+
+			<!-- TOPBAR -->
+			<div class="topbar">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-sm-8 col-md-6">
+							<div class="info">
+								<h:panelGroup>
+									<h:form>
+										<h:outputText value="Bonjour #{userController.username}" />
+										<br></br>
+										<h:commandLink value="Déconnexion"
+									action="#{userController.doLogout()}" />
+									</h:form>
+								</h:panelGroup>
+								<div class="info-item">
+									<i class="fa fa-phone"></i> +216 25 84 59 25
+								</div>
+								<div class="info-item">
+									<i class="fa fa-envelope-o"></i> <a
+										href="mailto:support@kids.com" title="">rawda@gmail.com</a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 col-md-6">
-						<div class="sosmed-icon pull-right d-inline-flex">
-							<a href="#" class="fb"><i class="fa fa-facebook"></i></a> 
-							<a href="#" class="tw"><i class="fa fa-twitter"></i></a> 
-							<a href="#" class="ig"><i class="fa fa-instagram"></i></a> 
-							<a href="#" class="in"><i class="fa fa-linkedin"></i></a> 
+						<div class="col-sm-4 col-md-6">
+							<div class="sosmed-icon pull-right d-inline-flex">
+								<a href="#" class="fb"><i class="fa fa-facebook"></i></a> <a
+									href="#" class="tw"><i class="fa fa-twitter"></i></a> <a
+									href="#" class="ig"><i class="fa fa-instagram"></i></a> <a
+									href="#" class="in"><i class="fa fa-linkedin"></i></a>
+							</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- NAVBAR SECTION -->
-		<div class="navbar-main">
-			<div class="container">
-			    <nav id="navbar-example" class="navbar navbar-expand-lg">
-			        <a class="navbar-brand" href="index.html">
-						<img src="login/client/images/logo2.jpg" width="150" height="90" alt=""></img>
-					</a>
-			        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			            <span class="navbar-toggler-icon"></span>
-			        </button>
-			        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			            <ul class="navbar-nav ml-auto">
-			            	<li class="nav-item active">
-			                    <a class="nav-link" href="./welcomejardin.jsf">Acceuil</a>
-			                </li>
-			                <li class="nav-item dropdown dmenu">
-			                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						          Profil
-						        </a>
-			                    <div class="dropdown-menu">
-			                    	<a class="dropdown-item" href="./profiljardin.jsf">Profil</a>
+			<!-- NAVBAR SECTION -->
+			<div class="navbar-main">
+				<div class="container">
+					<nav id="navbar-example" class="navbar navbar-expand-lg">
+						<a class="navbar-brand" href="index.html"> <img
+							src="login/client/images/logo2.jpg" width="150" height="90"
+							alt=""></img>
+						</a>
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#navbarNavDropdown"
+							aria-controls="navbarNavDropdown" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNavDropdown">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item active"><a class="nav-link"
+									href="./welcomejardin.jsf">Acceuil</a></li>
+								<li class="nav-item dropdown dmenu"><a
+									class="nav-link dropdown-toggle" href="#" role="button"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"> Profil </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="./profiljardin.jsf">Profil</a>
 
-	          						<a class="dropdown-item" href="page-events-single.html">Liste Evènements</a>
+										<a class="dropdown-item" href="page-events-single.html">Liste
+											Evènements</a> <a class="dropdown-item"
+											href="./listeeventjardin.jsf">Liste Evènements</a> <a
+											class="dropdown-item" href="page-events-single.html">Liste
+											Activités</a> <a class="dropdown-item"
+											href="page-events-single.html">Liste Parents</a> <a
+											class="dropdown-item" href="busparam.jsf">Liste Bus</a> <a
+											class="dropdown-item" href="page-events-single.html">Mes
+											publications</a>
+									</div></li>
+								<li class="nav-item"><a class="nav-link" href="./jard.jsf">Jardins
+										d'enfants</a></li>
+								<li class="nav-item"><a class="nav-link" href="./event.jsf">Evènements</a>
+								</li>
+								<li class="nav-item"><a class="nav-link"
+									href="./affichagebus.jsf">Bus</a></li>
+								<li class="nav-item dropdown dmenu"><a
+									class="nav-link dropdown-toggle" href="#" role="button"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"> PAGES </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="page-gallery.html">GALLERIE</a>
+										<a class="dropdown-item" href="page-events-single.html">NOUVEAUTES</a>
+									</div></li>
+								<li class="nav-item"><a class="nav-link"
+									href="contact.html">CONTACT</a></li>
+							</ul>
+						</div>
+					</nav>
+					<!-- -->
 
-	          						<a class="dropdown-item" href="./listeeventjardin.jsf">Liste Evènements</a>
-
-	          						<a class="dropdown-item" href="page-events-single.html">Liste Activités</a>
-	          						<a class="dropdown-item" href="page-events-single.html">Liste Parents</a>
-	          						<a class="dropdown-item" href="busparam.jsf">Liste Bus</a>
-	          						<a class="dropdown-item" href="page-events-single.html">Mes publications</a>
-							    </div>
-			                </li>
-			            	<li class="nav-item">
-			                    <a class="nav-link" href="./jard.jsf">Jardins d'enfants</a>
-			                </li>
-			            	<li class="nav-item">
-			                    <a class="nav-link" href="./event.jsf">Evènements</a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="./affichagebus.jsf">Bus</a>
-			                </li>
-			            	<li class="nav-item dropdown dmenu">
-			                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						          PAGES
-						        </a>
-			                    <div class="dropdown-menu">
-			                    	<a class="dropdown-item" href="page-gallery.html">GALLERIE</a>
-	          						<a class="dropdown-item" href="page-events-single.html">NOUVEAUTES</a>
-							    </div>
-			                </li>
-			            	<li class="nav-item">
-			                    <a class="nav-link" href="contact.html">CONTACT</a>
-			                </li>
-			            </ul>
-			        </div>
-			    </nav> <!-- -->
-
+				</div>
 			</div>
+
+
 		</div>
-		
 
-    </div>
-    
-    <!-- JS VENDOR -->
-	<script src="login/client/js/vendor/jquery.min.js"></script>
-	<script src="login/client/js/vendor/bootstrap.min.js"></script>
-	<script src="login/client/js/vendor/owl.carousel.js"></script>
-	<script src="login/client/js/vendor/jquery.magnific-popup.min.js"></script>
+		<!-- JS VENDOR -->
+		<script src="login/client/js/vendor/jquery.min.js"></script>
+		<script src="login/client/js/vendor/bootstrap.min.js"></script>
+		<script src="login/client/js/vendor/owl.carousel.js"></script>
+		<script src="login/client/js/vendor/jquery.magnific-popup.min.js"></script>
 
-	<!-- SENDMAIL -->
-	<script src="login/client/js/vendor/validator.min.js"></script>
-	<script src="login/client/js/vendor/form-scripts.js"></script>
+		<!-- SENDMAIL -->
+		<script src="login/client/js/vendor/validator.min.js"></script>
+		<script src="login/client/js/vendor/form-scripts.js"></script>
 
-	<script src="login/client/js/script.js"></script>
-    </h:body>
-    </ui:composition>
+		<script src="login/client/js/script.js"></script>
+	</h:body>
+</ui:composition>

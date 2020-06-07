@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import tn.esprit.spring.entity.ERole;
 import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.OnRegistrationCompleteEvent;
+import tn.esprit.spring.entity.Parent;
 import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.JardinRepository;
@@ -120,17 +121,17 @@ public class RegisterController {
 			}
 			else
 			{
-				User user = new User(username, 
+				Parent parent = new Parent(username, 
 						 email,
 						 encoder.encode(password));
 				Set<Role> roles = new HashSet<>();
 				Role userRole = roleRepository.findByName(ERole.ROLE_PARENT)
 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 				roles.add(userRole);
-				user.setRoles(roles);
-				userRepository.save(user);
+				parent.setRoles(roles);
+				userRepository.save(parent);
 				String appUrl = "";
-				User registered= user;
+				User registered= parent;
 				eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, appUrl));
 				navigateTo="login1.xhtml?faces-redirect=true";
 				FacesMessage facesMessage =

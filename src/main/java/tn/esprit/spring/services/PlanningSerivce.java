@@ -13,7 +13,7 @@ public interface PlanningSerivce {
 	public Planning updatePlannig(Planning p);
 	public void DeletePlanning(int id);
 	 public List<Planning> GetPlByDate(Date date);
-	 public List<User> parents(Long id);
+	// public List<User> parents(Long id);
 		public List<Planning> Getallplan();
 		
 

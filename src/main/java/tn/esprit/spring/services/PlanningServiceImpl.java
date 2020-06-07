@@ -3,8 +3,7 @@ package tn.esprit.spring.services;
 import java.util.Date;
 import java.util.List;
 
-
-
+import tn.esprit.spring.entity.Parent;
 import tn.esprit.spring.entity.Planning;
 
 import tn.esprit.spring.entity.User;
@@ -65,10 +64,10 @@ public class PlanningServiceImpl implements PlanningSerivce {
 
 
 
-	@Override
-	public List<User> parents(Long id) {
+	/*@Override
+	public List<Parent> parents(Long id) {
 	  return erepo.parents(id);
-	}
+	}*/
 	@Override
 	public List<Planning> Getallplan() {
 		return planningrepo.findAll();
