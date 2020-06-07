@@ -34,15 +34,38 @@ public class Bus implements Serializable {
 	@Column(name="MATRICULE")
 	long matricule;
 	@Column(name="NOMCHAUF")
+
 	private String NomChauf; // 
+
+	 
+	
+
 	@Column(name="DEPART")
-	private String Depart; // 
+
+
+	private String Depart;  
+	
+
 	@Column(name="ARRIVEE")
-	private String arrivee; // 
+
+	
+
+	private String arrivee;  
+	
+
 	@Column(name="TRAJET")
-	private String trajet; // 
+
+	
+
+	private String trajet; 
+	
+
 	@Column(name="TARIFB")
-	private String TarifB;//
+
+
+	private String TarifB;
+	
+
 	@Column(name="NBRPLACE")
 	Integer nbrPlace;
 	@Column(name="ETAT")
@@ -203,7 +226,18 @@ public class Bus implements Serializable {
 		this.nbrPlace = nbrPlace;
 		this.jardin = jardin;
 	}
-
+	public Bus(long matricule,String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace
+			) {
+		super();
+		this.matricule = matricule;
+		NomChauf = nomChauf;
+		Depart = depart;
+		this.arrivee = arrivee;
+		this.trajet = trajet;
+		TarifB = tarifB;
+		this.nbrPlace = nbrPlace;
+		
+	}
 	
 
 	

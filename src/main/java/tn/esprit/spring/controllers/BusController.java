@@ -46,10 +46,58 @@ public class BusController {
 	private Jardin jardin;
 	private Bus buss ;
 	private List<Bus> bus;
-	
+	private long idbustobeupdated;
 	
 	public Bus getBuss() {
 		return buss;
+	}
+
+
+
+
+
+
+
+
+
+	public long getIdbustobeupdated() {
+		return idbustobeupdated;
+	}
+
+
+
+
+
+
+
+
+
+	public void setIdbustobeupdated(long idbustobeupdated) {
+		this.idbustobeupdated = idbustobeupdated;
+	}
+
+
+
+
+
+
+
+
+
+	public String getA() {
+		return a;
+	}
+
+
+
+
+
+
+
+
+
+	public void setA(String a) {
+		this.a = a;
 	}
 
 
@@ -73,7 +121,36 @@ public class BusController {
 		return "null";
 		}
 	
-
+	
+	//modifier
+	public void modifierBus1() {
+		busService.updateBus(
+				new Bus(idbustobeupdated,NomChauf, Depart, arrivee, trajet, TarifB, nbrPlace));
+		
+		}
+	//supprimer bus
+	public void supprimerbus(String matricule) {
+		busService.deleteBus(matricule);
+	}
+//display bus:
+	
+	public void displayBus(Bus bus) {
+		
+		this.setNomChauf(bus.getNomChauf());
+		this.setDepart(bus.getDepart());
+		this.setArrivee(bus.getArrivee());
+		this.setTrajet(bus.getTrajet());
+		this.setTarifB(bus.getTarifB());
+		this.setNbrPlace(bus.getNbrPlace());
+		this.setIdbustobeupdated(bus.getMatricule());
+		this.setJardin(getJardin());
+		
+	}
+	
+	
+	
+	
+	
 	public void setInscrits(Inscrits inscrits) {
 		this.inscrits = inscrits;
 	}
@@ -97,6 +174,7 @@ public class BusController {
 		bus = busService.getAllBus(); 
 		return bus;
 		}
+	
 	
 	String a;
 	private String getCountryFromJSF(FacesContext context) {

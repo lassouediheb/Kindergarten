@@ -62,7 +62,7 @@
 							<strong>Liste des évènements</strong>
 							</h2>
 							<br></br>
-							<h:dataTable value="#{evenementsController.getEvenements()}"
+							<h:dataTable value="#{evenementsController.getEventByIdJ(userController.autheticatedUser)}"
 								var="event" border="1">
 								<h:column>
 									<f:facet name="header">
@@ -131,7 +131,7 @@
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{evenementsController.removeEvent(event.idEvent)}"
+										action="#{evenementsController.removeEvent(idEvent)}"
 										value="Supprimer" />
 								</h:column>
 								<h:column>
@@ -142,7 +142,7 @@
 										action="#{evenementsController.displayEvent(event)}"
 										value="Modifier" />
 								</h:column>
-							</h:dataTable>
+								</h:dataTable>
 							</center>
 							<br></br>
 							<br></br>
@@ -187,7 +187,7 @@
 									<td><h:commandButton value="Ajouter Event"
 											action="#{evenementsController.addEvent(userController.autheticatedUser)}" /></td>
 									<td><h:commandButton value="Modifier Event"
-											action="#{evenementsController.updateEvent()}" /></td>
+											action="#{evenementsController.updateEvent(userController.autheticatedUser)}" /></td>
 								</tr>
 
 						</h:form>
