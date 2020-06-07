@@ -2,6 +2,7 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -54,6 +55,9 @@ public class Jardin extends User implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Parent> parent;
+	
+	@OneToMany(mappedBy="jardin",cascade = CascadeType.ALL)
+	private List<Planning> planning;
 
 	public Set<Parent> getParent() {
 		return parent;

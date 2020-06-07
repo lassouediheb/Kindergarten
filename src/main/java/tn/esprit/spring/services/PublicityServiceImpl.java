@@ -45,7 +45,7 @@ public class PublicityServiceImpl implements IPublicityService {
 	public List<Publicity> retrieveAllPublicitiesPub() {
 
 		
-		return PublicityRepository.listPub();
+		return PublicityRepository.findAll();
 		}
 	
 	
@@ -65,7 +65,7 @@ public class PublicityServiceImpl implements IPublicityService {
 				return "cette publicité existe déja";
 			}
 			
-			//else PublicityRepository.save(p);
+			else PublicityRepository.save(p);
 			
 	}	
        

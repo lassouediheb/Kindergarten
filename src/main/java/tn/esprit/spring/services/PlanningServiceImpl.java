@@ -51,7 +51,13 @@ public class PlanningServiceImpl implements PlanningSerivce {
 		
 	}
 
+	
 
+
+	@Override
+	public List<Planning> getAllPlansByIdJardin(long idJardin) {
+		// TODO Auto-generated method stub
+		return planningrepo.getAllPlansByIdJardin(idJardin);	}
 
 
 
