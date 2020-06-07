@@ -125,7 +125,7 @@ public class BusController {
 	//modifier
 	public void modifierBus1() {
 		busService.updateBus(
-				new Bus(idbustobeupdated,NomChauf, Depart, arrivee, trajet, TarifB, nbrPlace,jardin));
+				new Bus(idbustobeupdated,NomChauf, Depart, arrivee, trajet, TarifB, nbrPlace));
 		
 		}
 	//supprimer bus
