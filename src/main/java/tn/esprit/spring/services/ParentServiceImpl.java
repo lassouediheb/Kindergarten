@@ -14,28 +14,29 @@ import org.springframework.stereotype.Service;
 public class ParentServiceImpl implements ParentService {
 	@Autowired
 	ParentRepository parentrepo;
-
+	
 	@Override
-	public int AddParent(Parent p) {
+	public Parent AddParent(Parent p) {
 		Parent parent =parentrepo.save(p);
-		return 0;
+		return parent;
 	}
 
 	@Override
 	public Parent updateParent(Parent p) {
 		Parent parent =parentrepo.save(p);
-		return p;
+		return parent;
 	}
 
+	
 	@Override
-	public void DeleteParent(int id) {
-		parentrepo.deleteById(id);
+	public void DeleteParent(String id) {
+		parentrepo.deleteById(Long.parseLong(id));
 		
 	}
 
 	@Override
-	public Parent GetParentById(int id) {
-		Parent parent =parentrepo.findById((id)).orElse(null);
+	public Parent GetParentById(String id) {
+		Parent parent =parentrepo.findById(Long.parseLong(id)).orElse(null);
 		return parent;
 			}
 

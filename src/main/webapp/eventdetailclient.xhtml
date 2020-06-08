@@ -54,82 +54,53 @@
 		</h:head>
 
 		<h:body>
-			<div class="well profile">
-				<div class="col-sm-12">
-					<div class="col-xs-12 col-sm-8">
-					
-						<table value="#{evenementsController.detailevent(event.idEvent)}"
-								var="event">
-								<tr>
-									<td><h:outputText value="Nom Event"></h:outputText></td>
-									<td><h:inputText value="#{event.nomE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Adresse"></h:outputText></td>
-									<td><h:outputText value="#{event.adresseE}"></h:outputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Date"></h:outputText></td>
-									<td><h:inputText value="#{event.dateE}"><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Décrire"></h:outputText></td>
-									<td><h:inputText value="#{event.descripE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Etat"></h:outputText></td>
-									<td><h:inputText value="#{event.etatE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Image"></h:outputText></td>
-									<td><h:inputText value="#{event.imageE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Nombre de places"></h:outputText></td>
-									<td><h:inputText value="#{event.nbPlace}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Statut"></h:outputText></td>
-									<td><h:inputText value="#{event.statutE}"></h:inputText></td>
-								</tr>
-								
-							</table>
-							<br></br>
-							<br></br>
+			<center>
+				<div class="well profile">
+					<div class="col-sm-12">
+						<div class="col-xs-12 col-sm-8">
+							<h2>
+								<h:outputText value="#{evenementsController.detailevent().nomE}"></h:outputText>
+							</h2>
+							<p>
+								<strong>Programmé par: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().jardin.nomJ}"></h:outputText>
+							</p>
+							<p>
+								<strong>Adresse: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().adresseE}"></h:outputText>
+							</p>
+							<p>
+								<strong>Date de l'évènement:</strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().dateE}"></h:outputText>
+							</p>
+							<p>
+								<strong>Nombre de place: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().nbPlace}"></h:outputText>
+							</p>
+							<p>
+								<strong>Statut: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().statutE}"></h:outputText>
+							</p>
+							<h2>
+								<strong><h:outputText
+										value="#{participantsController.nbParticipants(evenementsController.detailevent().idEvent)}" /></strong>
+							</h2>
+							<p>
+								<small>Participants</small>
+							</p>
 							
-						<h2><h:outputText value="#{event.nomE}" /></h2>
-						<p>
-							<strong>Programmé par: </strong>
-						</p>
-						<p>
-							<strong>Adresse: </strong>
-						</p>
-						<p>
-							<strong>Date de l'évènement:</strong>
-						</p>
-						<p>
-							<strong>Nombre de place: </strong>
-						</p>
-						<p>
-							<strong>Statut: </strong>
-						</p>
-					</div>
-
-				</div>
-				<div class="col-xs-12 divider text-center">
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<h2>
-							<strong>+30</strong>
-						</h2>
-						<p>
-							<small>Participants</small>
-						</p>
-						<button class="btn btn-info btn-block">
-							<span class="fa fa-user"></span> Participer
-						</button>
+						</div>
 					</div>
 				</div>
-			</div>
+			</center>
+			<div class="container-login100-form-btn m-t-32">
+						<h:commandButton class="login100-form-btn" value="Participer" action="#{participantsController.userparticipevent(userController.autheticatedUser,evenementsController.detailevent().idEvent)}"/>
+					</div>
 		</h:body>
 	</ui:define>
 </ui:composition>
