@@ -55,14 +55,15 @@
 
 		<h:body>
 			<div class="content">
-					<h:panelGroup>
-						<h:form>
+				<h:panelGroup>
+					<h:form>
 						<center>
 							<h2>
-							<strong>Liste des évènements</strong>
+								<strong>Liste des évènements</strong>
 							</h2>
 							<br></br>
-							<h:dataTable value="#{evenementsController.getEventByIdJ(userController.autheticatedUser)}"
+							<h:dataTable
+								value="#{evenementsController.getEventByIdJ(userController.autheticatedUser)}"
 								var="event" border="1">
 								<h:column>
 									<f:facet name="header">
@@ -90,12 +91,6 @@
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Etat" />
-									</f:facet>
-									<h:outputText value="#{event.etatE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
 										<h:outputText value="Image" />
 									</f:facet>
 									<h:outputText value="#{event.imageE}" />
@@ -116,7 +111,8 @@
 									<f:facet name="header">
 										<h:outputText value="Nombre de participants" />
 									</f:facet>
-									<h:outputText value="#{participantsController.nbParticipants(event.idEvent)}" />
+									<h:outputText
+										value="#{participantsController.nbParticipants(event.idEvent)}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
@@ -142,57 +138,66 @@
 										action="#{evenementsController.displayEvent(event)}"
 										value="Modifier" />
 								</h:column>
-								</h:dataTable>
-							</center>
-							<br></br>
-							<br></br>
-							<table>
-								<tr>
-									<td><h:outputText value="Nom Event"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.nomE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Adresse"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.adresseE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Date"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.dateE}"><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Décrire"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.descripE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Etat"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.etatE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Image"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.imageE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Nombre de places"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.nbPlace}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Statut"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.statutE}"></h:inputText></td>
-								</tr>
-								
-							</table>
-							<br></br>
-								<br></br>
+							</h:dataTable>
+						</center>
+						<br></br>
+						<br></br>
+						<table>
 							<tr>
-									<td><h:commandButton value="Ajouter Event"
-											action="#{evenementsController.addEvent(userController.autheticatedUser)}" /></td>
-									<td><h:commandButton value="Modifier Event"
-											action="#{evenementsController.updateEvent(userController.autheticatedUser)}" /></td>
-								</tr>
+								<td><h:outputText value="Nom Event"></h:outputText></td>
+								<td><h:inputText
+										id="vNom" value="#{evenementsController.nomE}" required="true"
+										requiredMessage="Veuillez préciser le nom"></h:inputText></td>
+										<h:message for="vNom" style="color:green" /> 
+							</tr>
+							<tr>
+								<td><h:outputText value="Adresse"></h:outputText></td>
+								<td><h:inputText
+										id="vAdresse" value="#{evenementsController.adresseE}"
+										required="true" requiredMessage="Veuillez préciser l'adresse"></h:inputText></td>
+										<h:message for="vAdresse" style="color:green" /> 
+							</tr>
+							<tr>
+								<td><h:outputText value="Date"></h:outputText></td>
+								<td><h:inputText
+										id="vDate" value="#{evenementsController.dateE}"
+										required="true" requiredMessage="Veuillez préciser la date">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:inputText></td>
+									<h:message for="vDate" style="color:green" /> 
+							</tr>
+							<tr>
+								<td><h:outputText value="Décrire"></h:outputText></td>
+								<td><h:inputText value="#{evenementsController.descripE}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="Image"></h:outputText></td>
+								<td><h:inputText value="#{evenementsController.imageE}"></h:inputText></td>
+							</tr>
+							<tr>
+								
+									<td><h:outputText value="Nombre de places"></h:outputText></td>
+									<td><h:inputText id="vPlace"
+											value="#{evenementsController.nbPlace}" required="true"
+											requiredMessage="Veuillez préciser le nombre de place"
+											validatorMessage="Le nombre de place doit être compris entre entre 1 et 300">
+										<f:validateDoubleRange minimum="1" maximum="300" for="vPlace" /></h:inputText></td>
+										<h:message for="vPlace" style="color:green" />
+								
+							</tr>
+						</table>
+						<br></br>
+						<br></br>
+						<tr>
+							<td><h:commandButton value="Ajouter Event"
+									action="#{evenementsController.addEvent(userController.autheticatedUser)}" /></td>
+							<td><h:commandButton value="Modifier Event"
+									action="#{evenementsController.updateEvent(userController.autheticatedUser)}" /></td>
+						</tr>
 
-						</h:form>
-					</h:panelGroup>
-				</div>
+					</h:form>
+				</h:panelGroup>
+			</div>
 		</h:body>
 	</ui:define>
 </ui:composition>

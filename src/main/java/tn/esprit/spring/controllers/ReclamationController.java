@@ -22,7 +22,7 @@ public class ReclamationController {
 
 	@Autowired
 	ReclamationServiceImpl reclamationService;
-	
+
 	private List<Reclamation> reclamations;
 	private int idRec;
 	private String sujetRec;
@@ -33,6 +33,7 @@ public class ReclamationController {
 	private Date dateT;
 
 	private int etat;
+
 	public int getIdRec() {
 		return idRec;
 	}
@@ -94,6 +95,15 @@ public class ReclamationController {
 	}
 
 	private User user;
+	private long authenticatedUser;
+
+	public long getAuthenticatedUser() {
+		return authenticatedUser;
+	}
+
+	public void setAuthenticatedUser(long authenticatedUser) {
+		this.authenticatedUser = authenticatedUser;
+	}
 
 	public List<Reclamation> getReclamations() {
 		reclamations = reclamationService.getAllReclamations();
@@ -101,7 +111,7 @@ public class ReclamationController {
 	}
 
 	public Reclamation traiter(Reclamation r) {
-	//	System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
+		// System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
 //		this.setIdRec(r.getIdRec());
 //		this.setContenuRec(r.getContenuRec());
 //		this.setDateRec(r.getDateRec());
@@ -109,22 +119,29 @@ public class ReclamationController {
 //		this.setSujetRec(r.getSujetRec());
 //		this.setEtat(1);
 //		System.out.println(r);
-		
-		
+
 //		return reclamationService.traiterReclamation(new Reclamation(idRec,  sujetRec,  ContenuRec, dateRec, dateT,  etat));
-		return reclamationService.traiterReclamation(r);	
+		return reclamationService.traiterReclamation(r);
 	}
 
-	public void addrec() {
-		  reclamationService.ajouterReclamation(new Reclamation(idRec,  sujetRec,  ContenuRec, null,null, 0 ));
+	public void addrec(User u) {
+
+		reclamationService.ajouterReclamation(new Reclamation(idRec, sujetRec, ContenuRec, null, null, 0, u));
 	}
-	
-	public void afficher(Reclamation r) {
+
+	public String afficher(Reclamation r) {
 		this.setIdRec(r.getIdRec());
 		this.setContenuRec(r.getContenuRec());
 		this.setDateRec(r.getDateRec());
 		this.setDateT(r.getDateT());
-	    this.setSujetRec(r.getSujetRec());
-     	this.setEtat(r.getEtat());
+		this.setSujetRec(r.getSujetRec());
+		this.setEtat(r.getEtat());
+		return "/reclamationdetail.xhtml?faces-redirect=true"; 
 	}
+	
+//	public void removeEmploye(int ids)
+//	{
+//		reclamationService.deleteReclamation(ids);
+//		
+//	}	
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
 
+import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.Planning;
 import tn.esprit.spring.repository.PlanningRepository;
@@ -89,16 +90,20 @@ public class PlanningControllerJSF {
 	public void setDate_fin(Date date_fin) {
 		this.date_fin = date_fin;
 	}
-	public String addPlanning(Jardin jardin) throws IOException{
+	
+	
+	public String addPlanning(Jardin jardin){
 		planningservice.AddPlanning(new Planning(date_debut, date_fin, jardin));
 		return "/AffichagePlanning.xhtml?faces-redirect=true";
 		
 		
 	
 		}
-	public List<Planning> getPlans() {
-		plans = planningservice.Getallplan();
-		return plans;
+	
+
+		
+	public List<Planning> getPlans(Jardin jardin) {
+		return planrepo.getAllPlansByIdJardin(jardin.getId());
 		} 
 	
 	
