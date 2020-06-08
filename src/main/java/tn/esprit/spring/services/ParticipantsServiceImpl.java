@@ -2,6 +2,9 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +39,22 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 	@Transactional
 	public void ParticiperEvent(long id, long idEvent) {
 		Parent parentManagedEntity = parentRepository.findById(id).get();
-		long idP = parentManagedEntity.getId();
 		String nomP = parentManagedEntity.getNomP();
 		String pnomP = parentManagedEntity.getPrenomP();
 		String numP = parentManagedEntity.getNumP();
 		String mailP = parentManagedEntity.getEmail();
 		Evenements evenementsManagedEntity = evenementsRepository.findById(idEvent).get();
 		Integer nbPlaces = evenementsRepository.findById(idEvent).get().getNbPlace();
-		if (nbPlaces>0 && participantsRepository.existsByMailParticip(mailP)==false ){
-			Participants p = new Participants(idP, nomP, pnomP, numP, mailP, evenementsManagedEntity);
+		if (getParticip(mailP,idEvent)==0){
+			FacesMessage facesMessage =
+
+					new FacesMessage("Error: vous avez participé!");
+
+					FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
+		}
+		
+		else if (nbPlaces>0 && getParticip(mailP,idEvent)==1){
+			Participants p = new Participants(nomP, pnomP, numP, mailP, evenementsManagedEntity);
 			addParticipants(p);
 			nbPlaces--;
 			evenementsManagedEntity.setNbPlace(nbPlaces);
@@ -55,7 +65,20 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 			
 		} 
 		
+		
 	}
+	
+	public int getParticip(String mailParticip,long idEvent){
+		Participants part = participantsRepository.getParticipByMailEvent(mailParticip,idEvent);
+		if (part==null){
+			return 0;
+		}
+		else 
+			return 1;
+		
+	}
+	
+	
 	
 
 	@Override
@@ -100,8 +123,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 	public int getNombreParticipantsByidEvent(long idEvent ){
 		return participantsRepository.nbParticip(idEvent);
 	}
-	
-	
+
 	
 	
 	
