@@ -59,14 +59,14 @@
 		<h:body>
 			<h:panelGroup>
 <h:form>
-<h:dataTable style="text-align: center;" class="table table-hover"  var="planning" value="#{planController.getPlans()}" scrollable="true" scrollWidth="400">
+<h:dataTable style="text-align: center;" class="table table-hover"  var="planning" value="#{planController.getPlans(userController.autheticatedUser.jardin)}" scrollable="true" scrollWidth="400">
 
 <h:column><f:facet name="header"><h:outputText value="Start Date" /></f:facet>
 <h:outputText value="#{planning.date_debut}" /></h:column>
 
 <h:column><f:facet name="header"><h:outputText value="End Date" /></f:facet>
 <h:outputText value="#{planning.date_fin}" /></h:column>
-<h:column><f:facet name="header"><h:outputText value="Jardin" /></f:facet>
+<h:column><f:facet name="header"><h:outputText value="nom jardin" /></f:facet><h:outputText value="#{userController.autheticatedUser.jardin.nomJ}" />
 </h:column>
 </h:dataTable>
 </h:form>
