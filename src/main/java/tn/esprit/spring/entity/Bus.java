@@ -168,11 +168,12 @@ public class Bus implements Serializable {
 	public void setTarifB(String tarifB) {
 		TarifB = tarifB;
 	}
+
 	@Override
 	public String toString() {
 		return "Bus [matricule=" + matricule + ", NomChauf=" + NomChauf + ", Depart=" + Depart + ", arrivee=" + arrivee
 				+ ", trajet=" + trajet + ", TarifB=" + TarifB + ", nbrPlace=" + nbrPlace + ", Etat=" + Etat
-				+ "]";
+				+ ", jardin=" + jardin + ", inscrits=" + inscrits + "]";
 	}
 	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace,
 			String etat, Set<Inscrits> inscrits) {
