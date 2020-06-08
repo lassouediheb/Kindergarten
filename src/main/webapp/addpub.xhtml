@@ -1,0 +1,125 @@
+
+
+	
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templatejardin.xhtml">
+	<ui:param name="welcomejardin" value="Accueil" />
+	<ui:define name="welcomejardin">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+			<h:panelGroup columns="2"><h:form>
+	
+	
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Product Name</label>
+                                                            
+                                                            <div class="col-sm-10">
+                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.productName}"></h:inputText>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Category</label>
+                                                            
+                                                            <div class="col-sm-10">
+                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.category}"></h:inputText>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">product brand</label>
+                                                            
+                                                            <div class="col-sm-10">
+                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.marque}"></h:inputText>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">sponsorship award</label>
+                                                            
+                                                            <div class="col-sm-10">
+                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.priceSponsoring}"></h:inputText>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Upload Image</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="file" class="form-control"></input>
+                                                            </div>
+                                                        </div>
+                                                    
+                       <h:commandButton value="Add"  class="btn btn-success" action="#{planController.addPlanning()}"  /> 
+                                                        
+                                                       
+                                                        </h:form></h:panelGroup>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+	 
+
+
+
+	
+	
+                                                      
+                                                    
+
+	

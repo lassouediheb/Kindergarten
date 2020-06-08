@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,8 +44,8 @@ public class Evenements implements Serializable {
 	@Column(name="STATUT_E")
 	String statutE="Disponible";
 	
-	@ManyToMany(mappedBy="evenements", cascade = CascadeType.ALL)
-	private Set<Participants> participants;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="evenements")
+	private Set<Participants> participants ;
 
 	@ManyToOne
 	Jardin jardin;
@@ -240,8 +241,36 @@ public class Evenements implements Serializable {
 		this.nbPlace = nbPlace;
 		this.statutE = statutE;
 	}
-	
 
+	public Evenements(String nomE, String adresseE, Date dateE, String descripE, String etatE, String imageE,
+			Integer nbPlace, String statutE, Jardin jardin) {
+		super();
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.statutE = statutE;
+		this.jardin = jardin;
+	}
+
+	public Evenements(long idEvent, String nomE, String adresseE, Date dateE, String descripE, String etatE,
+			String imageE, Integer nbPlace, Jardin jardin) {
+		super();
+		this.idEvent = idEvent;
+		this.nomE = nomE;
+		this.adresseE = adresseE;
+		this.dateE = dateE;
+		this.descripE = descripE;
+		this.etatE = etatE;
+		this.imageE = imageE;
+		this.nbPlace = nbPlace;
+		this.jardin = jardin;
+	}
+	
+	
 	
 	
 

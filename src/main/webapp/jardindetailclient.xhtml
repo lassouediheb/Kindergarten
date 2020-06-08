@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templateclient.xhtml">
+	<ui:param name="welcomeclient" value="Accueil" />
+	<ui:define name="welcomeclient">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+			<center>
+				<div class="well profile">
+
+					<div class="col-sm-12">
+						<div class="col-xs-12 col-sm-8">
+							<h2>
+								<h:outputText value="#{jardinController.jardindetail().nomJ}"></h:outputText>
+							</h2>
+							<p>
+								<strong>Adresse: </strong>
+								<h:outputText value="#{jardinController.jardindetail().adresseJ}"></h:outputText>
+							</p>
+							<p>
+								<strong>Numéro:</strong>
+								<h:outputText value="#{jardinController.jardindetail().numJ}"></h:outputText>
+							</p>
+							<p>
+								<strong>Mail: </strong>
+								<h:outputText value="#{jardinController.jardindetail().email}"></h:outputText>
+							</p>
+							<p>
+								<strong>Depuis: </strong>
+								<h:outputText value="#{jardinController.jardindetail().dateCrea}"></h:outputText>
+							</p>
+							<p>
+								<strong>Nom du Directeur: </strong>
+								<h:outputText value="#{jardinController.jardindetail().directeurs.nomD}"></h:outputText>
+							</p>
+							<p>
+								<strong>Tarif (DT/Mois): </strong>
+								<h:outputText value="#{jardinController.jardindetail().tarifJ}"></h:outputText>
+							</p>
+							<h2>
+								<strong>+30</strong>
+							</h2>
+							<p>
+								<small>Inscrits à notre jardin</small>
+							</p>
+							<button class="btn btn-info btn-sm">
+								<span class="fa fa-user"></span> S'inscrire
+							</button>
+
+						</div>
+					</div>
+				</div>
+			</center>
+
+		</h:body>
+	</ui:define>
+</ui:composition>

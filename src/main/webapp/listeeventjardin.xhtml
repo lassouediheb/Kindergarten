@@ -1,0 +1,203 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templatejardin.xhtml">
+	<ui:param name="welcomejardin" value="Accueil" />
+	<ui:define name="welcomejardin">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+			<div class="content">
+				<h:panelGroup>
+					<h:form>
+						<center>
+							<h2>
+								<strong>Liste des évènements</strong>
+							</h2>
+							<br></br>
+							<h:dataTable
+								value="#{evenementsController.getEventByIdJ(userController.autheticatedUser)}"
+								var="event" border="1">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Evenement" />
+									</f:facet>
+									<h:outputText value="#{event.nomE}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Adresse" />
+									</f:facet>
+									<h:outputText value="#{event.adresseE}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Date" />
+									</f:facet>
+									<h:outputText value="#{event.dateE}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Description" />
+									</f:facet>
+									<h:outputText value="#{event.descripE}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Image" />
+									</f:facet>
+									<h:outputText value="#{event.imageE}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Nombre de places" />
+									</f:facet>
+									<h:outputText value="#{event.nbPlace}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Statut" />
+									</f:facet>
+									<h:outputText value="#{event.statutE}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Nombre de participants" />
+									</f:facet>
+									<h:outputText
+										value="#{participantsController.nbParticipants(event.idEvent)}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Action" />
+									</f:facet>
+									<h:commandButton
+										action="#{evenementsController.listeparEvent(event)}"
+										value="Participants" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Action" />
+									</f:facet>
+									<h:commandButton
+										action="#{evenementsController.removeEvent(idEvent)}"
+										value="Supprimer" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Action" />
+									</f:facet>
+									<h:commandButton
+										action="#{evenementsController.displayEvent(event)}"
+										value="Modifier" />
+								</h:column>
+							</h:dataTable>
+						</center>
+						<br></br>
+						<br></br>
+						<table>
+							<tr>
+								<td><h:outputText value="Nom Event"></h:outputText></td>
+								<td><h:inputText
+										id="vNom" value="#{evenementsController.nomE}" required="true"
+										requiredMessage="Veuillez préciser le nom"></h:inputText></td>
+										<h:message for="vNom" style="color:green" /> 
+							</tr>
+							<tr>
+								<td><h:outputText value="Adresse"></h:outputText></td>
+								<td><h:inputText
+										id="vAdresse" value="#{evenementsController.adresseE}"
+										required="true" requiredMessage="Veuillez préciser l'adresse"></h:inputText></td>
+										<h:message for="vAdresse" style="color:green" /> 
+							</tr>
+							<tr>
+								<td><h:outputText value="Date"></h:outputText></td>
+								<td><h:inputText
+										id="vDate" value="#{evenementsController.dateE}"
+										required="true" requiredMessage="Veuillez préciser la date">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:inputText></td>
+									<h:message for="vDate" style="color:green" /> 
+							</tr>
+							<tr>
+								<td><h:outputText value="Décrire"></h:outputText></td>
+								<td><h:inputText value="#{evenementsController.descripE}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="Image"></h:outputText></td>
+								<td><h:inputText value="#{evenementsController.imageE}"></h:inputText></td>
+							</tr>
+							<tr>
+								
+									<td><h:outputText value="Nombre de places"></h:outputText></td>
+									<td><h:inputText id="vPlace"
+											value="#{evenementsController.nbPlace}" required="true"
+											requiredMessage="Veuillez préciser le nombre de place"
+											validatorMessage="Le nombre de place doit être compris entre entre 1 et 300">
+										<f:validateDoubleRange minimum="1" maximum="300" for="vPlace" /></h:inputText></td>
+										<h:message for="vPlace" style="color:green" />
+								
+							</tr>
+						</table>
+						<br></br>
+						<br></br>
+						<tr>
+							<td><h:commandButton value="Ajouter Event"
+									action="#{evenementsController.addEvent(userController.autheticatedUser)}" /></td>
+							<td><h:commandButton value="Modifier Event"
+									action="#{evenementsController.updateEvent(userController.autheticatedUser)}" /></td>
+						</tr>
+
+					</h:form>
+				</h:panelGroup>
+			</div>
+		</h:body>
+	</ui:define>
+</ui:composition>

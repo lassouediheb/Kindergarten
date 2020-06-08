@@ -8,7 +8,11 @@ import java.util.List;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
+
+import tn.esprit.spring.entity.Evenements;
+import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.Planning;
+import tn.esprit.spring.repository.PlanningRepository;
 import tn.esprit.spring.services.PlanningServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +31,8 @@ public class PlanningControllerJSF {
 	
 	@Autowired
 	PlanningServiceImpl planningservice;
+	@Autowired
+	PlanningRepository planrepo ;
 	private Planning planning;
 	public Planning getPlanning() {
 		return planning;
@@ -42,6 +48,7 @@ public class PlanningControllerJSF {
 	private List<Planning> plans; 
 	private int id_planning;
 	private Integer PlanningToBeUpdated;
+	private Jardin jardin;
 	
 
 
@@ -83,19 +90,20 @@ public class PlanningControllerJSF {
 	public void setDate_fin(Date date_fin) {
 		this.date_fin = date_fin;
 	}
-	public String addPlanning() throws IOException{
-		Planning planning =new Planning();
-		planning.setDate_debut(date_debut);
-		planning.setDate_fin(date_fin);
-		planningservice.AddPlanning(planning);
+	
+	
+	public String addPlanning(Jardin jardin){
+		planningservice.AddPlanning(new Planning(date_debut, date_fin, jardin));
 		return "/AffichagePlanning.xhtml?faces-redirect=true";
 		
 		
 	
 		}
-	public List<Planning> getPlans() {
-		plans = planningservice.Getallplan();
-		return plans;
+	
+
+		
+	public List<Planning> getPlans(Jardin jardin) {
+		return planrepo.getAllPlansByIdJardin(jardin.getId());
 		} 
 	
 	
@@ -106,7 +114,9 @@ public class PlanningControllerJSF {
 	
 	
 	
-	
+	public  List<Planning>  getAllPlansByIdJardin(long idJardin){
+		return planrepo.getAllPlansByIdJardin(idJardin);
+	}
 	
 	
 	public String displayPlanning(Planning p)
@@ -132,6 +142,44 @@ public class PlanningControllerJSF {
 		
 		return "/AddPlan.xhtml?faces-redirect=true";
 		}
+
+
+	public PlanningServiceImpl getPlanningservice() {
+		return planningservice;
+	}
+
+
+	public void setPlanningservice(PlanningServiceImpl planningservice) {
+		this.planningservice = planningservice;
+	}
+
+
+	public PlanningRepository getPlanrepo() {
+		return planrepo;
+	}
+
+
+	public void setPlanrepo(PlanningRepository planrepo) {
+		this.planrepo = planrepo;
+	}
+
+
+	public Jardin getJardin() {
+		return jardin;
+	}
+
+
+	public void setJardin(Jardin jardin) {
+		this.jardin = jardin;
+	}
+
+
+	public void setPlans(List<Planning> plans) {
+		this.plans = plans;
+	}
+
+
+	
 		
 		
 

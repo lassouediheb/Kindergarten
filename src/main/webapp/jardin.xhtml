@@ -64,9 +64,11 @@
 										src="http://placehold.it/700x400" alt=""></img></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<h:commandLink
-												action="./jardinadmin.jsf"
-												value="#{jardin.nomJ}" />
+											<h:link value="#{jardin.nomJ}"
+												outcome="jardindetailclient.jsf">
+												<f:param name="idjj" value="#{jardin.id}" />
+											</h:link>
+
 										</h4>
 										<h5>
 											<h:outputText value="#{jardin.adresseJ}" />
