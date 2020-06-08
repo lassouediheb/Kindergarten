@@ -54,42 +54,42 @@
 		</h:head>
 
 		<h:body>
-			<div class="well profile">
-				<div class="col-sm-12">
-					<div class="col-xs-12 col-sm-8">
-						<h2><h:outputText value="#{event.nomE}" /></h2>
-						<p>
-							<strong>Programmé par: </strong><h:outputText value="#{eventController.detailevent(idEvent).nomE}" />
-						</p>
-						<p>
-							<strong>Adresse: </strong><h:outputText value="#{event.adresseE}" />
-						</p>
-						<p>
-							<strong>Date de l'évènement:</strong><h:outputText value="#{event.dateE}" />
-						</p>
-						<p>
-							<strong>Nombre de place: </strong><h:outputText value="#evenementController.detailevent().nbPlace}" />
-						</p>
-						<p>
-							<strong>Statut: </strong><h:outputText value="#{evenementController.detailevent(idev).statutE}" />
-						</p>
+			<center>
+				<div class="well profile">
+					<div class="col-sm-12">
+						<div class="col-xs-12 col-sm-8">
+							<h2>
+								<h:outputText value="#{evenementsController.detailevent().nomE}"></h:outputText>
+							</h2>
+							<p>
+								<strong>Programmé par: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().jardin.nomJ}"></h:outputText>
+							</p>
+							<p>
+								<strong>Adresse: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().adresseE}"></h:outputText>
+							</p>
+							<p>
+								<strong>Date de l'évènement:</strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().dateE}"></h:outputText>
+							</p>
+							<p>
+								<strong>Nombre de place: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().nbPlace}"></h:outputText>
+							</p>
+							<p>
+								<strong>Statut: </strong>
+								<h:outputText
+									value="#{evenementsController.detailevent().statutE}"></h:outputText>
+							</p>
+						</div>
 					</div>
-
 				</div>
-				<div class="col-xs-12 divider text-center">
-					<div class="col-xs-12 col-sm-4 emphasis">
-						<h2>
-							<strong>+30</strong>
-						</h2>
-						<p>
-							<small>Participants</small>
-						</p>
-						<button class="btn btn-info btn-block">
-							<span class="fa fa-user"></span> Participer
-						</button>
-					</div>
-				</div>
-			</div>
+			</center>
 		</h:body>
 	</ui:define>
 </ui:composition>

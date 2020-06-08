@@ -65,7 +65,8 @@
 									<div class="card-body">
 										<h4 class="card-title">
 											<h:link value="#{jardin.nomJ}"
-												outcome="#{jardinController.detailsjardin(jardin)}">
+												outcome="jardindetailjardin.jsf">
+												<f:param name="idjj" value="#{jardin.id}" />
 											</h:link>
 										</h4>
 										<h5>

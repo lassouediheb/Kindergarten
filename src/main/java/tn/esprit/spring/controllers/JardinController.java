@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
+import tn.esprit.spring.entity.Bus;
 import tn.esprit.spring.entity.Directeurs;
 import tn.esprit.spring.entity.ERole;
 import tn.esprit.spring.entity.Evenements;
@@ -120,14 +121,14 @@ public class JardinController {
 		this.setJardinIdToBeUpdated(jardin.getId());
 	}
 
-	// Get jardin by id
+	// Get jardin by id pour afficher profil connecté
 	public Jardin jardinprofil(Jardin jardin) {
 		return jardinRepository.getJardById(jardin.getId());
 	}
 
 	// Get jardin by id
-	public Jardin jardindetail(long id) {
-		return jardinRepository.getJardById(id);
+	public Jardin jardindetail() {
+		return jardinRepository.getJardById(outcome());
 	}
 
 	// Passer le param idJardin à une autre view
@@ -138,12 +139,13 @@ public class JardinController {
 		return parameters.get("idjj");
 	}
 
-	public int outcome() {
+	public long outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
 		System.out.println("(((((((((((((((((" + a);
-		return Integer.parseInt(a);
+		return Long.parseLong(a);
 	}
+	
 
 	// Passer paramètre idJardin pour afficher details jardin
 	private long idJ;
