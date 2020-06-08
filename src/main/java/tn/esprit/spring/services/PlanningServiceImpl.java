@@ -24,9 +24,9 @@ public class PlanningServiceImpl implements PlanningSerivce {
 	
 	
 	@Override
-	public int AddPlanning(Planning p) {
-		planningrepo.save(p);
-		return 1;
+	public Planning AddPlanning(Planning p) {
+		Planning plan = planningrepo.save(p);
+		return plan;		
 	}
 
 	

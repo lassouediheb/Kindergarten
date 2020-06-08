@@ -2,6 +2,7 @@ package tn.esprit.spring.repository;
 
 
 
+import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Participants;
 import tn.esprit.spring.entity.Planning;
 
@@ -21,5 +22,6 @@ public interface PlanningRepository extends JpaRepository<Planning, Integer> {
 	
 	@Query("SELECT p FROM Planning p where p.jardin.id=?1")
 	 public List<Planning> getAllPlansByIdJardin(long idJardin);
+
 
 }

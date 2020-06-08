@@ -54,119 +54,175 @@
 		</h:head>
 
 		<h:body>
-		
-	
-		
-		<h:panelGroup columns="2"><h:form><table>
-<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="Nom chauffeur:"></h:outputText></h6></td><td><h:inputText
-value="#{busController.nomChauf}"></h:inputText></td></tr>
-<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="depart"></h:outputText></h6></td>
-<td><h:inputText value="#{busController.depart}"></h:inputText></td></tr>
-<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="arrivee"></h:outputText></h6></td>
-<td><h:inputText value="#{busController.arrivee}"></h:inputText></td></tr>
-<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="trajet"></h:outputText></h6></td>
-<td><h:inputText value="#{busController.trajet}"></h:inputText></td></tr>
-<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="tarif"></h:outputText></h6></td>
-<td><h:inputText value="#{busController.tarifB}"></h:inputText></td></tr>
-<tr><td><h6 class="m-0 font-weight-bold text-primary"><h:outputText value="Nombre de place"></h:outputText></h6></td>
-<td><h:inputText value="#{busController.nbrPlace}"></h:inputText></td></tr>
 
 
-<tr><td colspan="1">
-<h:commandButton value="Ajouter Bus"
-action="#{busController.addBus1(userController.autheticatedUser)}" />
- </td> </tr><tr><td colspan="1" >
-<h:commandButton value="modifier bus"
-action="#{busController.modifierBus1(userController.autheticatedUser)}" />
-</td></tr>
 
-</table>
+			<h:panelGroup columns="2">
+				<h:form>
+					<table>
+						<tr>
+							<td><h6 class="m-0 font-weight-bold text-primary">
+									<h:outputText value="Nom chauffeur:"></h:outputText>
+								</h6></td>
+							<td><h:inputText value="#{busController.nomChauf}"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h6 class="m-0 font-weight-bold text-primary">
+									<h:outputText value="depart"></h:outputText>
+								</h6></td>
+							<td><h:inputText value="#{busController.depart}"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h6 class="m-0 font-weight-bold text-primary">
+									<h:outputText value="arrivee"></h:outputText>
+								</h6></td>
+							<td><h:inputText value="#{busController.arrivee}"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h6 class="m-0 font-weight-bold text-primary">
+									<h:outputText value="trajet"></h:outputText>
+								</h6></td>
+							<td><h:inputText value="#{busController.trajet}"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h6 class="m-0 font-weight-bold text-primary">
+									<h:outputText value="tarif"></h:outputText>
+								</h6></td>
+							<td><h:inputText value="#{busController.tarifB}"></h:inputText></td>
+						</tr>
+						<tr>
+							<td><h6 class="m-0 font-weight-bold text-primary">
+									<h:outputText value="Nombre de place"></h:outputText>
+								</h6></td>
+							<td><h:inputText value="#{busController.nbrPlace}"></h:inputText></td>
+						</tr>
 
-		
-		
-			</h:form>
+
+						<tr>
+							<td colspan="1"><h:commandButton value="Ajouter Bus"
+									action="#{busController.addBus1(userController.autheticatedUser)}" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1"><h:commandButton value="modifier bus"
+									action="#{busController.modifierBus1(userController.autheticatedUser)}" />
+							</td>
+						</tr>
+
+					</table>
+
+
+
+				</h:form>
 			</h:panelGroup>
 			<h:panelGroup>
-			<h:form>
-			 <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            
-                 <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Bus Liste</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12">
-	<h:dataTable value="#{busController.getBusByIdJ(userController.autheticatedUser)}"
-								var="buss" border="1"  class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-								
-							
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Nom Chauffeur" />
-									</f:facet>
-									<h:outputText value="#{buss.nomChauf}" />
-								</h:column>
-								
-								
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Depart" />
-									</f:facet>
-									<h:outputText value="#{buss.depart}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="arrivee" />
-									</f:facet>
-									<h:outputText value="#{buss.arrivee}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Trajet" />
-									</f:facet>
-									<h:outputText value="#{buss.trajet}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="tarif" />
-									</f:facet>
-									<h:outputText value="#{buss.tarifB}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Nombre de place" />
-									</f:facet>
-									<h:outputText value="#{buss.nbrPlace}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Etat" />
-									</f:facet>
-									<h:outputText value="#{buss.etat}" />
-								</h:column>
-								<h:column>
-<f:facet name="header"><h:outputText value="Action" /></f:facet>
-<h:commandButton class="login100-form-btn" action="#{busController.supprimerbus(buss.matricule)}"
-value="Supprimer" />
-<h:commandButton action="#{busController.displayBus(buss)}"
-value="Modifier" />
-</h:column>
-							</h:dataTable>
-							</div>
-							</div>
-							</div>
-							</div>
-							</div>
-							</div>
-							</div>
-							</div>
-							
-							
-</h:form>
+				<h:form>
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
 
-</h:panelGroup>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">Bus Liste</h6>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<div id="dataTable_wrapper"
+											class="dataTables_wrapper dt-bootstrap4">
+											<div class="row">
+												<div class="col-sm-12 col-md-6"></div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<h:dataTable
+														value="#{busController.getBusByIdJ(userController.autheticatedUser)}"
+														var="buss" border="1"
+														class="table table-bordered dataTable" id="dataTable"
+														width="100%" cellspacing="0" role="grid"
+														aria-describedby="dataTable_info" style="width: 100%;">
+
+
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Nom Chauffeur" />
+															</f:facet>
+															<h:outputText value="#{buss.nomChauf}" />
+														</h:column>
+
+
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Depart" />
+															</f:facet>
+															<h:outputText value="#{buss.depart}" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="arrivee" />
+															</f:facet>
+															<h:outputText value="#{buss.arrivee}" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Trajet" />
+															</f:facet>
+															<h:outputText value="#{buss.trajet}" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="tarif" />
+															</f:facet>
+															<h:outputText value="#{buss.tarifB}" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Nombre de place" />
+															</f:facet>
+															<h:outputText value="#{buss.nbrPlace}" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Etat" />
+															</f:facet>
+															<h:outputText value="#{buss.etat}" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Action" />
+															</f:facet>
+															<h:commandButton class="login100-form-btn"
+																action="#{busController.supprimerbus(buss.matricule)}"
+																value="Supprimer" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Action" />
+															</f:facet>
+															<h:commandButton
+																action="#{busController.displayBus(buss)}"
+																value="Modifier" />
+														</h:column>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Action" />
+															</f:facet>
+															<h:commandButton
+																action="#{busController.listeparBus(buss)}"
+																value="inscrits" />
+														</h:column>
+													</h:dataTable>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</h:form>
+
+			</h:panelGroup>
 		</h:body>
 	</ui:define>
 </ui:composition>

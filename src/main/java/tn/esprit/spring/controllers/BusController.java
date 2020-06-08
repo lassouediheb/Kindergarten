@@ -132,8 +132,41 @@ public class BusController {
 	public void supprimerbus(String matricule) {
 		busService.deleteBus(matricule);
 	}
+	//afficher liste participants
+	private long idB;
+	public String listeparBus(Bus bus ) 
+	{ 	
+		this.setBuss(bus);
+		this.setIdB(bus.getMatricule());
+	return "listeinscrip.xhtml?faces-redirect=true"; 
+	}
+	
 //display bus:
 	
+	public long getIdB() {
+		return idB;
+	}
+
+
+
+
+
+
+
+
+
+	public void setIdB(long idB) {
+		this.idB = idB;
+	}
+
+
+
+
+
+
+
+
+
 	public void displayBus(Bus bus) {
 		
 		this.setNomChauf(bus.getNomChauf());

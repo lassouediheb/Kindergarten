@@ -38,6 +38,14 @@ public class Inscrits implements Serializable {
 	@Column(name="Prenominscrit")
 	String prenominscrit;
 	
+	
+	@Override
+	public String toString() {
+		return "Inscrits [Idinscrip=" + Idinscrip + ", etat=" + etat + ", nominscrit=" + nominscrit + ", prenominscrit="
+				+ prenominscrit + ", numinsc=" + numinsc + ", bus=" + bus + "]";
+	}
+
+
 	@Column(name="Numeroinsc")
 	String numinsc;
 	
@@ -129,6 +137,12 @@ public class Inscrits implements Serializable {
 		this.prenominscrit = prenominscrit;
 		this.numinsc = numinsc;
 		this.bus = bus;
+	}
+
+
+	public Inscrits() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

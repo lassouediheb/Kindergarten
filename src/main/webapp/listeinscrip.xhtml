@@ -54,55 +54,43 @@
 		</h:head>
 
 		<h:body>
-			<h:form>
-			
-			
-			<div class="col-sm-12 col-md-12 col-lg-6">
-			
-				<div class="container">
-						<div class="events-widget">
-							<div class="widget-title">Nom chauffeur :
-									</div>
-							<dl>
-							<h:outputText value="#{busController.getBusBymatricule().nomChauf}" />
-							</dl>
 
-							<div class="widget-title">Depart :</div>
-							<dl>
-							<h:outputText value="#{busController.getBusBymatricule().depart}" />
-							</dl>
 
-							<div class="widget-title">Arrivée:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().arrivee}" />
-							</dl>
-							<div class="widget-title">Trajet:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().trajet}" />
-							</dl>
-							<div class="widget-title">Tarif(dt):</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().tarifB}" />
-							</dl>
-								<div class="widget-title">Etat:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().etat}" />
-							</dl>
-								<div class="widget-title">Nombre de place:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().nbrPlace}" />
-							</dl>
-							<div class="spacer-30"></div>
-							<a href="#" class="btn btn-primary btn-block">JOIN</a>
-							<div class="spacer-30"></div>
-						</div>
-						</div>
-						
-						
-					</div>
-			  
-			</h:form>
-			
+			<div class="content">
+
+
+
+
+
+				<h:panelGroup>
+					<h:form>
+						<center>
+							<h2>
+								<strong></strong>
+							</h2>
+							<br></br>
+							<h:dataTable
+								value="#{inscritsController.getinscritsbus(busController.buss.matricule)}"
+								var="inscrits" border="1">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="inscrits" />
+									</f:facet>
+									<h:outputText value="#{inscrits.nominscrit}" />
+								</h:column>
+<h:column>
+									<f:facet name="header">
+										<h:outputText value="inscrits" />
+									</f:facet>
+									<h:outputText value="#{inscrits.prenominscrit}" />
+								</h:column>
+							</h:dataTable>
+						</center>
+					</h:form>
+				</h:panelGroup>
+
+
+			</div>
 		</h:body>
 	</ui:define>
 </ui:composition>
