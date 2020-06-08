@@ -1,6 +1,6 @@
 
 
-	
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -55,82 +55,91 @@
 
 			<script src="login/client/js/vendor/modernizr.min.js"></script>
 		</h:head>
-
 		<h:body>
 			<h:panelGroup>
-<h:form>
-<h:dataTable class="table table-hover"  var="pub" value="#{PublicityController.listPublicities()}">
+				<h:form>
+					<h:dataTable class="table table-hover" var="pub"
+						value="#{PublicityController.listPublicities()}">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Product Name" />
+							</f:facet>
+							<h:outputText value="#{pub.productName}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Category" />
+							</f:facet>
+							<h:outputText value="#{pub.category}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Marque" />
+							</f:facet>
+							<h:outputText value="#{pub.marque}" />
+						</h:column>
+						<f:facet name="header">
+							<h:outputText value="Price Sponsoring" />
+						</f:facet>
+						<h:outputText value="#{pub.priceSponsoring}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Action" />
+							</f:facet>
+							<h:commandButton value="delete" class="btn btn-success"
+								action="#{PublicityController.removePublicity(pub.id)}" />
+							<h:commandButton value="Edit" class="btn btn-success"
+								action="#{PublicityController.displayPub(pub)}" />
+						</h:column>
+					</h:dataTable>
 
-<h:column><f:facet name="header"><h:outputText value="Product Name" /></f:facet>
-<h:outputText value="#{pub.productName}" /></h:column>
+					<h:panelGroup columns="2">
+						<h:form>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">Product Name</label>
+								<div class="col-sm-10">
+									<h:inputText type="text" class="form-control"
+										value="#{PublicityController.productName}"></h:inputText>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">Category</label>
+								<div class="col-sm-10">
+									<h:inputText type="text" class="form-control"
+										value="#{PublicityController.category}"></h:inputText>
+								</div>
+							</div>
 
-<h:column><f:facet name="header"><h:outputText value="Category" /></f:facet>
-<h:outputText value="#{pub.category}" /></h:column>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">product brand</label>
 
-<h:column><f:facet name="header"><h:outputText value="Marque" /></f:facet>
-<h:outputText value="#{pub.marque}" /></h:column>
+								<div class="col-sm-10">
+									<h:inputText type="text" class="form-control"
+										value="#{PublicityController.marque}"></h:inputText>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">sponsorship award</label>
 
-<h:column><f:facet name="header"><h:outputText value="Price Sponsoring" /></f:facet>
-<h:outputText value="#{pub.priceSponsoring}" /></h:column>
+								<div class="col-sm-10">
+									<h:inputText type="text" class="form-control"
+										value="#{PublicityController.priceSponsoring}"></h:inputText>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-2 col-form-label">Upload Image</label>
+								<div class="col-sm-10">
+									<input type="file" class="form-control"></input>
+								</div>
+							</div>
 
-
-<h:column><f:facet name="header"><h:outputText value="Action" /></f:facet>
-<h:commandButton  value="delete" class="btn btn-success" action="#{PublicityController.removePublicity(pub.id)}" />
-<h:commandButton  value="Edit" class="btn btn-success" action="#{PublicityController.displayPub(pub)}" />
-</h:column>
-
-
-</h:dataTable>
-
-<h:panelGroup columns="2"><h:form>
-	
-	
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Product Name</label>
-                                                            
-                                                            <div class="col-sm-10">
-                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.productName}"></h:inputText>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Category</label>
-                                                            
-                                                            <div class="col-sm-10">
-                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.category}"></h:inputText>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">product brand</label>
-                                                            
-                                                            <div class="col-sm-10">
-                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.marque}"></h:inputText>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">sponsorship award</label>
-                                                            
-                                                            <div class="col-sm-10">
-                                                               <h:inputText type="text" class="form-control" value="#{PublicityController.priceSponsoring}"></h:inputText>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Upload Image</label>
-                                                            <div class="col-sm-10">
-                                                                <input type="file" class="form-control"></input>
-                                                            </div>
-                                                        </div>
-                                                    
-                       <h:commandButton value="Add"  class="btn btn-success" action="#{PublicityController.addPub()}"  /> 
-                                                        
-                                                       
-                                                        </h:form></h:panelGroup>
-</h:form>
-</h:panelGroup>
-
+							<h:commandButton value="Add" class="btn btn-success"
+								action="#{PublicityController.addPub()}" />
+						</h:form>
+					</h:panelGroup>
+				</h:form>
+			</h:panelGroup>
 		</h:body>
 	</ui:define>
 </ui:composition>
@@ -141,7 +150,6 @@
 
 
 
-	 
 
 
 
@@ -153,7 +161,8 @@
 
 
 
-	 
+
+
 
 
 

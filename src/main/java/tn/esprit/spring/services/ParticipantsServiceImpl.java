@@ -36,14 +36,15 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 	@Transactional
 	public void ParticiperEvent(long id, long idEvent) {
 		Parent parentManagedEntity = parentRepository.findById(id).get();
+		long idP = parentManagedEntity.getId();
 		String nomP = parentManagedEntity.getNomP();
 		String pnomP = parentManagedEntity.getPrenomP();
 		String numP = parentManagedEntity.getNumP();
 		String mailP = parentManagedEntity.getEmail();
 		Evenements evenementsManagedEntity = evenementsRepository.findById(idEvent).get();
 		Integer nbPlaces = evenementsRepository.findById(idEvent).get().getNbPlace();
-		if (nbPlaces>0){
-			Participants p = new Participants(nomP, pnomP, numP, mailP, evenementsManagedEntity);
+		if (nbPlaces>0 && participantsRepository.existsByMailParticip(mailP)==false ){
+			Participants p = new Participants(idP, nomP, pnomP, numP, mailP, evenementsManagedEntity);
 			addParticipants(p);
 			nbPlaces--;
 			evenementsManagedEntity.setNbPlace(nbPlaces);
@@ -52,7 +53,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 				
 			}
 			
-		}
+		} 
 		
 	}
 	
@@ -99,6 +100,8 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 	public int getNombreParticipantsByidEvent(long idEvent ){
 		return participantsRepository.nbParticip(idEvent);
 	}
+	
+	
 	
 	
 	

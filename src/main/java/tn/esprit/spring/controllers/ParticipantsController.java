@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.Evenements;
+import tn.esprit.spring.entity.Parent;
 import tn.esprit.spring.entity.Participants;
 import tn.esprit.spring.repository.ParticipantsRepository;
 import tn.esprit.spring.services.ParticipantsService;
@@ -34,6 +35,9 @@ public class ParticipantsController {
 	private Evenements event;
 	private long idEvent;
 	
+	private Parent parent;
+	private long id;
+	
 	
 	// Liste participants par idEvent
 	public List<Participants> getAllParticipantsByIdEvent(long idEvent){
@@ -47,9 +51,8 @@ public class ParticipantsController {
 	}
 	
 	// Participer à un event
-	public String userparticipevent(long id,long idEvent){
-		participantsService.ParticiperEvent(id, idEvent);
-		return "listeparticipjardin.xhtml?faces-redirect=true"; 
+	public void userparticipevent(Parent parent,long idEvent){
+		participantsService.ParticiperEvent(parent.getId(), idEvent); 
 	}
 	
 
@@ -158,7 +161,25 @@ public class ParticipantsController {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
+
+	public Parent getParent() {
+		return parent;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public ParticipantsController(long idParticip, String nomParticip, String prenomParticip, String numParticip,
 			String mailParticip) {
