@@ -112,6 +112,8 @@ public class Parent extends User implements Serializable{
 	public void setJardin(Jardin jardin) {
 		this.jardin = jardin;
 	}
+	
+	
 
 
 

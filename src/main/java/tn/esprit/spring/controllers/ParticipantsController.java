@@ -2,8 +2,6 @@ package tn.esprit.spring.controllers;
 
 import java.util.List;
 
-import javax.persistence.Column;
-
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +45,13 @@ public class ParticipantsController {
 	public int nbParticipants(long idEvent){
 		return participantsService.getNombreParticipantsByidEvent(idEvent);
 	}
+	
+	// Participer à un event
+	public String userparticipevent(long id,long idEvent){
+		participantsService.ParticiperEvent(id, idEvent);
+		return "listeparticipjardin.xhtml?faces-redirect=true"; 
+	}
+	
 
 
 	public ParticipantsService getParticipantsService() {
