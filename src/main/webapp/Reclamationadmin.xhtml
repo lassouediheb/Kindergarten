@@ -1,11 +1,19 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template.xhtml">
 	<ui:param name="content" value="Accueil" />
 	<ui:define name="content">
 		<!-- BEGIN : TP1 JSF Introduction Login -->
 		<h:head>
+			<style>
+.red {
+	color: red;
+	background-color: lightyellow;
+	front-size: 22px;
+}
+</style>
 			<title>SB Admin 2 - Blank</title>
 
 			<!-- Custom fonts for this template-->
@@ -91,53 +99,57 @@
 					<h:panelGroup>
 						<h:form>
 							<h:outputText value="Bonjour #{userController.username}" />
-<!-- 							<h:form> -->
-								<h:dataTable value="#{reclamationController.reclamations}"
-									var="recl" border="2">
+							<!-- 							<h:form> -->
+							<h:dataTable value="#{reclamationController.reclamations}"
+								var="recl" border="2"
+								rowStyleClass="#{recl.etat == 1 ? 'red' : null }"
+								paginator="true"
+								>
 
-									<h:column>
-										<f:facet name="header">
-											<h:outputText value="Sujet" />
-										</f:facet>
-										<h:outputText value="#{recl.sujetRec}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">
-											<h:outputText value="Description" />
-										</f:facet>
-										<h:outputText value="#{recl.contenuRec}" />
-									</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Sujet" />
+									</f:facet>
+									<h:outputText value="#{recl.sujetRec}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Description" />
+									</f:facet>
+									<h:outputText value="#{recl.contenuRec}" />
+								</h:column>
 
-									<h:column>
-										<f:facet name="header">
-											<h:outputText value="Date De Reclamation" />
-										</f:facet>
-										<h:outputText value="#{recl.dateRec}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">
-											<h:outputText value="Date de traitement" />
-										</f:facet>
-										<h:outputText value="#{recl.dateT}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">
-											<h:outputText value="Etat" />
-										</f:facet>
-										<h:outputText value="#{recl.etat}" />
-									</h:column>
-									<h:column>
-										<f:facet name="header">
-											<h:outputText value="Action" />
-										</f:facet>
-										<h:commandButton
-											action="#{reclamationController.traiter(recl)}"
-											value="traiter" />
-									</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Date De Reclamation" />
+									</f:facet>
+									<h:outputText value="#{recl.dateRec}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Date de traitement" />
+									</f:facet>
+									<h:outputText value="#{recl.dateT}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Etat" />
+									</f:facet>
+									<h:outputText
+										value="#{recl.etat == 1 ? 'traité' : 'Non traité'}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Action" />
+									</f:facet>
+									<h:commandButton
+										action="#{reclamationController.traiter(recl)}"
+										value="traiter" />
+								</h:column>
 
 
-								</h:dataTable>
-<!-- 							</h:form> -->
+							</h:dataTable>
+							<!-- 							</h:form> -->
 
 							<h:commandLink value="Déconnexion"
 								action="#{userController.doLogout()}" />
