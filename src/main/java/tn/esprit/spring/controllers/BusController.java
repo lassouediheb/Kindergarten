@@ -123,17 +123,50 @@ public class BusController {
 	
 	
 	//modifier
-	public void modifierBus1() {
+	public void modifierBus1(Jardin jardin) {
 		busService.updateBus(
-				new Bus(idbustobeupdated,NomChauf, Depart, arrivee, trajet, TarifB, nbrPlace));
+				new Bus(idbustobeupdated,NomChauf, Depart, arrivee, trajet, TarifB, nbrPlace,jardin));
 		
 		}
 	//supprimer bus
 	public void supprimerbus(String matricule) {
 		busService.deleteBus(matricule);
 	}
+	//afficher liste participants
+	private long idB;
+	public String listeparBus(Bus bus ) 
+	{ 	
+		this.setBuss(bus);
+		this.setIdB(bus.getMatricule());
+	return "listeinscrip.xhtml?faces-redirect=true"; 
+	}
+	
 //display bus:
 	
+	public long getIdB() {
+		return idB;
+	}
+
+
+
+
+
+
+
+
+
+	public void setIdB(long idB) {
+		this.idB = idB;
+	}
+
+
+
+
+
+
+
+
+
 	public void displayBus(Bus bus) {
 		
 		this.setNomChauf(bus.getNomChauf());
@@ -147,9 +180,15 @@ public class BusController {
 		
 	}
 	
+// afficher bus par id
 	
+	public List<Bus> getBusByIdJ(Jardin jardin){
+		return busRepository.getAllBusById(jardin.getId());
+	} 
 	
-	
+	public Bus getBusBymatricule() {
+		return busRepository.getBusById(outcome());
+	}
 	
 	public void setInscrits(Inscrits inscrits) {
 		this.inscrits = inscrits;
@@ -179,13 +218,13 @@ public class BusController {
 	String a;
 	private String getCountryFromJSF(FacesContext context) {
 		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
-		return parameters.get("matricule");
+		return parameters.get("matricule1");
 	}
-	public int outcome() {
+	public long outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
 		System.out.println("((((((((((((((((("+a);
-		return Integer.parseInt(a);
+		return Long.parseLong(a);
 	}
 	
 	

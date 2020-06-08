@@ -54,35 +54,43 @@
 		</h:head>
 
 		<h:body>
-			<h:form>
-			<div class="container">
-					<div class="row">
-			   <ui:repeat var="buss" value="#{busController.getBus1()}">
-				
-					
-					
-					<div class="col-sm-12 col-md-6 col-lg-4 mb-5">
-						<div class="rs-news-1">
-							<div class="media-box">
-							<!--  	<img src="images/dummy-img-600x400.jpg" alt="" class="img-fluid"></img >-->
-							</div>
-							<div class="body-box">
-								<div class="title"><h:outputText value="nom Jardin:" /> <h:outputText value="#{buss.jardin.nomJ}" /></div>
-								<div class="meta-date"><h:outputText value="Trajet:" /><h:outputText value="#{buss.trajet}" /></div>
-								<p><h:outputText value="Tarif:" /> <h:outputText value="#{buss.tarifB}" /></p>
-								<div class="text-center">
-									<h:link outcome="busdetails.jsf" class="btn btn-primary">More details
-									
-                                           <f:param name="matricule1" value="#{buss.matricule}"/></h:link>				
-									                            
-								</div>
-							</div>
-						</div>
-					</div>
-				</ui:repeat>
-				</div>
-				</div>
-			</h:form>
+
+
+			<div class="content">
+
+
+
+
+
+				<h:panelGroup>
+					<h:form>
+						<center>
+							<h2>
+								<strong></strong>
+							</h2>
+							<br></br>
+							<h:dataTable
+								value="#{inscritsController.getinscritsbus(busController.buss.matricule)}"
+								var="inscrits" border="1">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="inscrits" />
+									</f:facet>
+									<h:outputText value="#{inscrits.nominscrit}" />
+								</h:column>
+<h:column>
+									<f:facet name="header">
+										<h:outputText value="inscrits" />
+									</f:facet>
+									<h:outputText value="#{inscrits.prenominscrit}" />
+								</h:column>
+							</h:dataTable>
+						</center>
+					</h:form>
+				</h:panelGroup>
+
+
+			</div>
 		</h:body>
 	</ui:define>
 </ui:composition>

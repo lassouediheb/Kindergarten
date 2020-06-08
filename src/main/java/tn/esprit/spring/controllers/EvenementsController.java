@@ -92,9 +92,10 @@ public class EvenementsController {
 	}
 
 	// Get event by id
-	public Evenements detailevent(String idEvent) {
-		return evenementsService.retrieveEvenements(idEvent);
+	public Evenements detailevent() {
+		return evenementsRepository.getEventById(outcome());
 	}
+	
 
 	// Passer le param idEvent à une autre view
 	String a;
@@ -104,11 +105,11 @@ public class EvenementsController {
 		return parameters.get("idev");
 	}
 
-	public int outcome() {
+	public long outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
 		System.out.println("(((((((((((((((((" + a);
-		return Integer.parseInt(a);
+		return Long.parseLong(a);
 	}
 	
 	// Passer paramètre idEvent pour afficher liste participants

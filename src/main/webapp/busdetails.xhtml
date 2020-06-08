@@ -57,44 +57,47 @@
 			<h:form>
 			
 			
-			<div class="col-sm-12 col-md-12 col-lg-3">
-			<ui:repeat var="buss" value="#{busController.getBus1()}">
+			<div class="col-sm-12 col-md-12 col-lg-6">
+			
 				<div class="container">
 						<div class="events-widget">
-							<div class="widget-title"><f:facet name="header">
-										<h:outputText value="Nom Chauffeur" />
-									</f:facet>
-									<h:outputText value="#{buss.nomChauf}" /></div>
+							<div class="widget-title">Nom chauffeur :
+									</div>
 							<dl>
-								<dt>99 S.t Jomblo Park Pekanbaru 28292. Indonesia</dt> 
-								<dt>Phone:</dt>
-								<dd>074574217447</dd>
-								<dt>Website:</dt>
-								<dd><a href="#">http://www.website.com</a></dd>
+							<h:outputText value="#{busController.getBusBymatricule().nomChauf}" />
 							</dl>
 
-							<div class="widget-title">Detail</div>
+							<div class="widget-title">Depart :</div>
 							<dl>
-								<dt>Start:</dt>
-								<dd>July 16 @ 11:00 am</dd>
-								<dt>End:</dt>
-								<dd>July 29 @ 4:00 pm</dd>
+							<h:outputText value="#{busController.getBusBymatricule().depart}" />
 							</dl>
 
-							<div class="widget-title">Organizer</div>
+							<div class="widget-title">Arrivée:</div>
 							<dl>
-								<dt>Max Organizer</dt>
-								<dt>Phone:</dt>
-								<dd>074574217447</dd>
-								<dt>Website:</dt>
-								<dd><a href="#">http://www.website.com</a></dd>
+						<h:outputText value="#{busController.getBusBymatricule().arrivee}" />
+							</dl>
+							<div class="widget-title">Trajet:</div>
+							<dl>
+						<h:outputText value="#{busController.getBusBymatricule().trajet}" />
+							</dl>
+							<div class="widget-title">Tarif(dt):</div>
+							<dl>
+						<h:outputText value="#{busController.getBusBymatricule().tarifB}" />
+							</dl>
+								<div class="widget-title">Etat:</div>
+							<dl>
+						<h:outputText value="#{busController.getBusBymatricule().etat}" />
+							</dl>
+								<div class="widget-title">Nombre de place:</div>
+							<dl>
+						<h:outputText value="#{busController.getBusBymatricule().nbrPlace}" />
 							</dl>
 							<div class="spacer-30"></div>
 							<a href="#" class="btn btn-primary btn-block">JOIN</a>
 							<div class="spacer-30"></div>
 						</div>
 						</div>
-						</ui:repeat>
+						
 						
 					</div>
 			  

@@ -33,7 +33,7 @@ public class InscritsServicelmpl implements InscritsService {
 		return B;
 		}
 	
-	@Transactional	
+	/*	@Transactional	
 	public void inscr(String matricule, String Idinscrip) {
 		Inscrits InscritsEntity = inscritsRepository.findById(Long.parseLong(Idinscrip)).get();
 		Bus BusEntity = busRepository.findById(Long.parseLong(matricule)).get();
@@ -69,7 +69,7 @@ public class InscritsServicelmpl implements InscritsService {
 
 		}	
 		
-	}
+	}*/
 	
 	
 	

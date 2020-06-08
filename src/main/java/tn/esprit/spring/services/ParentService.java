@@ -10,10 +10,10 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface ParentService {
-	public int AddParent(Parent p);
+	public Parent AddParent(Parent p);
 	public Parent updateParent(Parent p);
-	public void DeleteParent(int id);
-	Parent GetParentById(int id);
+	public void DeleteParent(String id);
+	Parent GetParentById(String id);
 	List<Parent> AllParents();
 	 
 	

@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -119,8 +120,7 @@ public class Bus implements Serializable {
 	public void setNbrPlace(Integer nbrPlace) {
 		this.nbrPlace = nbrPlace;
 	}
-	@ManyToMany(mappedBy="bus", cascade = CascadeType.ALL)
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="bus")
 	private Set<Inscrits> inscrits ;
 
 	public String getEtat() {
@@ -168,11 +168,12 @@ public class Bus implements Serializable {
 	public void setTarifB(String tarifB) {
 		TarifB = tarifB;
 	}
+
 	@Override
 	public String toString() {
 		return "Bus [matricule=" + matricule + ", NomChauf=" + NomChauf + ", Depart=" + Depart + ", arrivee=" + arrivee
 				+ ", trajet=" + trajet + ", TarifB=" + TarifB + ", nbrPlace=" + nbrPlace + ", Etat=" + Etat
-				+ "]";
+				+ ", jardin=" + jardin + ", inscrits=" + inscrits + "]";
 	}
 	public Bus(String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace,
 			String etat, Set<Inscrits> inscrits) {
@@ -226,7 +227,7 @@ public class Bus implements Serializable {
 		this.nbrPlace = nbrPlace;
 		this.jardin = jardin;
 	}
-	public Bus(long matricule,String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace
+	public Bus(long matricule,String nomChauf, String depart, String arrivee, String trajet, String tarifB, Integer nbrPlace,Jardin jardin
 			) {
 		super();
 		this.matricule = matricule;
@@ -236,6 +237,7 @@ public class Bus implements Serializable {
 		this.trajet = trajet;
 		TarifB = tarifB;
 		this.nbrPlace = nbrPlace;
+		this.jardin = jardin;
 		
 	}
 	
