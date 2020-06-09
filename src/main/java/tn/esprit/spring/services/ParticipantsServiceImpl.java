@@ -45,7 +45,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 		String mailP = parentManagedEntity.getEmail();
 		Evenements evenementsManagedEntity = evenementsRepository.findById(idEvent).get();
 		Integer nbPlaces = evenementsRepository.findById(idEvent).get().getNbPlace();
-		if (getParticip(mailP,idEvent)==0){
+		if (getParticip(mailP,idEvent)==1){
 			FacesMessage facesMessage =
 
 					new FacesMessage("Error: vous avez participé!");
@@ -53,7 +53,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 					FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
 		}
 		
-		else if (nbPlaces>0 && getParticip(mailP,idEvent)==1){
+		else if (nbPlaces>0 && getParticip(mailP,idEvent)==0){
 			Participants p = new Participants(nomP, pnomP, numP, mailP, evenementsManagedEntity);
 			addParticipants(p);
 			nbPlaces--;

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.Bus;
 import tn.esprit.spring.entity.Inscrits;
+import tn.esprit.spring.entity.Parent;
 import tn.esprit.spring.repository.InscritsRepository;
 import tn.esprit.spring.services.InscritsService;
 
@@ -31,6 +32,8 @@ public class InscritsController {
 	
 	@Autowired
 	InscritsRepository inscritRepository;
+	@Autowired
+	InscritsService insritsService;
 	
 	@Autowired
 	InscritsService inscritService ; 
@@ -59,7 +62,10 @@ public class InscritsController {
 	}
 
 
-
+	// inscrire bus
+		public void userinscrire(Parent parent,long matricule){
+			insritsService.InscrireBus(parent.getId(), matricule);
+		}
 
 
 

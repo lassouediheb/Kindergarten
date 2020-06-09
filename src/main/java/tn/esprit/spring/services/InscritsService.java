@@ -15,6 +15,6 @@ public interface InscritsService {
 //	public void inscr(String matricule, String Idinscrip);
 //	public void desinscr(String matricule, String Idinscrip);
 	
-	
+	public void InscrireBus(long id, long matricule);
 
 }
