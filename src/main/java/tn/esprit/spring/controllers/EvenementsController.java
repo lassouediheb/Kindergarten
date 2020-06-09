@@ -46,6 +46,8 @@ public class EvenementsController {
 	private String imageE;
 	private Integer nbPlace;
 	private String statutE;
+	
+
 
 	private Participants participants;
 
@@ -61,15 +63,14 @@ public class EvenementsController {
 	}
 
 	// Ajouter un event
-	public void addEvent() {
+	public void addEvent(Jardin jardin) {
 		evenementsService
-				.addEvenements(new Evenements(nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
+				.addEvenements(new Evenements(nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE,jardin));
 	}
 
 	// Modifier un event
-	public void updateEvent() {
-		evenementsService.updateEvenements(
-				new Evenements(eventIdToBeUpdated, nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE));
+	public void updateEvent(Jardin jardin) {
+		evenementsService.updateEvenements(new Evenements(eventIdToBeUpdated, nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, jardin));
 	}
 
 	// Supprimer un event
@@ -91,9 +92,10 @@ public class EvenementsController {
 	}
 
 	// Get event by id
-	public Evenements detailevent(String idEvent) {
-		return evenementsService.retrieveEvenements(idEvent);
+	public Evenements detailevent() {
+		return evenementsRepository.getEventById(outcome());
 	}
+	
 
 	// Passer le param idEvent à une autre view
 	String a;
@@ -103,11 +105,37 @@ public class EvenementsController {
 		return parameters.get("idev");
 	}
 
-	public int outcome() {
+	public long outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
 		System.out.println("(((((((((((((((((" + a);
-		return Integer.parseInt(a);
+		return Long.parseLong(a);
+	}
+	
+	// Passer paramètre idEvent pour afficher liste participants
+	private long idE;
+	public String listeparEvent(Evenements event ) 
+	{ 	
+		this.setEvent(event);
+		this.setIdE(event.getIdEvent());
+	return "listeparticipjardin.xhtml?faces-redirect=true"; 
+	}
+	
+
+	//Affiche liste event par jardin
+	public List<Evenements> getEventByIdJ(Jardin jardin){
+		return evenementsRepository.getAllEventByIdJardin(jardin.getId());
+	} 
+	
+
+	
+
+	public long getIdE() {
+		return idE;
+	}
+
+	public void setIdE(long idE) {
+		this.idE = idE;
 	}
 
 	public EvenementsService getEvenementsService() {
@@ -336,5 +364,7 @@ public class EvenementsController {
 		this.statutE = statutE;
 		this.jardin = jardin;
 	}
+	
+	
 
 }

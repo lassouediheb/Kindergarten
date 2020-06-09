@@ -56,6 +56,7 @@
 		<h:body>
 			<h:form>
 				<div class="container"></div>
+				<h:outputText value="Bonjour #{userController.username}" />
 				<h2>Page De Reclamation</h2>
 				<table>
 					<tr>
@@ -69,14 +70,14 @@
 					</tr>
 					<tr>
 						<td colspan="2"><h:commandButton value="Envoyer Reclamation"
-								action="#{reclamationController.addrec()}" /></td>
+								action="#{reclamationController.addrec(userController.autheticatedUser)}" /></td>
 					</tr>
 				</table>
 				<br></br>
 				<br></br>
 				<h2>Vos Reclamation</h2>
 				<br></br>
-			
+
 				<h:dataTable value="#{reclamationController.reclamations}"
 					var="recl" border="2">
 
@@ -109,14 +110,19 @@
 						<f:facet name="header">
 							<h:outputText value="Etat" />
 						</f:facet>
-						<h:outputText value="#{recl.etat}" />
+						<h:outputText value="#{recl.etat == 1 ? 'traité' : 'Non traité'}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Action" />
 						</f:facet>
-						<h:commandButton  value="Afficher" href="./reclamationdetail.jsf"/>
+						<h:commandButton action="#{reclamationController.afficher(recl)}"
+							value="Afficher" />
+						<h:commandButton
+							action="#"
+							value="supprimer" />
 					</h:column>
+
 
 
 				</h:dataTable>

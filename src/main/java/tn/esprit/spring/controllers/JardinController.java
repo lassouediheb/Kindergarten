@@ -7,9 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.faces.context.FacesContext;
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -18,6 +15,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
+import tn.esprit.spring.entity.Bus;
+import tn.esprit.spring.entity.Directeurs;
 import tn.esprit.spring.entity.ERole;
 import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Jardin;
@@ -41,16 +40,16 @@ public class JardinController {
 
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	PasswordEncoder encoder;
-	
+
 	@Autowired
 	RoleRepository roleRepository;
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	JardinRepository jardinRepository;
 
@@ -74,6 +73,9 @@ public class JardinController {
 	private boolean enabled;
 	private Set<Role> roles;
 
+	private Directeurs directeurs;
+	private String nomD;
+
 	// Afficher liste des jardins
 	private List<Jardin> jardins;
 
@@ -89,7 +91,8 @@ public class JardinController {
 
 	// Modifier un jardin
 	public void updateJardin() {
-		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ, adresseJ, numJ, dateCrea, descripJ, tarifJ);
+		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ,
+				adresseJ, numJ, dateCrea, descripJ, tarifJ);
 		Set<Role> roles = new HashSet<>();
 		Role userRole = roleRepository.findByName(ERole.ROLE_JARDINDENFANT)
 				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -118,9 +121,14 @@ public class JardinController {
 		this.setJardinIdToBeUpdated(jardin.getId());
 	}
 
-	// Get event by id
-	public Jardin jardindetail(String id) {
-		return jardinService.retrieveJardin(id);
+	// Get jardin by id pour afficher profil connecté
+	public Jardin jardinprofil(Jardin jardin) {
+		return jardinRepository.getJardById(jardin.getId());
+	}
+
+	// Get jardin by id
+	public Jardin jardindetail() {
+		return jardinRepository.getJardById(outcome());
 	}
 
 	// Passer le param idJardin à une autre view
@@ -131,11 +139,29 @@ public class JardinController {
 		return parameters.get("idjj");
 	}
 
-	public int outcome() {
+	public long outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
 		System.out.println("(((((((((((((((((" + a);
-		return Integer.parseInt(a);
+		return Long.parseLong(a);
+	}
+	
+
+	// Passer paramètre idJardin pour afficher details jardin
+	private long idJ;
+
+	public String detailsjardin(Jardin jardin) {
+		this.setJardin(jardin);
+		this.setIdJ(jardin.getId());
+		return "jardindetailjardin.xhtml?faces-redirect=true";
+	}
+
+	public long getIdJ() {
+		return idJ;
+	}
+
+	public void setIdJ(long idJ) {
+		this.idJ = idJ;
 	}
 
 	public JardinService getJardinService() {
@@ -310,10 +336,6 @@ public class JardinController {
 		this.tarifJ = tarifJ;
 		this.user = user;
 	}
-	
-	
-	
-	
 
 	public JardinController(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ,
 			float tarifJ, long id, String username, String email, String password, boolean enabled) {
@@ -395,9 +417,53 @@ public class JardinController {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
-	
-	
+
+	public RoleRepository getRoleRepository() {
+		return roleRepository;
+	}
+
+	public void setRoleRepository(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
+	}
+
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	public JardinRepository getJardinRepository() {
+		return jardinRepository;
+	}
+
+	public void setJardinRepository(JardinRepository jardinRepository) {
+		this.jardinRepository = jardinRepository;
+	}
+
+	public PasswordEncoder getEncoder() {
+		return encoder;
+	}
+
+	public void setEncoder(PasswordEncoder encoder) {
+		this.encoder = encoder;
+	}
+
+	public Directeurs getDirecteurs() {
+		return directeurs;
+	}
+
+	public void setDirecteurs(Directeurs directeurs) {
+		this.directeurs = directeurs;
+	}
+
+	public String getNomD() {
+		return nomD;
+	}
+
+	public void setNomD(String nomD) {
+		this.nomD = nomD;
+	}
 
 }

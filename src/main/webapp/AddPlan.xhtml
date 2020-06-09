@@ -1,44 +1,125 @@
+
+
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template.xhtml">
-	<ui:param name="page_name" value="addpub" />
-	<ui:define name="content">
-	
-	
-	<h:panelGroup columns="2"><h:form style="text-align: center;">
-	
-	<label class="col-sm-2 col-form-label">Enter a date in yyyy-mm-dd format </label>
-                                                        <div class="form-group row" style="text-align: left;">
-                                                            <label class="col-sm-2 col-form-label">Begin date</label>
-                                                            
-                                                            <div class="col-sm-10">
-                                                               <h:inputText type="text" class="form-control"  label = "begin Date" required="true" 
-                 requiredMessage="you must set a date!" value="#{planController.date_debut}">
-                                                                <f:convertDateTime pattern = "yyyy-mm-dd" /></h:inputText>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row" style="text-align: center;">
-                                                            <label class="col-sm-2 col-form-label">end date</label>
-                                                            
-                                                            <div class="col-sm-10">
-                                                               <h:inputText type="text" class="form-control"  label = "end Date" required="true" 
-                 requiredMessage="you must set a date!" value="#{planController.date_fin}">
-                                                                                                                               <f:convertDateTime pattern = "yyyy-mm-dd" /></h:inputText>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        
-                                                       
-                                                    
-                       <h:commandButton value="Add"  class="btn btn-success" action="#{planController.addPlanning()}"  /> 
-                                                        
-                                                       
-                                                        </h:form></h:panelGroup>
-                                                      
-                                                    
+	template="/templatejardin.xhtml">
+	<ui:param name="welcomejardin" value="Accueil" />
+	<ui:define name="welcomejardin">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+			<h:panelGroup columns="2">
+				<h:form style="text-align: center;">
+
+					<label class="col-sm-2 col-form-label">Enter a date in
+						yyyy-mm-dd format </label>
+					<div class="form-group row" style="text-align: left;">
+						<label class="col-sm-2 col-form-label">Begin date</label>
+
+						<div class="col-sm-10">
+							<h:inputText type="text" class="form-control" label="begin Date"
+								required="true" requiredMessage="you must set a date!"
+								value="#{planController.date_debut}">
+								<f:convertDateTime pattern="yyyy-mm-dd" />
+							</h:inputText>
+						</div>
+					</div>
+
+					<div class="form-group row" style="text-align: center;">
+						<label class="col-sm-2 col-form-label">end date</label>
+
+						<div class="col-sm-10">
+							<h:inputText type="text" class="form-control" label="end Date"
+								required="true" requiredMessage="you must set a date!"
+								value="#{planController.date_fin}">
+								<f:convertDateTime pattern="yyyy-mm-dd" />
+							</h:inputText>
+
+						</div>
+					</div>
+
+
+
+					<h:commandButton value="Add" class="btn btn-success"
+						action="#{planController.addPlanning(userController.autheticatedUser)}" />
+
+
+				</h:form>
+			</h:panelGroup>
+
+		</h:body>
 	</ui:define>
-	</ui:composition>
-	
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

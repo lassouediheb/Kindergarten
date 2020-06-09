@@ -2,6 +2,7 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -51,6 +52,20 @@ public class Jardin extends User implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Evenements> Evenements ;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
+	private Set<Parent> parent;
+	
+	@OneToMany(mappedBy="jardin",cascade = CascadeType.ALL)
+	private List<Planning> planning;
+
+	public Set<Parent> getParent() {
+		return parent;
+	}
+
+	public void setParent(Set<Parent> parent) {
+		this.parent = parent;
+	}
 
 	public String getNomJ() {
 		return nomJ;
@@ -311,21 +326,43 @@ public class Jardin extends User implements Serializable{
 		this.descripJ = descripJ;
 		this.tarifJ = tarifJ;
 	}
+	
+	
+
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Directeurs directeurs, Set<tn.esprit.spring.entity.Bus> bus,
+			Set<tn.esprit.spring.entity.Activités> activités, Set<tn.esprit.spring.entity.Evenements> evenements,
+			Set<Parent> parent) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.directeurs = directeurs;
+		Bus = bus;
+		Activités = activités;
+		Evenements = evenements;
+		this.parent = parent;
+	}
 
 	@Override
 	public String toString() {
 		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
-				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + ", directeurs=" + directeurs + ", Bus="
-				+ Bus + ", Activités=" + Activités + ", Evenements=" + Evenements + "]";
-	}	
-	
-	
-	
-	
+				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + "]";
+	}
 	
 	
 
+	
+	
 
+	
+
+	
+	
 	
 }
 

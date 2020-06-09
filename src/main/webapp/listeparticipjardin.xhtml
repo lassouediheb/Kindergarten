@@ -55,139 +55,34 @@
 
 		<h:body>
 			<div class="content">
-					<h:panelGroup>
-						<h:form>
-							<h:dataTable value="#{evenementsController.getEvenements()}"
-								var="event" border="1">
+				<h:panelGroup>
+					<h:form>
+						<center>
+							<h2>
+								<strong>Liste des participants</strong>
+							</h2>
+							<br></br>
+							<h:dataTable value="#{participantsController.getAllParticipantsByIdEvent(evenementsController.event.idEvent)}"
+								var="participants" border="1">
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Evenement" />
+										<h:outputText value="Participant" />
 									</f:facet>
-									<h:outputText value="#{event.nomE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Adresse" />
-									</f:facet>
-									<h:outputText value="#{event.adresseE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Date" />
-									</f:facet>
-									<h:outputText value="#{event.dateE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Description" />
-									</f:facet>
-									<h:outputText value="#{event.descripE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Etat" />
-									</f:facet>
-									<h:outputText value="#{event.etatE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Image" />
-									</f:facet>
-									<h:outputText value="#{event.imageE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Nombre de places" />
-									</f:facet>
-									<h:outputText value="#{event.nbPlace}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Statut" />
-									</f:facet>
-									<h:outputText value="#{event.statutE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Nombre de participants" />
-									</f:facet>
-									<h:outputText value="#{event.nomE}" />
+									<h:outputText value="#{participants.nomParticip}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="./listeparticipjardin.jsf"
-										value="Participants" />
-								</h:column>
-								<h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Action" />
-									</f:facet>
-									<h:commandButton
-										action="#{evenementsController.removeEvent(event.idEvent)}"
+										action="./event.jsf"
 										value="Supprimer" />
 								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Action" />
-									</f:facet>
-									<h:commandButton
-										action="#{evenementsController.displayEvent(event)}"
-										value="Modifier" />
-								</h:column>
 							</h:dataTable>
-							<br></br>
-							<br></br>
-							<table>
-								<tr>
-									<td><h:outputText value="Nom Event"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.nomE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Adresse"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.adresseE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Date"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.dateE}"><f:convertDateTime pattern="yyyy-MM-dd"/></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Décrire"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.descripE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Etat"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.etatE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Image"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.imageE}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Nombre de places"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.nbPlace}"></h:inputText></td>
-								</tr>
-								<tr>
-									<td><h:outputText value="Statut"></h:outputText></td>
-									<td><h:inputText value="#{evenementsController.statutE}"></h:inputText></td>
-								</tr>
-								
-							</table>
-							<br></br>
-								<br></br>
-							<tr>
-									<td><h:commandButton value="Ajouter Event"
-											action="#{evenementsController.addEvent()}" /></td>
-									<td><h:commandButton value="Modifier Event"
-											action="#{evenementsController.updateEvent()}" /></td>
-								</tr>
-
-						</h:form>
-					</h:panelGroup>
-				</div>
+						</center>
+					</h:form>
+				</h:panelGroup>
+			</div>
 		</h:body>
 	</ui:define>
 </ui:composition>
