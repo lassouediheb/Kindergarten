@@ -13,6 +13,17 @@
 	background-color: lightyellow;
 	front-size: 22px;
 }
+
+.ui-filter-column .ui-column-customfilter .custom-filter {
+	width: 100%;
+	box-sizing: border-box;
+}
+   .ui-datatable input {
+        box-sizing: border-box;
+        width: 100%;
+        -webkit-box-shadow: none;
+        box-shadow: none !important;
+    }
 </style>
 			<title>SB Admin 2 - Blank</title>
 
@@ -100,60 +111,77 @@
 						<h:form>
 							<h:outputText value="Bonjour #{userController.username}" />
 							<!-- 							<h:form> -->
-							<h:dataTable value="#{reclamationController.reclamations}"
+							<p:dataTable value="#{reclamationController.reclamations}"
 								var="recl" border="2"
-								rowStyleClass="#{recl.etat == 1 ? 'red' : null }"
-								paginator="true"
-								>
+								rowStyleClass="#{recl.etat == 0 ? 'red' : null }"
+								paginator="true" rows="5"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+								rowsPerPageTemplate="5,10,15" >
 
-								<h:column>
+								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Sujet" />
 									</f:facet>
 									<h:outputText value="#{recl.sujetRec}" />
-								</h:column>
-								<h:column>
+								</p:column>
+
+								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Description" />
 									</f:facet>
 									<h:outputText value="#{recl.contenuRec}" />
-								</h:column>
+								</p:column>
 
-								<h:column>
-									<f:facet name="header">
+
+								<p:column sortBy = "#{recl.dateRec}">
+									<f:facet name="header" >
 										<h:outputText value="Date De Reclamation" />
 									</f:facet>
 									<h:outputText value="#{recl.dateRec}" />
-								</h:column>
-								<h:column>
+								</p:column>
+								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Date de traitement" />
 									</f:facet>
 									<h:outputText value="#{recl.dateT}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
+								</p:column>
+
+								<p:column  headerText="etat" sortBy="#{recl.etat}">
+<!-- 									<f:facet name="header"> -->
 										<h:outputText value="Etat" />
-									</f:facet>
+<!-- 									</f:facet> -->
 									<h:outputText
 										value="#{recl.etat == 1 ? 'traité' : 'Non traité'}" />
-								</h:column>
-								<h:column>
+								</p:column>
+								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
 										action="#{reclamationController.traiter(recl)}"
 										value="traiter" />
-								</h:column>
+								</p:column>
 
 
-							</h:dataTable>
+
+								<f:facet name="paginatorTopLeft">
+									<p:commandButton type="button" icon="pi pi-refresh" />
+								</f:facet>
+
+								<f:facet name="paginatorBottomRight">
+									<p:commandButton type="button" icon="pi pi-cloud-upload" />
+								</f:facet>
+
+							</p:dataTable>
 							<!-- 							</h:form> -->
 
 							<h:commandLink value="Déconnexion"
 								action="#{userController.doLogout()}" />
+								
+							
 						</h:form>
+						
 					</h:panelGroup>
 				</div>
 			</div>

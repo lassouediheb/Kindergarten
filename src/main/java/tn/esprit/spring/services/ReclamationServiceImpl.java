@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Reclamation;
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.ReclamationRepository;
 
 @Service
@@ -84,7 +85,7 @@ public class ReclamationServiceImpl implements ReclamationService {
 	}
 
 	@Override
-	public List<String> dateDeTraitement() {
+	public List<Number> dateDeTraitement() {
 		return reclamtationRepository.dateDiff();
 
 	}
@@ -117,4 +118,11 @@ public class ReclamationServiceImpl implements ReclamationService {
 		return (List<Reclamation>) reclamtationRepository.findAll();
 	}
 
+	@Override
+	public List<Reclamation> getUReclamations(User u) {
+		
+		return (List<Reclamation>) reclamtationRepository.findByUser(u);
+	}
+
+	
 }
