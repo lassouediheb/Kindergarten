@@ -2,6 +2,7 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 import tn.esprit.spring.entity.Jardin;
+import tn.esprit.spring.entity.Publication;
 
 public interface JardinService {
 	
@@ -16,5 +17,7 @@ public interface JardinService {
 	Jardin updateJardin(Jardin j);
 
 	void deleteJardin(String id);
+	
+	public List<Jardin> listAll(String keyword);
 }
 

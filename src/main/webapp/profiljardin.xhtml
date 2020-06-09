@@ -97,9 +97,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<table
-						value="#{jardinController.displayJardin(userController.autheticatedUser)}"
-						var="jardin">
+					<table value="#{jardinController.displayJardin(userController.autheticatedUser)}" var="jardin">
 						<tr>
 							<td><h:outputText value="Username"></h:outputText></td>
 							<td><h:inputText class="form-control"
@@ -114,6 +112,7 @@
 							<td><h:outputText value="Nom"></h:outputText></td>
 							<td><h:inputText class="form-control" value="#{jardin.nomJ}"></h:inputText></td>
 						</tr>
+
 						<tr>
 							<td><h:outputText value="Logo"></h:outputText></td>
 							<td><h:inputText class="form-control"
@@ -151,9 +150,9 @@
 						</tr>
 
 					</table>
-					<br></br> <br></br>
+					<br></br>
 					<tr>
-						<td><h:commandButton value="Modifier Jardin"
+						<td><h:commandButton value="Modifier Jardin" id="btn" class="btn btn-success"
 								action="#{jardinController.updateJardin()}" /></td>
 					</tr>
 				</div>

@@ -11,69 +11,73 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tn.esprit.spring.entity.Evenements;
+import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.repository.EvenementsRepository;
 
 @Service
 public class EvenementsServiceImpl implements EvenementsService {
 	@Autowired
 	EvenementsRepository evenementsRepository;
-	
+
 	private static final Logger L = LogManager.getLogger(EvenementsServiceImpl.class);
 
 	@Override
 	public List<Evenements> retrieveAllEvenements() {
 		List<Evenements> events = (List<Evenements>) evenementsRepository.findAll();
-		
-		for (Evenements event : events){
+
+		for (Evenements event : events) {
 			L.info("event +++ :" + event);
 		}
 		return events;
 	}
-	
-	@Override 
-	public List<Evenements> getAllEvenements() { 
-		return (List<Evenements>) evenementsRepository.findAll(); 
-		}
-	
+
+	@Override
+	public List<Evenements> getAllEvenements() {
+		return (List<Evenements>) evenementsRepository.findAll();
+	}
+
 	@Override
 	public Evenements retrieveEvenements(String id) {
 		return evenementsRepository.findById(Long.parseLong(id)).orElse(null);
 	}
-	
+
 	@Override
 	public Evenements addEvenements(Evenements e) {
-		Evenements event =evenementsRepository.save(e);
+		Evenements event = evenementsRepository.save(e);
 		return event;
-		
+
 	}
 
 	@Override
 	public void deleteEvenements(String id) {
 		evenementsRepository.deleteById(Long.parseLong(id));
-		
+
 	}
 
 	@Override
 	public Evenements updateEvenements(Evenements e) {
-		Evenements event =evenementsRepository.save(e);
+		Evenements event = evenementsRepository.save(e);
 		return event;
 	}
 
-	
 	@Override
-	public  Evenements getEvenementByIdEvent(long idEvent){
-		Evenements event =evenementsRepository.findById(idEvent).orElse(null);
+	public Evenements getEvenementByIdEvent(long idEvent) {
+		Evenements event = evenementsRepository.findById(idEvent).orElse(null);
 		return event;
+
+	}
+
+	public List<Evenements> listAll(String keyword) {
+		if (keyword != null) {
+			return evenementsRepository.search(keyword);
+		}
+		return (List<Evenements>) evenementsRepository.findAll();
 		
 	}
-	
-	 /*public List<Evenements> getAllEventByIdJardin(long id){
-		 return evenementsRepository.getAllEventByIdJardin(id);
-	 }*/
-	
 
-	
-	
-	
-	
+	/*
+	 * public List<Evenements> getAllEventByIdJardin(long id){ return
+	 * evenementsRepository.getAllEventByIdJardin(id); }
+	 */
+
 }

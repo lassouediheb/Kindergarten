@@ -47,7 +47,7 @@ public class EvenementsController {
 	private Integer nbPlace;
 	private String statutE;
 	
-
+	private String keyword;
 
 	private Participants participants;
 
@@ -126,6 +126,14 @@ public class EvenementsController {
 	public List<Evenements> getEventByIdJ(Jardin jardin){
 		return evenementsRepository.getAllEventByIdJardin(jardin.getId());
 	} 
+	
+	//Chercher un event
+	public List<Evenements> listAll(String keyword) {
+		if (keyword != null) {
+			return evenementsRepository.search(keyword);
+		}
+		return (List<Evenements>) evenementsRepository.findAll();
+	}
 	
 	public long getIdE() {
 		return idE;
@@ -285,6 +293,15 @@ public class EvenementsController {
 
 	public void setA(String a) {
 		this.a = a;
+	}
+	
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	public EvenementsController() {

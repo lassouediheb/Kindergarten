@@ -72,6 +72,8 @@ public class JardinController {
 	private Boolean EtatAcc;
 	private boolean enabled;
 	private Set<Role> roles;
+	
+	private String keyword;
 
 	private Directeurs directeurs;
 	private String nomD;
@@ -155,6 +157,14 @@ public class JardinController {
 		this.setJardin(jardin);
 		this.setIdJ(jardin.getId());
 		return "jardindetailjardin.xhtml?faces-redirect=true";
+	}
+	
+	// Chercher jardin
+	public List<Jardin> listAll(String keyword) {
+		if (keyword != null) {
+			return jardinRepository.search(keyword);
+		}
+		return (List<Jardin>) jardinRepository.findAll();
 	}
 
 	public long getIdJ() {
@@ -279,6 +289,14 @@ public class JardinController {
 
 	public void setJardin(Jardin jardin) {
 		this.jardin = jardin;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	public JardinController() {

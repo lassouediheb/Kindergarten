@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Jardin;
 
 import tn.esprit.spring.repository.JardinRepository;
@@ -59,6 +60,13 @@ public class JardinServiceImpl implements JardinService {
 	@Override
 	public void deleteJardin(String id) {
 		jardinRepository.deleteById(Long.parseLong(id));
+	}
+	
+	public List<Jardin> listAll(String keyword) {
+		if (keyword != null) {
+			return jardinRepository.search(keyword);
+		}
+		return (List<Jardin>) jardinRepository.findAll();
 	}
 
 }
