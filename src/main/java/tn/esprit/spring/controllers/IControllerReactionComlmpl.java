@@ -135,7 +135,13 @@ private List<ReactionCom> reactionComids;
 	{ 	
 		this.setCommentaire(com);
 		this.setCommentaireId(com.getId());
-	return "/pages/jardin/reactionCom.xhtml?faces-redirect=true"; 
+	return "reactionCom.xhtml?faces-redirect=true"; 
+	}
+	public String reactionCom6(Commentaire com ) 
+	{ 	
+		this.setCommentaire(com);
+		this.setCommentaireId(com.getId());
+	return "reactionComjardin.xhtml?faces-redirect=true"; 
 	}
 	public List<ReactionCom> getReactionComids() {
 		return reactionComids;

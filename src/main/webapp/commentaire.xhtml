@@ -1,0 +1,194 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templateclient.xhtml">
+	<ui:param name="welcomeclient" value="Accueil" />
+	<ui:define name="welcomeclient">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+			<h:panelGroup columns="2">
+				<h:form>
+					<table>
+						<tr>
+							<td><h:outputText value="Reaction commentaire : "></h:outputText></td>
+							<td><h:selectOneMenu
+									value="#{reactionComController.typeReaction}">
+									<f:selectItem itemLabel="Choisir la reaction"
+										itemValue="#{null}" />
+									<f:selectItems value="#{reactionComController.typeReactions}" />
+								</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td colspan="2"><h:commandButton value="Ajouter reaction"
+									action="#{reactionComController.addReactionCom(commentaireController.commentaire,userController.autheticatedUser)}" />
+							</td>
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
+
+
+			<h:form>
+				<div class="container">
+					<div class="row">
+						<ui:repeat var="commentaire"
+							value="#{commentaireController.getAllCommentaireByIdpublication(commentaireController.publication.id)}">
+							<div class="col-lg-4 col-md-6 mb-4">
+								<div class="card h-100">
+									<div class="card-body">
+										<h3>
+											<h:outputText value="Username :"  style="color: red" />
+											<h:outputText value="#{commentaire.user.username}" />
+										</h3>
+										<h3>
+											<h:outputText value="Commentaire : " />
+											<br />
+											<h:outputText value="#{commentaire.comContenu}" />
+										</h3>
+
+										<h5>
+											<h:outputText value="Date de Commentaire :" />
+											<h:outputText value="#{commentaire.dateCommentaire}" />
+										</h5>
+										<h5>
+											<h:outputText value="Nombre reactions :" />
+											<h:outputText
+												value="#{reactionComController.getNombreReactionCom(commentaire.id)}" />
+										</h5>
+										<h:commandButton
+											action="#{commentaireController.displayCommentaire1(commentaire)}"
+											value="reagir" />
+										<h:commandButton
+											action="#{reactionComController.reactionCom(commentaire)}"
+											value="afficher les reactions de ce commentaire" />
+									</div>
+
+								</div>
+								<br></br>
+							</div>
+						</ui:repeat>
+					</div>
+				</div>
+			</h:form>
+
+			<h:panelGroup columns="2">
+				<h:form>
+					<table>
+
+						<tr>
+							<td><h:outputText value="commentaire"></h:outputText></td>
+							<td><h:inputText value="#{commentaireController.comContenu}"></h:inputText></td>
+						</tr>
+						<tr>
+							<td colspan="2"><h:commandButton
+									value="Mettre A jour votre commentaire"
+									action="#{commentaireController.updateCommentaire(userController.autheticatedUser)}" />
+							</td>
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
+
+<h:outputText value="Mes commentaires:"  style="color: red"></h:outputText>
+
+
+			<h:form>
+				<div class="container">
+					<div class="row">
+						<ui:repeat var="commentaire"
+							value="#{commentaireController.getAllcommentaireByIduseretpublication(commentaireController.publication.id,userController.autheticatedUser.id)}">
+							<div class="col-lg-4 col-md-6 mb-4">
+								<div class="card h-100">
+									<div class="card-body">
+										<h3>
+											<h:outputText value="Username :" style="color: red" />
+											<h:outputText value="#{commentaire.user.username}" />
+										</h3>
+										<h3>
+											<h:outputText value="Commentaire : " />
+											<br />
+											<h:outputText value="#{commentaire.comContenu}" />
+										</h3>
+
+										<h5>
+											<h:outputText value="Date de Commentaire :" />
+											<h:outputText value="#{commentaire.dateCommentaire}" />
+										</h5>
+										<h5>
+											<h:outputText value="Nombre reactions :" />
+											<h:outputText
+												value="#{reactionComController.getNombreReactionCom(commentaire.id)}" />
+										</h5>
+										<h:commandButton
+											action="#{commentaireController.removeCommentaire(commentaire.id)}"
+											value="Supprimer" />
+										<h:commandButton
+											action="#{commentaireController.displayCommentaire(commentaire, commentaire.publication)}"
+											value="Modifier" />
+										<h:commandButton
+											action="#{reactionComController.reactionCom(commentaire)}"
+											value="afficher les reactions de mon commentaire" />
+									</div>
+
+								</div>
+								<br></br>
+							</div>
+						</ui:repeat>
+					</div>
+				</div>
+			</h:form>
+
+
+
+
+		</h:body>
+	</ui:define>
+</ui:composition>

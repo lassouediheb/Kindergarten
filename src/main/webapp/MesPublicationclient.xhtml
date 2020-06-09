@@ -2,9 +2,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/templatejardin.xhtml">
-	<ui:param name="welcomejardin" value="Accueil" />
-	<ui:define name="welcomejardin">
+	template="/templateclient.xhtml">
+	<ui:param name="welcomeclient" value="Accueil" />
+	<ui:define name="welcomeclient">
 		<h:head>
 			<!-- Basic Page Needs
     ================================================== -->
@@ -54,55 +54,78 @@
 		</h:head>
 
 		<h:body>
+			<h:panelGroup columns="2">
+				<h:form>
+					<table>
+
+						<tr>
+							<td><h:outputText value="PUBLICATION : "></h:outputText></td>
+							<td><h:inputText value="#{publicationController.pubContenu}"></h:inputText>
+							</td>
+
+						</tr>
+						<tr>
+							<td colspan="2"><h:commandButton
+									value="Mettre A jour votre publication"
+									action="#{publicationController.updatePublication(userController.autheticatedUser)}" /></td>
+
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
 			<h:form>
-			
-			
-			<div class="col-sm-12 col-md-12 col-lg-6">
-			
 				<div class="container">
-						<div class="events-widget">
-							<div class="widget-title">Nom chauffeur :
+					<div class="row">
+						<ui:repeat var="pubidusers"
+							value="#{publicationController.getAllpublicationByIduser(userController.autheticatedUser.id)}">
+							<div class="col-lg-4 col-md-6 mb-4">
+								<div class="card h-100">
+									<div class="card-body">
+										<h3>
+											<h:outputText value="Username:" />
+											<h:outputText value="#{pubidusers.user.username}" />
+										</h3>
+										<h3>
+											<h:outputText value="Publication:" />
+											<br />
+											<h:outputText value="#{pubidusers.pubContenu}" />
+
+										</h3>
+
+										<h5>
+											<h:outputText value="Date de Publication:" />
+											<br />
+											<h:outputText value="#{pubidusers.datePublication}" />
+										</h5>
+										<h5>
+											<h:outputText value="Nombre reactions:" />
+											<h:outputText
+												value="#{reactionPubController.getNombreReactionPub(pubidusers.id)}" />
+										</h5>
+										<h5>
+											<h:outputText value="Nombre commentaires:" />
+											<h:outputText
+												value="#{commentaireController.getNombrecommentairebyidpub(pubidusers.id)}" />
+										</h5>
+										
+											<p class="card-text">
+												<h:commandButton
+													action="#{publicationController.removePublication(pubidusers.id)}"
+													value="Supprimer" />
+												<h:commandButton
+													action="#{publicationController.displayPublication(pubidusers)}"
+													value="Modifier" />
+											</p>
+
+										
 									</div>
-							<dl>
-							<h:outputText value="#{busController.getBusBymatricule().nomChauf}" />
-							</dl>
-
-							<div class="widget-title">Depart :</div>
-							<dl>
-							<h:outputText value="#{busController.getBusBymatricule().depart}" />
-							</dl>
-
-							<div class="widget-title">Arrivée:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().arrivee}" />
-							</dl>
-							<div class="widget-title">Trajet:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().trajet}" />
-							</dl>
-							<div class="widget-title">Tarif(dt):</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().tarifB}" />
-							</dl>
-								<div class="widget-title">Etat:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().etat}" />
-							</dl>
-								<div class="widget-title">Nombre de place:</div>
-							<dl>
-						<h:outputText value="#{busController.getBusBymatricule().nbrPlace}" />
-							</dl>
-							<div class="spacer-30"></div>
-							
-							<div class="spacer-30"></div>
-						</div>
-						</div>
-						
-						
+								</div>
+								<br></br>
+							</div>
+						</ui:repeat>
 					</div>
-			  
+				</div>
 			</h:form>
-			
 		</h:body>
 	</ui:define>
 </ui:composition>

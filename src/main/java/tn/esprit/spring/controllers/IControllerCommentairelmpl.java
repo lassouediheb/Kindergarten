@@ -175,7 +175,13 @@ public String reactionPub(Publication pub )
 { 	
 	this.setPublication(pub);
 	this.setPublicationcomId(pub.getId());
-return "/pages/jardin/commentaire.xhtml?faces-redirect=true"; 
+return "commentaire.xhtml?faces-redirect=true"; 
+}
+public String reactionPub3(Publication pub ) 
+{ 	
+	this.setPublication(pub);
+	this.setPublicationcomId(pub.getId());
+return "commentairejardin.xhtml?faces-redirect=true"; 
 }
 public int getNombrecommentairebyidpub(long id ) {
 	return commentaireRepository.countcom(id);

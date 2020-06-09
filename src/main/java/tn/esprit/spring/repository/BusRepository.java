@@ -29,4 +29,9 @@ public interface BusRepository extends CrudRepository<Bus, Long>{
 	@Query("SELECT b FROM Bus b where b.matricule=?1")
 	public Bus getBusById(long matricule) ;
 	
+	
+	
+	
+	
+	
 }

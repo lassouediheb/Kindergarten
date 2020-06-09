@@ -71,14 +71,6 @@ UserRepository userRepository;
 	
 	private User autheticatedUser;
 	
-	public User getAutheticatedUser() {
-		return autheticatedUser;
-	}
-
-
-	public void setAutheticatedUser(User autheticatedUser) {
-		this.autheticatedUser = autheticatedUser;
-	}
 
 
 	public String doLogin() {
@@ -126,6 +118,16 @@ UserRepository userRepository;
 		}
 	
 	
+		public User getAutheticatedUser() {
+		return autheticatedUser;
+	}
+
+
+	public void setAutheticatedUser(User autheticatedUser) {
+		this.autheticatedUser = autheticatedUser;
+	}
+
+
 		public String doLogout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login1.xhtml?faces-redirect=true";

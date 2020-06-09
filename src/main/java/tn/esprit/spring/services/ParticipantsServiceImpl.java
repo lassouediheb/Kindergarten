@@ -43,8 +43,12 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 		String mailP = parentManagedEntity.getEmail();
 		Evenements evenementsManagedEntity = evenementsRepository.findById(idEvent).get();
 		Integer nbPlaces = evenementsRepository.findById(idEvent).get().getNbPlace();
+<<<<<<< HEAD
 		Participants p = new Participants(nomP, pnomP, numP, mailP, evenementsManagedEntity);
 		if (getParticip(mailP,idEvent).equals(p)==true){
+=======
+		if (getParticip(mailP,idEvent)==1){
+>>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
 			FacesMessage facesMessage =
 
 					new FacesMessage("Error: vous avez participé!");
@@ -52,9 +56,14 @@ public class ParticipantsServiceImpl implements ParticipantsService {
 					FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
 		}
 		
+<<<<<<< HEAD
 		
 		else if (nbPlaces>0){
 			
+=======
+		else if (nbPlaces>0 && getParticip(mailP,idEvent)==0){
+			Participants p = new Participants(nomP, pnomP, numP, mailP, evenementsManagedEntity);
+>>>>>>> branch 'master' of https://github.com/lassouediheb/Kindergarten
 			addParticipants(p);
 			nbPlaces--;
 			evenementsManagedEntity.setNbPlace(nbPlaces);
