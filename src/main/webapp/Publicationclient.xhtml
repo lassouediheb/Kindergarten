@@ -62,9 +62,6 @@
 							<td><h:outputText value="PUBLICATION :" style="color: red" ></h:outputText></td>
 							<td><h:inputText value="#{publicationController.pubContenu}"></h:inputText>
 							</td>
-
-						</tr>
-						<tr>
 							<td colspan="2"><h:commandButton value="Ajouter Publication"
 									action="#{publicationController.addPublication(userController.autheticatedUser)}" styleClass="GreenButton" /></td>
 
@@ -77,7 +74,7 @@
 			<h:form>
 				<table>
 					<tr>
-						<td><h:outputText value="Reaction : " style="color: red" ></h:outputText></td>
+						<td><h:outputText value="Reaction :" style="color: red" ></h:outputText></td>
 						<td></td>
 						
 						<td><h:selectOneMenu
@@ -86,8 +83,6 @@
 									itemValue="#{null}" />
 								<f:selectItems value="#{reactionPubController.typeReactions}" />
 							</h:selectOneMenu></td>
-					</tr>
-					<tr>
 						<td colspan="2"><h:commandButton value="Ajouter reaction"
 								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton"/>
 				</td>
@@ -103,8 +98,6 @@
 					<tr>
 						<td><h:outputText value="commentaire : "  style="color: red" ></h:outputText></td>
 						<td><h:inputText value="#{commentaireController.comContenu}"></h:inputText></td>
-					</tr>
-					<tr>
 						<td colspan="2"><h:commandButton value="Ajouter commentaire"
 								action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton" />
 														
@@ -113,12 +106,28 @@
 				</table>
 			</h:form>
 		</h:panelGroup>
-	
+	<h:panelGroup columns="2">
+			
+			<h:form>
+				<table>
+
+					<tr>
+						<td><h:outputText value="Search:" style="color: red"></h:outputText></td>
+						<td><h:inputText value="#{publicationController.keyword}"></h:inputText>
+						</td>
+						<td colspan="2"><h:commandButton value="search"
+								action="#{publicationController.listAll(keyword)}"  />
+							</td>
+
+					</tr>
+				</table>
+			</h:form>
+		</h:panelGroup>
 			<h:form>
 				<div class="container">
 					<div class="row">
 						<ui:repeat var="publication"
-							value="#{publicationController.publications}">
+							value="#{publicationController.listAll(publicationController.keyword)}">
 							<div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<div class="card-body">

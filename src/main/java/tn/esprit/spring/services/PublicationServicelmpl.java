@@ -76,6 +76,12 @@ public class PublicationServicelmpl implements PublicationService {
 	public List<Publication> getAllpublicationByIduser(long id) {
 		return publicationRepository.getAllpublicationByIduser(id);
 	}
+	 public List<Publication> listAll(String keyword) {
+	        if (keyword != null) {
+	            return publicationRepository.search(keyword);
+	        }
+	        return (List<Publication>) publicationRepository.findAll();
+	    }
 	
 
 }

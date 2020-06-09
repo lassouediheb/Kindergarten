@@ -15,5 +15,8 @@ public interface PublicationRepository extends CrudRepository<Publication,Long> 
     public int countpub(long userid);
 	 @Query("SELECT p FROM Publication p where p.user.id=?1")
 	 public List<Publication> getAllpublicationByIduser(long id) ;
+	  @Query("SELECT p FROM Publication p WHERE p.PubContenu LIKE %?1%"
+	            + " OR p.user.username LIKE %?1%")          
+	  public List<Publication> search(String keyword);
 	
 }

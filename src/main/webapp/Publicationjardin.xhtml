@@ -52,11 +52,8 @@ template="/templatejardin.xhtml">
 							<td><h:outputText value="PUBLICATION :" style="color: red" ></h:outputText></td>
 							<td><h:inputText value="#{publicationController.pubContenu}"></h:inputText>
 							</td>
-
-						</tr>
-						<tr>
-							<td colspan="2"><h:commandButton value="Ajouter Publication"
-									action="#{publicationController.addPublication(userController.autheticatedUser)}" styleClass="GreenButton" /></td>
+							<td colspan="2"><h:commandButton value="Ajouter Publication" id="btn" class="btn btn-success"
+									action="#{publicationController.addPublication(userController.autheticatedUser)}" /></td>
 
 						</tr>
 					</table>
@@ -76,8 +73,6 @@ template="/templatejardin.xhtml">
 									itemValue="#{null}" />
 								<f:selectItems value="#{reactionPubController.typeReactions}" />
 							</h:selectOneMenu></td>
-					</tr>
-					<tr>
 						<td colspan="2"><h:commandButton value="Ajouter reaction"
 								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton"/>
 				</td>
@@ -93,12 +88,28 @@ template="/templatejardin.xhtml">
 					<tr>
 						<td><h:outputText value="commentaire : "  style="color: red" ></h:outputText></td>
 						<td><h:inputText value="#{commentaireController.comContenu}"></h:inputText></td>
-					</tr>
-					<tr>
 						<td colspan="2"><h:commandButton value="Ajouter commentaire"
 								action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton" />
 														
 							</td>
+					</tr>
+				</table>
+			</h:form>
+		</h:panelGroup>
+		
+		<h:panelGroup columns="2">
+			
+			<h:form>
+				<table>
+
+					<tr>
+						<td><h:outputText value="Search:" style="color: red"></h:outputText></td>
+						<td><h:inputText value="#{publicationController.keyword}"></h:inputText>
+						</td>
+						<td colspan="2"><h:commandButton value="search"
+								action="#{publicationController.listAll(keyword)}" />
+							</td>
+
 					</tr>
 				</table>
 			</h:form>
