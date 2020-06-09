@@ -92,69 +92,50 @@
 				<div class="content">
 					<h:panelGroup>
 						<h:form>
-							<h:dataTable value="#{evenementsController.getEvenements()}"
-								var="event" border="1">
-
+							<h:dataTable value="#{participantsController.getAllParticip()}" var="participant"
+								border="1">
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Nom Jardin" />
+										<h:outputText value="Nom" />
 									</f:facet>
-									<h:outputText value="#{event.jardin.nomJ}" />
+									<h:outputText value="#{participant.nomParticip}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Evenement" />
+										<h:outputText value="Prenom" />
 									</f:facet>
-									<h:outputText value="#{event.nomE}" />
+									<h:outputText value="#{participant.prenomParticip}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Adresse" />
+										<h:outputText value="Mail" />
 									</f:facet>
-									<h:outputText value="#{event.adresseE}" />
+									<h:outputText value="#{participant.mailParticip}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Date" />
+										<h:outputText value="Numéro" />
 									</f:facet>
-									<h:outputText value="#{event.dateE}" />
+									<h:outputText value="#{participant.numParticip}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Description" />
+										<h:outputText value="Event" />
 									</f:facet>
-									<h:outputText value="#{event.descripE}" />
+									<h:outputText value="#{participant.evenements.nomE}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Etat" />
+										<h:outputText value="Jardin" />
 									</f:facet>
-									<h:outputText value="#{event.etatE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Image" />
-									</f:facet>
-									<h:outputText value="#{event.imageE}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Nombre de places" />
-									</f:facet>
-									<h:outputText value="#{event.nbPlace}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Statut" />
-									</f:facet>
-									<h:outputText value="#{event.statutE}" />
+									<h:outputText value="#{participant.evenements.jardin.nomJ}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{evenementsController.removeEvent(event.idEvent)}"
+										action="#{participantsController.removeParticip(participant.idParticip)}"
 										value="Supprimer" />
 								</h:column>
 							</h:dataTable>

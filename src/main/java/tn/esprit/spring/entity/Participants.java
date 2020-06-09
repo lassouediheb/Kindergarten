@@ -138,6 +138,14 @@ public class Participants implements Serializable{
 		this.mailParticip = mailParticip;
 		this.evenements = evenements;
 	}
+
+	@Override
+	public String toString() {
+		return "Participants [idParticip=" + idParticip + ", nomParticip=" + nomParticip + ", prenomParticip="
+				+ prenomParticip + ", numParticip=" + numParticip + ", mailParticip=" + mailParticip + ", evenements="
+				+ evenements + "]";
+	}
+
 	
 	
 

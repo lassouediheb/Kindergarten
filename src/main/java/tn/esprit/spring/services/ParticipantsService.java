@@ -2,6 +2,7 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 
+import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Participants;
 
 public interface ParticipantsService {
@@ -15,6 +16,8 @@ public interface ParticipantsService {
 	public int getNombreParticipantsByidEvent(long idEvent );
 	
 	public void ParticiperEvent(long id, long idEvent);
+	
+	List<Participants> getParticipants();
 
 
 }
