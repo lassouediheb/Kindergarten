@@ -55,6 +55,9 @@ public class InscritsController {
 
 
 	// Liste participants par idEvent
+	
+	
+	
 	public List<Inscrits> getinscritsbus(long matricule){
 		
 		return inscritRepository.getinscribybus(matricule);
