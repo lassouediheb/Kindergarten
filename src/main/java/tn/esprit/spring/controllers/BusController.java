@@ -16,9 +16,11 @@ import tn.esprit.spring.entity.Bus;
 import tn.esprit.spring.entity.Evenements;
 import tn.esprit.spring.entity.Inscrits;
 import tn.esprit.spring.entity.Jardin;
+import tn.esprit.spring.entity.Parent;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.BusRepository;
 import tn.esprit.spring.services.BusService;
+import tn.esprit.spring.services.InscritsService;
 
 @Scope(value = "session")
 @Controller(value = "busController")

@@ -18,7 +18,9 @@ public interface ParticipantsRepository extends CrudRepository<Participants, Lon
 	@Query("SELECT count(p) FROM Participants p where p.evenements.idEvent=?1")
 	 public int nbParticip(long idEvent);
 	
-	@Query("SELECT p FROM Participants p where p.mailParticip=?1 AND p.evenements.idEvent=?1")
-	 public Participants getParticipByMailEvent(String mailParticip,long idEvent);
+	@Query("SELECT p FROM Participants p where p.mailParticip=:mailParticip1 AND p.evenements.idEvent=:idEvent1")
+	 public Participants getParticipByMailEvent(@Param("mailParticip1")String mailParticip,@Param("idEvent1")long idEvent);
 
+
+	
 }
