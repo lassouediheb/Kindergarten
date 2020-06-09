@@ -132,9 +132,11 @@ public class InscritsServicelmpl implements InscritsService {
 			if (getinscrits(nomI,matricule)==1){
 				FacesMessage facesMessage =
 
-						new FacesMessage("Error: vous avez participé!");
+						new FacesMessage("Error: vous etes deja inscrit !!");
 
 						FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
+						
+						
 			}
 			
 			else if (nbrPlace>0 && getinscrits(nomI,matricule)==0){
