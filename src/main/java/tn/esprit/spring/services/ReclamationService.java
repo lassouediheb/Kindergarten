@@ -3,6 +3,7 @@ package tn.esprit.spring.services;
 import java.util.List;
 
 import tn.esprit.spring.entity.Reclamation;
+import tn.esprit.spring.entity.User;
 
 
 public interface ReclamationService {
@@ -14,8 +15,10 @@ public interface ReclamationService {
 	public void deleteReclamation(String id) ;
 	public int getNombreReclamationJPQL() ;
 	public Reclamation traiterReclamation(Reclamation R);
-	List <String>dateDeTraitement();
+	List <Number>dateDeTraitement();
 	public int matchStrings(String firstString, String SecondString);
 	public List<Reclamation> getAllReclamations();
+	
+	public List<Reclamation> getUReclamations(User u);
 	
 }

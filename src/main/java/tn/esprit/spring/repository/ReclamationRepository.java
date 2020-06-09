@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entity.Reclamation;
+import tn.esprit.spring.entity.User;
 
 
 @Repository
@@ -16,7 +17,8 @@ public interface ReclamationRepository extends CrudRepository<Reclamation,Intege
 	
 	List<Reclamation> findBySujetRecLike(String sujetRec);
 	List<Reclamation> findBySujetRecLikeOrderByDateRecDesc (String sujetRec);
+     List<Reclamation> findByUser(User user);
+	@Query("SELECT DATEDIFF(datet,date_rec) FROM Reclamation WHERE etat=1")
+     List <Number>dateDiff();
 	
-	@Query("SELECT sujetRec,DATEDIFF(datet,date_rec) FROM Reclamation WHERE etat=1")
-     List <String>dateDiff();
 }
