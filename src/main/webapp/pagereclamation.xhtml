@@ -78,7 +78,7 @@
 				<h2>Vos Reclamation</h2>
 				<br></br>
 
-				<h:dataTable value="#{reclamationController.reclamations}"
+				<h:dataTable value="#{reclamationController.getUReclamations(userController.autheticatedUser)}"
 					var="recl" border="2">
 
 					<h:column>
@@ -119,7 +119,7 @@
 						<h:commandButton action="#{reclamationController.afficher(recl)}"
 							value="Afficher" />
 						<h:commandButton
-							action="#"
+							action="#{reclamationController.removeR(recl.idRec)}"
 							value="supprimer" />
 					</h:column>
 

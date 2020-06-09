@@ -207,4 +207,24 @@ public class IControllerPublicationlmpl {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     
     }
+    private String keyword;
+    public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public List<Publication> listAll(String keyword) {
+        if (keyword != null) {
+            return publicationRepository.search(keyword);
+        }
+        return (List<Publication>) publicationRepository.findAll();
+    }
+    public String afficher() 
+    { 	
+    	
+    return "Publicationclient.xhtml?faces-redirect=true"; 
+    }
 }

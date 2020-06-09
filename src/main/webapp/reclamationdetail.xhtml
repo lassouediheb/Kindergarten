@@ -1,5 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templatejardin.xhtml">
@@ -57,8 +58,9 @@
 			<h:form>
 				<div class="container"></div>
 				<h3>Reclamation</h3>
-				
-				
+					<p:barChart model="#{chartJsView.barModel2}" style="width: 70%; height: 350px;"/>
+<!-- 					<p:pieChart model="#{chartJsView.pieModel}"	style="width: 100%; height: 500px;" /> -->
+<!-- 				<p:chart type="bar" model="#{Statreclamation.barModel2}" style="height:300px"/> -->
 				
 			</h:form>
 		</h:body>

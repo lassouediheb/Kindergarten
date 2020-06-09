@@ -24,6 +24,7 @@ public class ReclamationController {
 	ReclamationServiceImpl reclamationService;
 
 	private List<Reclamation> reclamations;
+	private List<Reclamation> ureclamations;
 	private int idRec;
 	private String sujetRec;
 	private String ContenuRec;
@@ -94,6 +95,14 @@ public class ReclamationController {
 		this.reclamations = reclamations;
 	}
 
+	public List<Reclamation> getUreclamations() {
+		return ureclamations;
+	}
+
+	public void setUreclamations(List<Reclamation> ureclamations) {
+		this.ureclamations = ureclamations;
+	}
+
 	private User user;
 	private long authenticatedUser;
 
@@ -108,6 +117,11 @@ public class ReclamationController {
 	public List<Reclamation> getReclamations() {
 		reclamations = reclamationService.getAllReclamations();
 		return reclamations;
+	}
+
+	public List<Reclamation> getUReclamations(User u) {
+		ureclamations = reclamationService.getUReclamations(u);
+		return ureclamations;
 	}
 
 	public Reclamation traiter(Reclamation r) {
@@ -136,12 +150,14 @@ public class ReclamationController {
 		this.setDateT(r.getDateT());
 		this.setSujetRec(r.getSujetRec());
 		this.setEtat(r.getEtat());
-		return "/reclamationdetail.xhtml?faces-redirect=true"; 
+		return "/reclamationdetail.xhtml?faces-redirect=true";
 	}
-	
-//	public void removeEmploye(int ids)
-//	{
-//		reclamationService.deleteReclamation(ids);
-//		
-//	}	
+
+public void removeR(String ids)
+{
+		reclamationService.deleteReclamation(ids);
+		
+	}	
+
+
 }
