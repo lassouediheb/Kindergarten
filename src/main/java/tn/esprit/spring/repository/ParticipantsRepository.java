@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entity.Evenements;
@@ -17,9 +18,9 @@ public interface ParticipantsRepository extends CrudRepository<Participants, Lon
 	@Query("SELECT count(p) FROM Participants p where p.evenements.idEvent=?1")
 	 public int nbParticip(long idEvent);
 	
-	@Query("SELECT p FROM Participants p where p.idParticip=?1")
-	 public Participants getParticipById(long idParticip);
-	
-	Boolean existsByMailParticip(String mailParticip);
+	@Query("SELECT p FROM Participants p where p.mailParticip=:mailParticip1 AND p.evenements.idEvent=:idEvent1")
+	 public Participants getParticipByMailEvent(@Param("mailParticip1")String mailParticip,@Param("idEvent1")long idEvent);
 
+
+	
 }

@@ -32,6 +32,7 @@ import tn.esprit.spring.payload.response.MessageResponse;
 import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.security.jwt.JwtUtils;
+import tn.esprit.spring.services.IUserService;
 import tn.esprit.spring.services.UserDetailsImpl;
 import tn.esprit.spring.services.UserDetailsServiceImpl;
 
@@ -59,7 +60,13 @@ JwtUtils jwtUtils;
 
 @Autowired
 UserRepository userRepository;
+
+@Autowired
+IUserService userService;
 	
+	public void setUsers(List<User> users) {
+	this.users = users;
+}
 	private String username;
 	private String password;
 	private User user;
@@ -71,14 +78,6 @@ UserRepository userRepository;
 	
 	private User autheticatedUser;
 	
-	public User getAutheticatedUser() {
-		return autheticatedUser;
-	}
-
-
-	public void setAutheticatedUser(User autheticatedUser) {
-		this.autheticatedUser = autheticatedUser;
-	}
 
 
 	public String doLogin() {
@@ -126,6 +125,16 @@ UserRepository userRepository;
 		}
 	
 	
+		public User getAutheticatedUser() {
+		return autheticatedUser;
+	}
+
+
+	public void setAutheticatedUser(User autheticatedUser) {
+		this.autheticatedUser = autheticatedUser;
+	}
+
+
 		public String doLogout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login1.xhtml?faces-redirect=true";
@@ -196,7 +205,42 @@ UserRepository userRepository;
 	public void setLoggedIn(Boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
+	private List<User> users; 
+
+	public List<User> getUsers() {
+	users = userService.getAllUsers();
+	return users;
+	}
+private long iduser;
 	
+	public String displayPublication21(User user)
+	{
+	
+	this.setIduser(user.getId());
+	this.setUser(user);
+	return "PublicationAdmin.xhtml?faces-redirect=true"; 
+
+	
+}
+	public String displayPublication212(User user)
+	{
+	
+	this.setIduser(user.getId());
+	this.setUser(user);
+	return "commentaireAdmin.xhtml?faces-redirect=true"; 
+
+	
+}
+
+
+	public long getIduser() {
+		return iduser;
+	}
+
+
+	public void setIduser(long iduser) {
+		this.iduser = iduser;
+	}
 	
 
 

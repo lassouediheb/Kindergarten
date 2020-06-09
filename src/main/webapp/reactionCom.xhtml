@@ -1,0 +1,159 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templateclient.xhtml">
+	<ui:param name="welcomeclient" value="Accueil" />
+	<ui:define name="welcomeclient">
+		<h:head>
+			<!-- Basic Page Needs
+    ================================================== -->
+			<meta charset="utf-8" />
+
+			<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+			<title>KIDS - Kindergarten and Child Care Html Templates</title>
+			<meta name="description"
+				content="KIDS is a clean, modern, and fully responsive Html Template. Take your Startup business website to the next level. It is designed for kindergarten, childcare, homeschooling, school, learning, playground businesses or any type of person or business who wants to showcase their work, services and professional way."></meta>
+			<meta name="keywords"
+				content="business, care, childcare, children, clean, corporate, happykids, homeschool, kids, kindergarten, playground, responsive, school, learning"></meta>
+			<meta name="author" content="rometheme.net"></meta>
+
+			<!-- ==============================================
+	Favicons
+	=============================================== -->
+			<link rel="shortcut icon" href="login/client/images/favicon.ico"></link>
+			<link rel="apple-touch-icon"
+				href="login/client/images/apple-touch-icon.png"></link>
+			<link rel="apple-touch-icon" sizes="72x72"
+				href="login/client/images/apple-touch-icon-72x72.png"></link>
+			<link rel="apple-touch-icon" sizes="114x114"
+				href="login/client/images/apple-touch-icon-114x114.png"></link>
+
+			<!-- ==============================================
+	CSS VENDOR
+	=============================================== -->
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/bootstrap.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/font-awesome.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.carousel.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/owl.theme.default.min.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/magnific-popup.css" />
+			<h:outputStylesheet library="login"
+				name="client/css/vendor/animate.min.css" />
+
+			<!-- ==============================================
+	Custom Stylesheet
+	=============================================== -->
+			<h:outputStylesheet library="login" name="client/css/style.css" />
+
+			<script src="login/client/js/vendor/modernizr.min.js"></script>
+		</h:head>
+
+		<h:body>
+		<h:panelGroup columns="2">
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Reaction commentaire : " style="color: red"></h:outputText></td>
+						<td><h:selectOneMenu
+								value="#{reactionComController.typeReaction}">
+								<f:selectItem itemLabel="Choisir la reaction"
+									itemValue="#{null}" />
+								<f:selectItems value="#{reactionComController.typeReactions}" />
+							</h:selectOneMenu></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<h:commandButton value="Mettre A jour votre reaction"
+								action="#{reactionComController.updateReactionCom(reactionComController.commentaire,userController.autheticatedUser)}" /></td>
+					</tr>
+				</table>
+			</h:form>
+		</h:panelGroup>
+
+		<h:panelGroup columns="2">
+			<h:form >
+				<h:dataTable value="#{reactionComController.getAllReactionPubByIdcommentaire(reactionComController.commentaire.id)}"
+					var="reactionComids" border="5">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Type Reactions" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.typeReaction}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Dates reactions Commentaires" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.dateReactionCom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Commentaires" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.commentaire.comContenu}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.user.username}" />
+					</h:column>
+		
+
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		<h:outputText value="ma reaction:" style="color: red"></h:outputText>
+		<h:panelGroup columns="2">
+			<h:form >
+				<h:dataTable value="#{reactionComController.getAllReactionComByIdcommentaireetuser(reactionComController.commentaire.id,userController.autheticatedUser.id)}"
+					var="reactionComids" border="5">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Type Reactions" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.typeReaction}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Dates reactions Commentaires" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.dateReactionCom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Commentaires" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.commentaire.comContenu}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{reactionComids.user.username}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton
+							action="#{reactionComController.removeReactionCom(reactionCom.id)}"
+							value="Supprimer" />
+						<h:commandButton
+							action="#{reactionComController.displayReactionCom(reactionComids,reactionComids.commentaire )}"
+							value="Modifier" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+
+		</h:body>
+	</ui:define>
+</ui:composition>
