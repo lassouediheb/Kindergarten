@@ -178,6 +178,12 @@ public class IControllerReactionPublmpl {
 	{ 	
 		this.setPublication(pub);
 		this.setPublicationId(pub.getId());
-	return "/pages/jardin/reactionPub.xhtml?faces-redirect=true"; 
+	return "reactionPub.xhtml?faces-redirect=true"; 
+	}
+	public String reactionPub12(Publication pub ) 
+	{ 	
+		this.setPublication(pub);
+		this.setPublicationId(pub.getId());
+	return "reactionPubjardin.xhtml?faces-redirect=true"; 
 	}
 }

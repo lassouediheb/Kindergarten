@@ -1,5 +1,7 @@
 package tn.esprit.spring.services;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,11 @@ public class UserService implements IUserService {
 		userRepository.deleteById(Long.parseLong(id));
 		
 	}
+	@Override
+	public List<User> getAllUsers() {
+	return (List<User>) userRepository.findAll();
+	}
+	
     
    
    
