@@ -73,12 +73,12 @@ public class ParticipantsServiceImpl implements ParticipantsService{
 		}
 		else 
 			return 1;
-		
-		
 	}
 	
-	
-	
+	@Override 
+	public List<Participants> getParticipants() { 
+		return (List<Participants>) participantsRepository.findAll(); 
+		}
 
 	@Override
 	public List<Participants> retrieveAllParticipants() {
