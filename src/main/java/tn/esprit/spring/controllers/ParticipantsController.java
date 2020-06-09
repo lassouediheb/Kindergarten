@@ -162,9 +162,6 @@ public class ParticipantsController {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-
-
 	public Parent getParent() {
 		return parent;
 	}
@@ -204,11 +201,5 @@ public class ParticipantsController {
 		this.idEvent = idEvent;
 	}
 
-	
-	
-	
-	
-	
-	
 
 }

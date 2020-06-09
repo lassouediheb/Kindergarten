@@ -127,9 +127,6 @@ public class EvenementsController {
 		return evenementsRepository.getAllEventByIdJardin(jardin.getId());
 	} 
 	
-
-	
-
 	public long getIdE() {
 		return idE;
 	}
@@ -365,6 +362,4 @@ public class EvenementsController {
 		this.jardin = jardin;
 	}
 	
-	
-
 }
