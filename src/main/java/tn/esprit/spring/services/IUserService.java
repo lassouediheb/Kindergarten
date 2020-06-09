@@ -1,5 +1,7 @@
 package tn.esprit.spring.services;
 
+import java.util.List;
+
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.entity.VerificationToken;
 
@@ -14,4 +16,5 @@ public interface IUserService {
     VerificationToken getVerificationToken(String VerificationToken);
     
     void deleteUser(String id);
+    public List<User> getAllUsers();
 }
