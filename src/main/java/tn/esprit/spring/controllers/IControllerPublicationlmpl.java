@@ -35,6 +35,14 @@ public class IControllerPublicationlmpl {
 	@Autowired
 	PublicationRepository publicationRepository;
 	private long id ; 
+	private long gg ; 
+	public long getGg() {
+		return gg;
+	}
+
+	public void setGg(long gg) {
+		this.gg = gg;
+	}
 
 	public long getId() {
 		return id;
