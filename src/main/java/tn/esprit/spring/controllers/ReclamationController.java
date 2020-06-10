@@ -7,7 +7,7 @@ import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.authentication.AuthenticationManager;
+
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.Reclamation;
@@ -141,6 +141,11 @@ public class ReclamationController {
 	public void addrec(User u) {
 
 		reclamationService.ajouterReclamation(new Reclamation(idRec, sujetRec, ContenuRec, null, null, 0, u));
+	}
+	
+	public void add(Reclamation r) {
+
+		reclamationService.ajouterReclamation(r);
 	}
 
 	public String afficher(Reclamation r) {

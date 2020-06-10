@@ -59,10 +59,10 @@
 					<table>
 
 						<tr>
-							<td><h:outputText value="PUBLICATION :" style="color: red" ></h:outputText></td>
-							<td><h:inputText value="#{publicationController.pubContenu}"></h:inputText>
+							<td><h:outputText value="Publication :" style="color: red" ></h:outputText></td>
+							<td><h:inputText class="form-control form-control-lg" value="#{publicationController.pubContenu}"></h:inputText>
 							</td>
-							<td colspan="2"><h:commandButton value="Ajouter Publication"
+							<td colspan="2"><h:commandButton value="Ajouter Publication" id="btn" class="btn btn-danger"
 									action="#{publicationController.addPublication(userController.autheticatedUser)}" styleClass="GreenButton" /></td>
 
 						</tr>
@@ -70,26 +70,7 @@
 				</h:form>
 			</div>
 			
-			<h:panelGroup columns="2">
-			<h:form>
-				<table>
-					<tr>
-						<td><h:outputText value="Reaction :" style="color: red" ></h:outputText></td>
-						<td></td>
-						
-						<td><h:selectOneMenu
-								value="#{reactionPubController.typeReaction}">
-								<f:selectItem itemLabel="Choisir la reaction"
-									itemValue="#{null}" />
-								<f:selectItems value="#{reactionPubController.typeReactions}" />
-							</h:selectOneMenu></td>
-						<td colspan="2"><h:commandButton value="Ajouter reaction"
-								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton"/>
-				</td>
-					</tr>
-				</table>
-			</h:form>
-		</h:panelGroup>
+			
 		
 		<h:panelGroup columns="2">
 			<h:form>
@@ -97,8 +78,8 @@
 
 					<tr>
 						<td><h:outputText value="commentaire : "  style="color: red" ></h:outputText></td>
-						<td><h:inputText value="#{commentaireController.comContenu}"></h:inputText></td>
-						<td colspan="2"><h:commandButton value="Ajouter commentaire"
+						<td><h:inputText class="form-control form-control-lg" value="#{commentaireController.comContenu}"></h:inputText></td>
+						<td colspan="2"><h:commandButton value="Ajouter commentaire" id="btn" class="btn btn-danger"
 								action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton" />
 														
 							</td>
@@ -113,9 +94,9 @@
 
 					<tr>
 						<td><h:outputText value="Search:" style="color: red"></h:outputText></td>
-						<td><h:inputText value="#{publicationController.keyword}"></h:inputText>
+						<td><h:inputText class="form-control form-control-lg" value="#{publicationController.keyword}"></h:inputText>
 						</td>
-						<td colspan="2"><h:commandButton value="search"
+						<td colspan="2"><h:commandButton value="search" id="btn" class="btn btn-warning"
 								action="#{publicationController.listAll(keyword)}"  />
 							</td>
 
@@ -157,21 +138,34 @@
 												value="#{commentaireController.getNombrecommentairebyidpub(publication.id)}" />
 										</h5>
 
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{publicationController.displayPublication1(publication)}"
 											value="reagir" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{reactionPubController.reactionPub(publication)}"
 											value="afficher les reactions" /><BR />
 										
 
 
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{publicationController.displayPublication1(publication)}"
 											value="commenter" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{commentaireController.reactionPub(publication)}"
 											value="afficher les commentaires" />
+										
+						<h:outputText value="Reaction :" style="color: red" ></h:outputText>
+					
+						
+						<h:selectOneMenu
+								value="#{reactionPubController.typeReaction}">
+								<f:selectItem itemLabel="Choisir la reaction"
+									itemValue="#{null}" />
+								<f:selectItems value="#{reactionPubController.typeReactions}" />
+							</h:selectOneMenu>
+						<h:commandButton value="Ajouter reaction" id="btn" class="btn btn-danger"
+								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton"/>
+				
                               		</div>
 
 								</div>

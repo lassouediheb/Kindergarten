@@ -59,14 +59,14 @@
 					<table>
 
 						<tr>
-							<td><h:outputText value="PUBLICATION : "></h:outputText></td>
-							<td><h:inputText value="#{publicationController.pubContenu}"></h:inputText>
+							<td><h:outputText value="Publication : "></h:outputText></td>
+							<td><h:inputText class="form-control form-control-lg" value="#{publicationController.pubContenu}"></h:inputText>
 							</td>
 
 						</tr>
 						<tr>
 							<td colspan="2"><h:commandButton
-									value="Mettre A jour votre publication"
+									value="Mettre A jour votre publication" id="btn" class="btn btn-danger"
 									action="#{publicationController.updatePublication(userController.autheticatedUser)}" /></td>
 
 						</tr>
@@ -109,10 +109,10 @@
 										</h5>
 										
 											<p class="card-text">
-												<h:commandButton
+												<h:commandButton class="btn btn-secondary btn-lg active"
 													action="#{publicationController.removePublication(pubidusers.id)}"
 													value="Supprimer" />
-												<h:commandButton
+												<h:commandButton class="btn btn-secondary btn-lg active"
 													action="#{publicationController.displayPublication(pubidusers)}"
 													value="Modifier" />
 											</p>

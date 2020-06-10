@@ -89,7 +89,7 @@ template="/template.xhtml">
       <div class="content">
      
 		
-					<h:form>
+			<h:form>
 				<div class="container">
 					<div class="row">
 						<ui:repeat var="pubidusers"
@@ -125,7 +125,7 @@ template="/template.xhtml">
 										</h5>
 										
 											<p class="card-text">
-												<h:commandButton
+												<h:commandButton class="btn btn-secondary btn-lg active"
 													action="#{publicationController.removePublication(pubidusers.id)}"
 													value="Supprimer" />
 												

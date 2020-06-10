@@ -6,17 +6,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import tn.esprit.spring.controllers.ReclamationController;
 import tn.esprit.spring.entity.Reclamation;
+import tn.esprit.spring.services.ReclamationService;
 
 
 @SpringBootTest
 class SpringPdevKindergartenApplicationTests {
 	@Autowired
 	ReclamationController reclamationcontroller;
+	
 
 	@Test
 	void contextLoads() {
-		System.out.println("aa"+reclamationcontroller.traiter(new Reclamation(1,  "ec",  "ContenuRec",null , null, 0)));
-		 
+//		System.out.println("aa"+reclamationService.tel(2));
+	
+	
 	}
 
 }
