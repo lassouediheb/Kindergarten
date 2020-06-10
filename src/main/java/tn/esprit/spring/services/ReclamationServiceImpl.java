@@ -134,13 +134,14 @@ public class ReclamationServiceImpl implements ReclamationService {
 	public int getNombreTmonth(int m) {
 		return reclamtationRepository.Tmonth(m);
 		}
-//	@Override
-//	public String tel(int i) {
-//		if (reclamtationRepository.type(i).compareTo("parent")==1)
-//		{return reclamtationRepository.nump(i);
-//			
-//		}
-//		return reclamtationRepository.numj(i);
-//	}
+	@Override
+	public String tel(long i) {
+		if (reclamtationRepository.type(i).compareTo("parent")==0)
+		{return reclamtationRepository.nump(i);
+			
+		}
+		return reclamtationRepository.numj(i);
+//		return reclamtationRepository.type(i);
+	}
 	
 }
