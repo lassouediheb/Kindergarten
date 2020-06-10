@@ -56,7 +56,7 @@ template="/templatejardin.xhtml">
 								</h:selectOneMenu></td>
 						</tr>
 						<tr>
-							<td colspan="2"><h:commandButton value="Ajouter reaction"
+							<td colspan="2"><h:commandButton value="Ajouter reaction" id="btn" class="btn btn-danger"
 									action="#{reactionComController.addReactionCom(commentaireController.commentaire,userController.autheticatedUser)}" />
 							</td>
 						</tr>
@@ -92,12 +92,12 @@ template="/templatejardin.xhtml">
 											<h:outputText
 												value="#{reactionComController.getNombreReactionCom(commentaire.id)}" />
 										</h5>
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{commentaireController.displayCommentaire1(commentaire)}"
 											value="reagir" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{reactionComController.reactionCom6(commentaire)}"
-											value="afficher les reactions de ce commentaire" />
+											value=" afficher les reactions " />
 									</div>
 
 								</div>
@@ -113,13 +113,13 @@ template="/templatejardin.xhtml">
 					<table>
 
 						<tr>
-							<td><h:outputText value="commentaire"></h:outputText></td>
-							<td><h:inputText value="#{commentaireController.comContenu}"></h:inputText></td>
+							<td><h:outputText  value="commentaire"></h:outputText></td>
+							<td><h:inputText class="form-control form-control-lg" value="#{commentaireController.comContenu}"></h:inputText></td>
 						</tr>
 						<tr>
-							<td colspan="2"><h:commandButton
+							<td colspan="2"><h:commandButton id="btn" class="btn btn-danger"
 									value="Mettre A jour votre commentaire"
-									action="#{commentaireController.updateCommentaire(userController.autheticatedUser)}" />
+									action="#{commentaireController.updateCommentaire(publicationController.publication,userController.autheticatedUser )}" />
 							</td>
 						</tr>
 					</table>
@@ -156,15 +156,15 @@ template="/templatejardin.xhtml">
 											<h:outputText
 												value="#{reactionComController.getNombreReactionCom(commentaire.id)}" />
 										</h5>
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{commentaireController.removeCommentaire(commentaire.id)}"
 											value="Supprimer" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{commentaireController.displayCommentaire(commentaire, commentaire.publication)}"
 											value="Modifier" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{reactionComController.reactionCom(commentaire)}"
-											value="afficher les reactions de mon commentaire" />
+											value=" afficher les reactions " />
 									</div>
 
 								</div>
