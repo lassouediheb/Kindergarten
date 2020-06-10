@@ -89,7 +89,7 @@ template="/template.xhtml">
       <div class="content">
       <h:panelGroup columns="2">
 			<h:form>
-				<h:dataTable value="#{userController.users}" var="user" border="1">
+				<h:dataTable class="table" value="#{userController.users}" var="user" border="1">
 
 					<h:column>
 						<f:facet name="header">
@@ -109,7 +109,7 @@ template="/template.xhtml">
 						<f:facet name="header">
 							<h:outputText value="Publications" />
 						</f:facet>
-						<h:commandButton
+						<h:commandButton class="btn btn-secondary btn-lg active"
 							action="#{userController.displayPublication21(user)}"
 							value="afficher ces publications" />
 					</h:column>
@@ -117,7 +117,7 @@ template="/template.xhtml">
 						<f:facet name="header">
 							<h:outputText value="Commentaires" />
 						</f:facet>
-						<h:commandButton
+						<h:commandButton class="btn btn-secondary btn-lg active"
 							action="#{userController.displayPublication212(user)}"
 							value="afficher ces commentaires" />
 					</h:column>

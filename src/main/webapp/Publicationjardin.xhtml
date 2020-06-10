@@ -49,8 +49,8 @@ template="/templatejardin.xhtml">
 					<table>
 
 						<tr>
-							<td><h:outputText value="PUBLICATION :" style="color: red" ></h:outputText></td>
-							<td><h:inputText value="#{publicationController.pubContenu}"></h:inputText>
+							<td><h:outputText value="Publication : " style="color: red" ></h:outputText></td>
+							<td><h:inputText  class="form-control form-control-lg" value="#{publicationController.pubContenu}"></h:inputText>
 							</td>
 							<td colspan="2"><h:commandButton value="Ajouter Publication" id="btn" class="btn btn-danger"
 									action="#{publicationController.addPublication(userController.autheticatedUser)}" /></td>
@@ -59,43 +59,25 @@ template="/templatejardin.xhtml">
 					</table>
 				</h:form>
 			</div>
-			
 			<h:panelGroup columns="2">
-			<h:form>
-				<table>
-					<tr>
-						<td><h:outputText value="Reaction : " style="color: red" ></h:outputText></td>
-						<td></td>
-						
-						<td><h:selectOneMenu
-								value="#{reactionPubController.typeReaction}">
-								<f:selectItem itemLabel="Choisir la reaction"
-									itemValue="#{null}" />
-								<f:selectItems value="#{reactionPubController.typeReactions}" />
-							</h:selectOneMenu></td>
-						<td colspan="2"><h:commandButton value="Ajouter reaction"
-								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton"/>
-				</td>
-					</tr>
-				</table>
-			</h:form>
-		</h:panelGroup>
-		
-		<h:panelGroup columns="2">
 			<h:form>
 				<table>
 
 					<tr>
 						<td><h:outputText value="commentaire : "  style="color: red" ></h:outputText></td>
-						<td><h:inputText value="#{commentaireController.comContenu}"></h:inputText></td>
-						<td colspan="2"><h:commandButton value="Ajouter commentaire"
-								action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton" />
+						<td><h:inputText class="form-control form-control-lg" value="#{commentaireController.comContenu}"></h:inputText></td>
+						<td colspan="2"><h:commandButton value="Ajouter commentaire" id="btn" class="btn btn-danger"
+								action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"  />
 														
 							</td>
 					</tr>
 				</table>
 			</h:form>
 		</h:panelGroup>
+			
+			
+		
+		
 		
 		<h:panelGroup columns="2">
 			
@@ -103,10 +85,10 @@ template="/templatejardin.xhtml">
 				<table>
 
 					<tr>
-						<td><h:outputText value="Search:" style="color: red"></h:outputText></td>
-						<td><h:inputText value="#{publicationController.keyword}"></h:inputText>
+						<td><h:outputText value="Recherche:    " style="color: red"></h:outputText></td>
+						<td><h:inputText class="form-control form-control-lg" value="#{publicationController.keyword}"></h:inputText>
 						</td>
-						<td colspan="2"><h:commandButton value="search"
+						<td colspan="2"><h:commandButton value="Rechercher" id="btn" class="btn btn-warning"
 								action="#{publicationController.listAll(keyword)}" />
 							</td>
 
@@ -119,7 +101,7 @@ template="/templatejardin.xhtml">
 				<div class="container">
 					<div class="row">
 						<ui:repeat var="publication"
-							value="#{publicationController.publications}">
+							value="#{publicationController.listAll(publicationController.keyword)}">
 							<div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<div class="card-body">
@@ -149,21 +131,33 @@ template="/templatejardin.xhtml">
 												value="#{commentaireController.getNombrecommentairebyidpub(publication.id)}" />
 										</h5>
 
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{publicationController.displayPublication1(publication)}"
 											value="reagir" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{reactionPubController.reactionPub12(publication)}"
 											value="afficher les reactions" /><BR />
 										
 
 
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{publicationController.displayPublication1(publication)}"
 											value="commenter" />
-										<h:commandButton
+										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{commentaireController.reactionPub3(publication)}"
 											value="afficher les commentaires" />
+											
+										<h:outputText value="Reaction :" style="color: red" ></h:outputText>	
+			<h:selectOneMenu  class="selectpicker"
+								value="#{reactionPubController.typeReaction}">
+								<f:selectItem itemLabel="Choisir la reaction"
+									itemValue="#{null}" />
+								<f:selectItems value="#{reactionPubController.typeReactions}" />
+							</h:selectOneMenu>
+						<h:commandButton value="Ajout reaction" id="btn" class="btn btn-danger"
+								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  />
+				
+		
                               		</div>
 
 								</div>

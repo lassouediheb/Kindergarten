@@ -11,13 +11,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tn.esprit.spring.entity.Evenements;
+import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.repository.EvenementsRepository;
 
 @Service
-public class EvenementsServiceImpl implements EvenementsService {
+public class EvenementsServiceImpl implements EvenementsService{
 	@Autowired
 	EvenementsRepository evenementsRepository;
+	
+	private JavaMailSender javaMailSender;
+	
+	@Autowired
+	   private JavaMailSender mailSender;
+	   
+	   public EvenementsServiceImpl(JavaMailSender javaMailSender) {
+	 		this.javaMailSender = javaMailSender;
+	 	}
 
 	private static final Logger L = LogManager.getLogger(EvenementsServiceImpl.class);
 
@@ -42,11 +52,22 @@ public class EvenementsServiceImpl implements EvenementsService {
 	}
 
 	@Override
-	public Evenements addEvenements(Evenements e) {
+	public Evenements addEvenements(Evenements e,long id) {
 		Evenements event = evenementsRepository.save(e);
+		List<String> l =evenementsRepository.nbFidelite(id);
+		for (int i = 0; i < l.size(); i++) {
+			String recipientAddress = l.get(i);
+			String subject = "Invitation à notre évènement";
+			SimpleMailMessage email = new SimpleMailMessage();
+			email.setTo(recipientAddress);
+			email.setSubject(subject);
+			email.setText("\r\n" + "Bonjour, " + "Vous êtes invité à noutre prochain évènement  " + event.getNomE()
+					+ " le " + event.getDateE() + " à " + event.getAdresseE() + "  soyez le bienvenue");
+			javaMailSender.send(email);	
+			}
 		return event;
-
 	}
+
 
 	@Override
 	public void deleteEvenements(String id) {
@@ -75,9 +96,9 @@ public class EvenementsServiceImpl implements EvenementsService {
 		
 	}
 
-	/*
-	 * public List<Evenements> getAllEventByIdJardin(long id){ return
-	 * evenementsRepository.getAllEventByIdJardin(id); }
-	 */
+	
+	
+	
+	
 
 }
