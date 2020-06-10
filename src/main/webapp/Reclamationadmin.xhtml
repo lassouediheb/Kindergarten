@@ -18,12 +18,13 @@
 	width: 100%;
 	box-sizing: border-box;
 }
-   .ui-datatable input {
-        box-sizing: border-box;
-        width: 100%;
-        -webkit-box-shadow: none;
-        box-shadow: none !important;
-    }
+
+.ui-datatable input {
+	box-sizing: border-box;
+	width: 100%;
+	-webkit-box-shadow: none;
+	box-shadow: none !important;
+}
 </style>
 			<title>SB Admin 2 - Blank</title>
 
@@ -117,7 +118,7 @@
 								paginator="true" rows="5"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-								rowsPerPageTemplate="5,10,15" >
+								rowsPerPageTemplate="5,10,15">
 
 								<p:column>
 									<f:facet name="header">
@@ -134,8 +135,8 @@
 								</p:column>
 
 
-								<p:column sortBy = "#{recl.dateRec}">
-									<f:facet name="header" >
+								<p:column sortBy="#{recl.dateRec}">
+									<f:facet name="header">
 										<h:outputText value="Date De Reclamation" />
 									</f:facet>
 									<h:outputText value="#{recl.dateRec}" />
@@ -147,10 +148,10 @@
 									<h:outputText value="#{recl.dateT}" />
 								</p:column>
 
-								<p:column  headerText="etat" sortBy="#{recl.etat}">
-<!-- 									<f:facet name="header"> -->
-										<h:outputText value="Etat" />
-<!-- 									</f:facet> -->
+								<p:column headerText="etat" sortBy="#{recl.etat}">
+									<!-- 									<f:facet name="header"> -->
+									<h:outputText value="Etat" />
+									<!-- 									</f:facet> -->
 									<h:outputText
 										value="#{recl.etat == 1 ? 'traité' : 'Non traité'}" />
 								</p:column>
@@ -159,7 +160,7 @@
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{reclamationController.traiter(recl)}"
+										action="#{reclamationController.traiter(recl,recl.user)}"
 										value="traiter" />
 								</p:column>
 
@@ -178,10 +179,10 @@
 
 							<h:commandLink value="Déconnexion"
 								action="#{userController.doLogout()}" />
-								
-							
+
+
 						</h:form>
-						
+
 					</h:panelGroup>
 				</div>
 			</div>

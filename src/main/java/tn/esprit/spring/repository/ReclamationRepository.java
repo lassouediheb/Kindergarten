@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entity.Reclamation;
@@ -28,16 +27,16 @@ public interface ReclamationRepository extends CrudRepository<Reclamation,Intege
 	@Query("SELECT COUNT(*) FROM Reclamation WHERE Month(datet)= ?1")
     public int Tmonth(int m);
 	
-//	
-//	@Query("SELECT u.dtype FROM Role u where u.id =?1")
-//    public String type(int id);
+	
+	@Query(value = "SELECT u.d_type FROM  users u where u.id =?1" , nativeQuery= true)
+    public String type(long id);
 	
 	
-//	@Query("SELECT j.num_j FROM j.T_JARDIN where j.id =?1")
-//    public String numj(int id);
-//	
-//	@Query("SELECT p.num_p FROM T_PARENT where id =?1")
-//    public String nump(int id);
+	@Query("SELECT j.numJ FROM Jardin j where j.id =?1")
+    public String numj(long id);
+	
+	@Query("SELECT p.numP FROM Parent p where id =?1")
+    public String nump(long id);
 	
 	
 }

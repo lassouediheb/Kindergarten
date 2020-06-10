@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import tn.esprit.spring.entity.Reclamation;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.services.ReclamationServiceImpl;
+import tn.esprit.spring.sms.Service;
 
 @Scope(value = "session")
 @Controller(value = "reclamationController")
@@ -22,7 +23,8 @@ public class ReclamationController {
 
 	@Autowired
 	ReclamationServiceImpl reclamationService;
-
+	@Autowired
+	Service  mssg ;
 	private List<Reclamation> reclamations;
 	private List<Reclamation> ureclamations;
 	private int idRec;
@@ -124,7 +126,7 @@ public class ReclamationController {
 		return ureclamations;
 	}
 
-	public Reclamation traiter(Reclamation r) {
+	public Reclamation traiter(Reclamation r,User user) {
 		// System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
 //		this.setIdRec(r.getIdRec());
 //		this.setContenuRec(r.getContenuRec());
@@ -135,6 +137,10 @@ public class ReclamationController {
 //		System.out.println(r);
 
 //		return reclamationService.traiterReclamation(new Reclamation(idRec,  sujetRec,  ContenuRec, dateRec, dateT,  etat));
+		System.out.println(reclamationService.tel(user.getId()));
+		
+	//mssg.msg(reclamationService.tel(user.getId()));
+		
 		return reclamationService.traiterReclamation(r);
 	}
 
@@ -161,6 +167,7 @@ public class ReclamationController {
 public void removeR(String ids)
 {
 		reclamationService.deleteReclamation(ids);
+	
 		
 	}	
 
