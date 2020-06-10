@@ -22,7 +22,5 @@ public interface EvenementsService {
 	
 	public List<Evenements> listAll(String keyword);
 	
-	public void fidele(long id);
-	
 	//public List<Evenements> getAllEventByIdJardin(long id);
 }

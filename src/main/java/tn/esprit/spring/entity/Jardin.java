@@ -50,6 +50,9 @@ public class Jardin extends User implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Activités> Activités;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
+	private Set<Evenements> evenements;
+	
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
@@ -99,9 +102,10 @@ public class Jardin extends User implements Serializable{
 	}
 
 	
+
 	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
 			Directeurs directeurs, Set<tn.esprit.spring.entity.Bus> bus,
-			Set<tn.esprit.spring.entity.Activités> activités, Set<tn.esprit.spring.entity.Evenements> evenements) {
+			Set<tn.esprit.spring.entity.Activités> activités, Set<Evenements> evenements) {
 		super();
 		this.nomJ = nomJ;
 		this.logoJ = logoJ;
@@ -113,7 +117,7 @@ public class Jardin extends User implements Serializable{
 		this.directeurs = directeurs;
 		Bus = bus;
 		Activités = activités;
-		Evenements = evenements;
+		this.evenements = evenements;
 	}
 
 	public Set<Bus> getBus() {
@@ -164,12 +168,22 @@ public class Jardin extends User implements Serializable{
 		this.directeurs = directeurs;
 	}
 
+	
+
 	public Set<Evenements> getEvenements() {
-		return Evenements;
+		return evenements;
 	}
 
 	public void setEvenements(Set<Evenements> evenements) {
-		Evenements = evenements;
+		this.evenements = evenements;
+	}
+
+	public List<Planning> getPlanning() {
+		return planning;
+	}
+
+	public void setPlanning(List<Planning> planning) {
+		this.planning = planning;
 	}
 
 	public static long getSerialversionuid() {
@@ -227,37 +241,7 @@ public class Jardin extends User implements Serializable{
 		this.descripJ = descripJ;
 		this.tarifJ = tarifJ;
 		this.directeurs = directeurs;
-	}
-
-	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
-			Set<tn.esprit.spring.entity.Evenements> evenements) {
-		super();
-		this.nomJ = nomJ;
-		this.logoJ = logoJ;
-		this.adresseJ = adresseJ;
-		this.numJ = numJ;
-		this.dateCrea = dateCrea;
-		this.descripJ = descripJ;
-		this.tarifJ = tarifJ;
-		Evenements = evenements;
-	}
-
-	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
-			Directeurs directeurs, Set<tn.esprit.spring.entity.Evenements> evenements) {
-		super();
-		this.nomJ = nomJ;
-		this.logoJ = logoJ;
-		this.adresseJ = adresseJ;
-		this.numJ = numJ;
-		this.dateCrea = dateCrea;
-		this.descripJ = descripJ;
-		this.tarifJ = tarifJ;
-		this.directeurs = directeurs;
-		Evenements = evenements;
-	}
-	
-	
-	
+	}	
 	
 
 	public Jardin(Long id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
@@ -325,13 +309,16 @@ public class Jardin extends User implements Serializable{
 		this.descripJ = descripJ;
 		this.tarifJ = tarifJ;
 	}
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
+				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + "]";
+	}
 
 	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
-			Directeurs directeurs, Set<tn.esprit.spring.entity.Bus> bus,
-			Set<tn.esprit.spring.entity.Activités> activités, Set<tn.esprit.spring.entity.Evenements> evenements,
-			Set<Parent> parent) {
+			Directeurs directeurs, Set<Evenements> evenements, List<Planning> planning) {
 		super();
 		this.nomJ = nomJ;
 		this.logoJ = logoJ;
@@ -341,17 +328,25 @@ public class Jardin extends User implements Serializable{
 		this.descripJ = descripJ;
 		this.tarifJ = tarifJ;
 		this.directeurs = directeurs;
-		Bus = bus;
-		Activités = activités;
-		Evenements = evenements;
-		this.parent = parent;
+		this.evenements = evenements;
+		this.planning = planning;
 	}
 
-	@Override
-	public String toString() {
-		return "Jardin [nomJ=" + nomJ + ", logoJ=" + logoJ + ", adresseJ=" + adresseJ + ", numJ=" + numJ + ", dateCrea="
-				+ dateCrea + ", descripJ=" + descripJ + ", tarifJ=" + tarifJ + "]";
+	public Jardin(String nomJ, String logoJ, String adresseJ, String numJ, Date dateCrea, String descripJ, float tarifJ,
+			Set<Evenements> evenements, List<Planning> planning) {
+		super();
+		this.nomJ = nomJ;
+		this.logoJ = logoJ;
+		this.adresseJ = adresseJ;
+		this.numJ = numJ;
+		this.dateCrea = dateCrea;
+		this.descripJ = descripJ;
+		this.tarifJ = tarifJ;
+		this.evenements = evenements;
+		this.planning = planning;
 	}
+
+
 	
 	
 
