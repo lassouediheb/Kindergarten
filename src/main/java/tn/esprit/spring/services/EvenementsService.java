@@ -21,8 +21,4 @@ public interface EvenementsService {
 	void deleteEvenements(String id);
 	
 	public List<Evenements> listAll(String keyword);
-	
-	public void sendMailEvent(long id);
-	
-	//public List<Evenements> getAllEventByIdJardin(long id);
 }
