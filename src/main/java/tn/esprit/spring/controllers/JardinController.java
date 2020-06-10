@@ -501,5 +501,57 @@ public class JardinController {
 	}
 	
 	
+	/*public void upload() {
+		if (file != null) {
+			FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else
+			System.out.println("file is null");
+	}
+	public void handleFileUpload(FileUploadEvent event) {
+		l.info("ddddddddddddddd " + event.getFile().getFileName());
+		FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	public void TransferTile(String fileName, InputStream in) {
+		try {
+			OutputStream out = new FileOutputStream(new File(destination + fileName));
+			int reader = 0;
+			byte[] bytes = new byte[(int) file.getSize()];
+			while ((reader = in.read(bytes)) != -1) {
+				out.write(bytes, 0, reader);
+			}
+			in.close();
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
