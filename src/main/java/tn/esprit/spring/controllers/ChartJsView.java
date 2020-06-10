@@ -34,10 +34,14 @@ import org.primefaces.model.charts.radar.RadarChartModel;//o
 import org.primefaces.model.charts.scatter.ScatterChartModel;//o
 import org.springframework.beans.factory.annotation.Autowired;
 
+import tn.esprit.spring.services.ReclamationServiceImpl;
+
 @Named
 @RequestScoped
 public class ChartJsView implements Serializable {
-     
+	@Autowired
+	ReclamationServiceImpl reclamationService; 
+	
     private PieChartModel pieModel;
      
     private PolarAreaChartModel polarAreaModel;
@@ -153,33 +157,45 @@ public class ChartJsView implements Serializable {
         ChartData data = new ChartData();
          
         BarChartDataSet barDataSet = new BarChartDataSet();
-        barDataSet.setLabel("My First Dataset");
+        barDataSet.setLabel("Nombre de Reclamation");
         barDataSet.setBackgroundColor("rgba(255, 99, 132, 0.2)");
         barDataSet.setBorderColor("rgb(255, 99, 132)");
         barDataSet.setBorderWidth(1);
         List<Number> values = new ArrayList<>();
-        values.add(65);
-        values.add(59);
+        values.add(reclamationService.getNombreRmonth(1));
+        values.add(reclamationService.getNombreRmonth(2));
+        values.add(reclamationService.getNombreRmonth(3));
+        values.add(reclamationService.getNombreRmonth(4));
+        values.add(reclamationService.getNombreRmonth(5));
+        values.add(reclamationService.getNombreRmonth(6));
+        values.add(reclamationService.getNombreRmonth(7));
+        values.add(reclamationService.getNombreRmonth(8));
+        values.add(reclamationService.getNombreRmonth(9));
+        values.add(reclamationService.getNombreRmonth(10));
+        values.add(reclamationService.getNombreRmonth(11));
+      
+        
         values.add(80);
-        values.add(81);
-        values.add(56);
-        values.add(55);
-        values.add(40);
         barDataSet.setData(values);
          
         BarChartDataSet barDataSet2 = new BarChartDataSet();
-        barDataSet2.setLabel("My Second Dataset");
+        barDataSet2.setLabel("Nombre De Reclamation Traitée");
         barDataSet2.setBackgroundColor("rgba(255, 159, 64, 0.2)");
         barDataSet2.setBorderColor("rgb(255, 159, 64)");
         barDataSet2.setBorderWidth(1);
         List<Number> values2 = new ArrayList<>();
-        values2.add(85);
-        values2.add(69);
-        values2.add(20);
-        values2.add(51);
-        values2.add(76);
-        values2.add(75);
-        values2.add(10);
+        values2.add(reclamationService.getNombreTmonth(1));
+        values2.add(reclamationService.getNombreTmonth(2));
+        values2.add(reclamationService.getNombreTmonth(3));
+        values2.add(reclamationService.getNombreTmonth(4));
+        values2.add(reclamationService.getNombreTmonth(5));
+        values2.add(reclamationService.getNombreTmonth(6));
+        values2.add(reclamationService.getNombreTmonth(7));
+        values2.add(reclamationService.getNombreTmonth(8));
+        values2.add(reclamationService.getNombreTmonth(9));
+        values2.add(reclamationService.getNombreTmonth(10));
+        values2.add(reclamationService.getNombreTmonth(11));
+        values2.add(70);
         barDataSet2.setData(values2);
  
         data.addChartDataSet(barDataSet);

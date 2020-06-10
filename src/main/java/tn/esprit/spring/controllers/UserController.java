@@ -99,7 +99,7 @@ IUserService userService;
 			FacesMessage facesMessage =
 					new FacesMessage("Login Failed: please verify your account !.");
 			
-					FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
+					FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
 		}
 		else if (autheticatedUser != null && (autheticatedUser.getRoles().stream().findFirst().get().getId() ) == 1 ) {
 			
@@ -116,10 +116,10 @@ IUserService userService;
 			loggedIn = true; }
 		
 		
-		else {
+		else  {
 		FacesMessage facesMessage =
 		new FacesMessage("Login Failed: please check your username/password and try again.");
-		FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
+		FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
 		}
 		return navigateTo;
 		}

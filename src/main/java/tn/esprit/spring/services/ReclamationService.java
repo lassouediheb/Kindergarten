@@ -20,5 +20,8 @@ public interface ReclamationService {
 	public List<Reclamation> getAllReclamations();
 	
 	public List<Reclamation> getUReclamations(User u);
-	
+	public int getNombreRmonth(int m) ;
+	public int getNombreTmonth(int m) ;
+//	public String tel(int i);
+//
 }

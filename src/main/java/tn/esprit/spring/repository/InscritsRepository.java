@@ -17,7 +17,7 @@ public interface InscritsRepository extends CrudRepository<Inscrits, Long>{
 	@Query("SELECT i FROM Inscrits i where i.bus.matricule=?1")
 	 public List<Inscrits> getinscribybus(long matricule);
 	
-	
+
 	@Query("SELECT i FROM Inscrits i where i.nominscrit=:nominscrit1 AND i.bus.matricule=:matricule1")
 	 public Inscrits getParticipByMailEvent(@Param("nominscrit1")String nominscrit,@Param("matricule1")long matricule1);
 	

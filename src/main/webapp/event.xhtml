@@ -56,9 +56,20 @@
 		<h:body>
 			<h:form>
 				<div class="container">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<h:inputText value="#{evenementsController.keyword}"
+								placeholder="Rechercher" class="form-control"></h:inputText>
+						</div>
+						<h:commandButton class="btn btn-outline-secondary" value="search"
+							action="#{evenementsController.listAll(evenementsController.keyword)}" />
+					</div>
+				</div>
+				<br></br>
+				<div class="container">
 					<div class="row">
 						<ui:repeat var="event"
-							value="#{evenementsController.getEvenements()}">
+							value="#{evenementsController.listAll(evenementsController.keyword)}">
 							<div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<a href="#"><img class="card-img-top"
