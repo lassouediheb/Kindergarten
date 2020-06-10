@@ -57,8 +57,8 @@ template="/templatejardin.xhtml">
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td colspan="2"><h:commandButton
-								value="Mettre A jour votre reaction"
+						<td colspan="2"><h:commandButton  class="btn btn-danger"
+								value="Mettre A jour votre reaction" 
 								action="#{reactionPubController.updateReactionPub(reactionPubController.publication,userController.autheticatedUser)}" />
 						</td>
 					</tr>
@@ -68,7 +68,7 @@ template="/templatejardin.xhtml">
 
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable value="#{reactionPubController.getAllReactionPubByIdpublication(reactionPubController.publication.id)}"
+				<h:dataTable class="table table-dark" value="#{reactionPubController.getAllReactionPubByIdpublication(reactionPubController.publication.id)}"
 					var="reactionPubids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -94,7 +94,7 @@ template="/templatejardin.xhtml">
 		<h:outputText value="ma reaction:" style="color: red"></h:outputText>
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable value="#{reactionPubController.getAllReactionPubByIdpublicationetuser(reactionPubController.publication.id,userController.autheticatedUser.id)}"
+				<h:dataTable class="table table-dark" value="#{reactionPubController.getAllReactionPubByIdpublicationetuser(reactionPubController.publication.id,userController.autheticatedUser.id)}"
 					var="reactionPubids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -110,7 +110,7 @@ template="/templatejardin.xhtml">
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Nom" />
+							<h:outputText value="Username" />
 						</f:facet>
 						<h:outputText value="#{reactionPubids.user.username}" />
 					</h:column>
@@ -118,10 +118,10 @@ template="/templatejardin.xhtml">
 						<f:facet name="header">
 							<h:outputText value="Action" />
 						</f:facet>
-						<h:commandButton
+						<h:commandButton  class="btn btn-warning"
 							action="#{reactionPubController.removeReactionPub(reactionPubids.id)}"
 							value="Supprimer" />
-						<h:commandButton
+						<h:commandButton id="btn" class="btn btn-warning"
 							action="#{reactionPubController.displayReactionPub(reactionPubids,reactionPubids.publication )}"
 							value="Modifier" />
 					</h:column>
