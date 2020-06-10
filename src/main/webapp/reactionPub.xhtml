@@ -67,8 +67,8 @@
 							</h:selectOneMenu></td>
 					</tr>
 					<tr>
-						<td colspan="2"><h:commandButton
-								value="Mettre A jour votre reaction"
+						<td colspan="2"><h:commandButton  class="btn btn-danger"
+								value="Mettre A jour votre reaction" 
 								action="#{reactionPubController.updateReactionPub(reactionPubController.publication,userController.autheticatedUser)}" />
 						</td>
 					</tr>
@@ -78,7 +78,7 @@
 
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable value="#{reactionPubController.getAllReactionPubByIdpublication(reactionPubController.publication.id)}"
+				<h:dataTable class="table table-dark" value="#{reactionPubController.getAllReactionPubByIdpublication(reactionPubController.publication.id)}"
 					var="reactionPubids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -104,35 +104,36 @@
 		<h:outputText value="ma reaction:" style="color: red"></h:outputText>
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable value="#{reactionPubController.getAllReactionPubByIdpublicationetuser(reactionPubController.publication.id,userController.autheticatedUser.id)}"
-					var="reactionPubids" border="5">
+				<h:dataTable class="table table-dark" value="#{reactionPubController.getAllReactionPubByIdpublicationetuser(reactionPubController.publication.id,userController.autheticatedUser.id)}"
+					var="reactionPubid" border="5">
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Type Reactions" />
 						</f:facet>
-						<h:outputText value="#{reactionPubids.typeReaction}" />
+						<h:outputText value="#{reactionPubid.typeReaction}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Dates reactions Publications" />
 						</f:facet>
-						<h:outputText value="#{reactionPubids.dateReactionPub}" />
+						<h:outputText value="#{reactionPubid.dateReactionPub}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Nom" />
+							<h:outputText value="Username" />
 						</f:facet>
-						<h:outputText value="#{reactionPubids.user.username}" />
+						<h:outputText value="#{reactionPubid.user.username}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Action" />
 						</f:facet>
-						<h:commandButton
-							action="#{reactionPubController.removeReactionPub(reactionPubids.id)}"
+						
+						<h:commandButton  class="btn btn-warning"
+							action="#{reactionPubController.removeReactionPub(reactionPubid.id)}"
 							value="Supprimer" />
-						<h:commandButton
-							action="#{reactionPubController.displayReactionPub(reactionPubids,reactionPubids.publication )}"
+						<h:commandButton  class="btn btn-warning"
+							action="#{reactionPubController.displayReactionPub(reactionPubid,reactionPubid.publication )}"
 							value="Modifier" />
 					</h:column>
 

@@ -68,7 +68,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<h:commandButton value="Mettre A jour votre reaction"
+							<h:commandButton value="Mettre A jour votre reaction"  class="btn btn-danger"
 								action="#{reactionComController.updateReactionCom(reactionComController.commentaire,userController.autheticatedUser)}" /></td>
 					</tr>
 				</table>
@@ -77,7 +77,7 @@
 
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable value="#{reactionComController.getAllReactionPubByIdcommentaire(reactionComController.commentaire.id)}"
+				<h:dataTable class="table table-dark" value="#{reactionComController.getAllReactionPubByIdcommentaire(reactionComController.commentaire.id)}"
 					var="reactionComids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -99,7 +99,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Nom" />
+							<h:outputText value="Username" />
 						</f:facet>
 						<h:outputText value="#{reactionComids.user.username}" />
 					</h:column>
@@ -111,7 +111,7 @@
 		<h:outputText value="ma reaction:" style="color: red"></h:outputText>
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable value="#{reactionComController.getAllReactionComByIdcommentaireetuser(reactionComController.commentaire.id,userController.autheticatedUser.id)}"
+				<h:dataTable class="table table-dark" value="#{reactionComController.getAllReactionComByIdcommentaireetuser(reactionComController.commentaire.id,userController.autheticatedUser.id)}"
 					var="reactionComids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -141,10 +141,10 @@
 						<f:facet name="header">
 							<h:outputText value="Action" />
 						</f:facet>
-						<h:commandButton
+						<h:commandButton  class="btn btn-warning"
 							action="#{reactionComController.removeReactionCom(reactionCom.id)}"
 							value="Supprimer" />
-						<h:commandButton
+						<h:commandButton  class="btn btn-warning"
 							action="#{reactionComController.displayReactionCom(reactionComids,reactionComids.commentaire )}"
 							value="Modifier" />
 					</h:column>
