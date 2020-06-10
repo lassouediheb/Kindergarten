@@ -125,4 +125,22 @@ public class ReclamationServiceImpl implements ReclamationService {
 	}
 
 	
+	@Override
+	public int getNombreRmonth(int m) {
+		return reclamtationRepository.countmonth(m);
+		}
+	
+	@Override
+	public int getNombreTmonth(int m) {
+		return reclamtationRepository.Tmonth(m);
+		}
+//	@Override
+//	public String tel(int i) {
+//		if (reclamtationRepository.type(i).compareTo("parent")==1)
+//		{return reclamtationRepository.nump(i);
+//			
+//		}
+//		return reclamtationRepository.numj(i);
+//	}
+	
 }
