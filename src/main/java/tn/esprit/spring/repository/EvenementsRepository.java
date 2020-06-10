@@ -21,8 +21,15 @@ public interface EvenementsRepository extends CrudRepository<Evenements, Long>{
 	@Query("SELECT e FROM Evenements e WHERE e.nomE LIKE %?1%"  + " OR e.jardin.nomJ LIKE %?1%")          
 		public List<Evenements> search(String keyword);
 
-
+	@Query("SELECT count(p.evenements.idEvent), p.mailParticip FROM Participants p, Evenements e "
+			+ "WHERE e.jardin.id =?1 AND e.idEvent = p.evenements.idEvent GROUP BY p.evenements.idEvent")
+		public void nbFidelite(long id);
 	
+	/*@Query("SELECT count(p.evenements.idEvent), p.mailParticip FROM Participants p, Evenements e WHERE e.jardin.id =?1")
+		public void nbFidelite(long id);*/
+	
+	/*@Query("SELECT count(p.evenements.idEvent) FROM Participants p inner join Evenements e ON p.evenements.idEvent=e.idEvent"
+			+ "inner Jardin ON evenements.idEvent=jardin.evenements.idEvent")*/
 
 
 }

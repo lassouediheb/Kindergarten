@@ -50,8 +50,7 @@ public class Jardin extends User implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Activités> Activités;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
-	private Set<Evenements> Evenements ;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="jardin")
 	private Set<Parent> parent;

@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +32,14 @@ public class ParticipantsServiceImpl implements ParticipantsService{
 	@Autowired
 	ParentRepository parentRepository;
 	
+	private JavaMailSender javaMailSender;
 	
+	@Autowired
+	   private JavaMailSender mailSender;
+	   
+	   public ParticipantsServiceImpl(JavaMailSender javaMailSender) {
+	 		this.javaMailSender = javaMailSender;
+	 	}
 	
 	private static final Logger L = LogManager.getLogger(ParticipantsServiceImpl.class);
 	
@@ -59,6 +68,15 @@ public class ParticipantsServiceImpl implements ParticipantsService{
 				evenementsManagedEntity.setStatutE("Complet");
 				
 			}
+			 String recipientAddress = parentManagedEntity.getEmail();
+		        String subject = "Confirmation de la paticipation";
+		         
+		        SimpleMailMessage email = new SimpleMailMessage();
+		        email.setTo(recipientAddress);
+		        email.setSubject(subject);
+		        email.setText( "\r\n" + "Bonjour, "+ "Votre réservation pour l'évènement " +evenementsManagedEntity.getNomE()+ " le " 
+		        + evenementsManagedEntity.getDateE() + " est confirmée, soyez le bienvenue");
+		        javaMailSender.send(email);
 			
 		} 
 		
