@@ -16,4 +16,5 @@ public interface PublicationService {
 	 public List<Publication> getAllPublications() ;
 	 public int getNombrepublication(long userid );
 	 public List<Publication> getAllpublicationByIduser(long id) ;
+	 public List<Publication> listAll(String keyword);
 }

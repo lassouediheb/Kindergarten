@@ -72,6 +72,8 @@ public class JardinController {
 	private Boolean EtatAcc;
 	private boolean enabled;
 	private Set<Role> roles;
+	
+	private String keyword;
 
 	private Directeurs directeurs;
 	private String nomD;
@@ -89,6 +91,22 @@ public class JardinController {
 		jardinService.addJardin(new Jardin(nomJ, logoJ, adresseJ, numJ, dateCrea, descripJ, tarifJ));
 	}
 
+	// Display jardin
+		public void displayJardin(Jardin jardin) {
+			this.setUsername(jardin.getUsername());
+			this.setPassword(jardin.getPassword());
+			this.setNomJ(jardin.getNomJ());
+			this.setLogoJ(jardin.getLogoJ());
+			this.setAdresseJ(jardin.getAdresseJ());
+			this.setNumJ(jardin.getNumJ());
+			this.setDateCrea(jardin.getDateCrea());
+			this.setDescripJ(jardin.getDescripJ());
+			this.setTarifJ(jardin.getTarifJ());
+			this.setEmail(jardin.getEmail());
+			this.setJardinIdToBeUpdated(jardin.getId());
+		}
+
+	
 	// Modifier un jardin
 	public void updateJardin() {
 		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ,
@@ -104,21 +122,6 @@ public class JardinController {
 	// Supprimer un jardin
 	public void removeJardin(long id) {
 		userRepository.deleteById(id);
-	}
-
-	// Display jardin
-	public void displayJardin(Jardin jardin) {
-		this.setUsername(jardin.getUsername());
-		this.setPassword(jardin.getPassword());
-		this.setNomJ(jardin.getNomJ());
-		this.setLogoJ(jardin.getLogoJ());
-		this.setAdresseJ(jardin.getAdresseJ());
-		this.setNumJ(jardin.getNumJ());
-		this.setDateCrea(jardin.getDateCrea());
-		this.setDescripJ(jardin.getDescripJ());
-		this.setTarifJ(jardin.getTarifJ());
-		this.setEmail(jardin.getEmail());
-		this.setJardinIdToBeUpdated(jardin.getId());
 	}
 
 	// Get jardin by id pour afficher profil connecté
@@ -154,6 +157,14 @@ public class JardinController {
 		this.setJardin(jardin);
 		this.setIdJ(jardin.getId());
 		return "jardindetailjardin.xhtml?faces-redirect=true";
+	}
+	
+	// Chercher jardin
+	public List<Jardin> listAll(String keyword) {
+		if (keyword != null) {
+			return jardinRepository.search(keyword);
+		}
+		return (List<Jardin>) jardinRepository.findAll();
 	}
 
 	public long getIdJ() {
@@ -278,6 +289,14 @@ public class JardinController {
 
 	public void setJardin(Jardin jardin) {
 		this.jardin = jardin;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	public JardinController() {
@@ -465,5 +484,7 @@ public class JardinController {
 	public void setNomD(String nomD) {
 		this.nomD = nomD;
 	}
+	
+	
 
 }

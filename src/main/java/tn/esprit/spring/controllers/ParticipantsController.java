@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entity.Evenements;
+import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.Parent;
 import tn.esprit.spring.entity.Participants;
 import tn.esprit.spring.repository.ParticipantsRepository;
@@ -26,18 +27,35 @@ public class ParticipantsController {
 	@Autowired
 	ParticipantsRepository participantsRepository;
 	
-	private Participants participants;
 	private long idParticip;
 	private String nomParticip;
 	private String prenomParticip;
 	private String numParticip;
 	private String mailParticip;
+	
 	private Evenements event;
+	private String nomE;
 	private long idEvent;
+	
+	private Jardin jardin;
+	private String nomJ;
 	
 	private Parent parent;
 	private long id;
 	
+	
+	// Liste de tous les participants getParticipants
+	private List<Participants> participants;
+
+	public List<Participants> getAllParticip() {
+		participants = participantsService.getParticipants();
+		return participants;
+	}
+	
+	// Remove participants
+		public void removeParticip(String idParticip) {
+			participantsService.deleteParticipants(idParticip);
+		}
 	
 	// Liste participants par idEvent
 	public List<Participants> getAllParticipantsByIdEvent(long idEvent){
@@ -54,7 +72,6 @@ public class ParticipantsController {
 	public void userparticipevent(Parent parent,long idEvent){
 		participantsService.ParticiperEvent(parent.getId(), idEvent); 
 	}
-	
 
 
 	public ParticipantsService getParticipantsService() {
@@ -76,16 +93,15 @@ public class ParticipantsController {
 		this.participantsRepository = participantsRepository;
 	}
 
+	
 
-	public Participants getParticipants() {
+	public List<Participants> getParticipants() {
 		return participants;
 	}
 
-
-	public void setParticipants(Participants participants) {
+	public void setParticipants(List<Participants> participants) {
 		this.participants = participants;
 	}
-
 
 	public long getIdParticip() {
 		return idParticip;
@@ -162,9 +178,6 @@ public class ParticipantsController {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-
-
 	public Parent getParent() {
 		return parent;
 	}
@@ -179,6 +192,31 @@ public class ParticipantsController {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public Jardin getJardin() {
+		return jardin;
+	}
+
+	public void setJardin(Jardin jardin) {
+		this.jardin = jardin;
+	}
+
+	public String getNomJ() {
+		return nomJ;
+	}
+
+	public void setNomJ(String nomJ) {
+		this.nomJ = nomJ;
+	}
+	
+
+	public String getNomE() {
+		return nomE;
+	}
+
+	public void setNomE(String nomE) {
+		this.nomE = nomE;
 	}
 
 	public ParticipantsController(long idParticip, String nomParticip, String prenomParticip, String numParticip,
@@ -204,11 +242,30 @@ public class ParticipantsController {
 		this.idEvent = idEvent;
 	}
 
+	public ParticipantsController(long idParticip, String nomParticip, String prenomParticip, String numParticip,
+			String mailParticip, Evenements event) {
+		super();
+		this.idParticip = idParticip;
+		this.nomParticip = nomParticip;
+		this.prenomParticip = prenomParticip;
+		this.numParticip = numParticip;
+		this.mailParticip = mailParticip;
+		this.event = event;
+	}
+
+	public ParticipantsController(long idParticip, String nomParticip, String prenomParticip, String numParticip,
+			String mailParticip, Evenements event, Jardin jardin) {
+		super();
+		this.idParticip = idParticip;
+		this.nomParticip = nomParticip;
+		this.prenomParticip = prenomParticip;
+		this.numParticip = numParticip;
+		this.mailParticip = mailParticip;
+		this.event = event;
+		this.jardin = jardin;
+	}
 	
 	
-	
-	
-	
-	
+
 
 }

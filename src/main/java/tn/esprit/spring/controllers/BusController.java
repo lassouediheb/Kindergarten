@@ -230,50 +230,21 @@ public class BusController {
 	}
 	
 	
-
-	
-
-	
 	
 	public BusRepository getBusRepository() {
 		return busRepository;
 	}
 
-
-
-
-
-
-
 	public void setBusRepository(BusRepository busRepository) {
 		this.busRepository = busRepository;
 	}
-
-
-
-
-
-
-
 	public List<Bus> getBus() {
 		return bus;
 	}
 
-
-
-
-
-
-
 	public void setBus(List<Bus> bus) {
 		this.bus = bus;
 	}
-
-
-
-
-
-
 
 	public long getMatricule() {
 		return matricule;
@@ -349,10 +320,6 @@ public class BusController {
 	public BusController() {
 		super();
 	} 
-	
-	
-	
-	
 	
 	
 }

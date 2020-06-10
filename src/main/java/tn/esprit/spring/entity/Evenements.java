@@ -134,11 +134,13 @@ public class Evenements implements Serializable {
 		this.nbPlace = nbPlace;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Evenements [idEvent=" + idEvent + ", nomE=" + nomE + ", adresseE=" + adresseE + ", dateE=" + dateE
 				+ ", descripE=" + descripE + ", etatE=" + etatE + ", imageE=" + imageE + ", nbPlace=" + nbPlace
-				+ ", statutE=" + statutE + ", participants=" + participants + "]";
+				+ ", statutE=" + statutE + "]";
 	}
 
 	public Evenements() {
@@ -269,6 +271,9 @@ public class Evenements implements Serializable {
 		this.nbPlace = nbPlace;
 		this.jardin = jardin;
 	}
+
+
+
 	
 	
 	
