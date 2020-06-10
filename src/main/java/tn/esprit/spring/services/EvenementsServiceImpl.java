@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tn.esprit.spring.entity.Evenements;
+import tn.esprit.spring.entity.Jardin;
 import tn.esprit.spring.entity.Publication;
 import tn.esprit.spring.repository.EvenementsRepository;
 
@@ -48,6 +49,7 @@ public class EvenementsServiceImpl implements EvenementsService {
 
 	}
 
+
 	@Override
 	public void deleteEvenements(String id) {
 		evenementsRepository.deleteById(Long.parseLong(id));
@@ -75,9 +77,27 @@ public class EvenementsServiceImpl implements EvenementsService {
 		
 	}
 
-	/*
-	 * public List<Evenements> getAllEventByIdJardin(long id){ return
-	 * evenementsRepository.getAllEventByIdJardin(id); }
-	 */
+	
+	
+	
+	/*public void fidele(long id){
+	 * 
+		if (evenementsRepository.nbFidelite(id)){
+			
+		}
+		
+		if (evenementsRepository.nbFidelite(jardin.getId()) % 10 == 0) {
+		String recipientAddress = mailParticip;
+		String subject = "Invitation à notre évènement";
+
+		SimpleMailMessage email = new SimpleMailMessage();
+		email.setTo(recipientAddress);
+		email.setSubject(subject);
+		email.setText("\r\n" + "Bonjour, " + "Vous êtes invité à noutre prochain évènement  " + event.getNomE()
+				+ " le " + event.getDateE() + " à " + event.getAdresseE() + "  soyez le bienvenue");
+		javaMailSender.send(email);
+	}
+		
+	}*/
 
 }

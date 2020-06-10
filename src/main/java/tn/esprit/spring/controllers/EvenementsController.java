@@ -66,6 +66,7 @@ public class EvenementsController {
 	public void addEvent(Jardin jardin) {
 		evenementsService
 				.addEvenements(new Evenements(nomE, adresseE, dateE, descripE, etatE, imageE, nbPlace, statutE,jardin));
+		
 	}
 
 	// Modifier un event
