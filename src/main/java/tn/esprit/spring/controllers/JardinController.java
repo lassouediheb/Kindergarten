@@ -92,7 +92,7 @@ public class JardinController {
 	}
 
 	// Display jardin
-		public void displayJardin(Jardin jardin) {
+		public String displayJardin(Jardin jardin) {
 			this.setUsername(jardin.getUsername());
 			this.setPassword(jardin.getPassword());
 			this.setNomJ(jardin.getNomJ());
@@ -104,11 +104,11 @@ public class JardinController {
 			this.setTarifJ(jardin.getTarifJ());
 			this.setEmail(jardin.getEmail());
 			this.setJardinIdToBeUpdated(jardin.getId());
+			return "/updateprofiljardin.xhtml?faces-redirect=true";
 		}
-
-	
-	// Modifier un jardin
-	public void updateJardin() {
+		
+	//Modifier profil jardin
+	public String updateProfil(){
 		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ,
 				adresseJ, numJ, dateCrea, descripJ, tarifJ);
 		Set<Role> roles = new HashSet<>();
@@ -117,6 +117,21 @@ public class JardinController {
 		roles.add(userRole);
 		jardin.setRoles(roles);
 		userRepository.save(jardin);
+		return "/profiljardin.xhtml?faces-redirect=true";
+	}
+
+	
+	// Modifier un jardin
+	public 	String updateJardin() {
+		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ,
+				adresseJ, numJ, dateCrea, descripJ, tarifJ);
+		Set<Role> roles = new HashSet<>();
+		Role userRole = roleRepository.findByName(ERole.ROLE_JARDINDENFANT)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles.add(userRole);
+		jardin.setRoles(roles);
+		userRepository.save(jardin);
+		return "/profiljardin.xhtml?faces-redirect=true";
 	}
 
 	// Supprimer un jardin
