@@ -36,6 +36,22 @@ public class TwilioSmsSender implements SmsSender {
         }
 
     }
+    @Override
+    public void sendsmms(String tel) {
+        if (isPhoneNumberValid(tel)) {
+            PhoneNumber to = new PhoneNumber(tel);
+            PhoneNumber from = new PhoneNumber(twilioConfiguration.getTrialNumber());
+            String message = "hello";
+            MessageCreator creator = Message.creator(to, from, message);
+            creator.create();
+            LOGGER.info("Send sms {}", "hello");
+        } else {
+            throw new IllegalArgumentException(
+                    "Phone number [" + tel + "] is not a valid number"
+            );
+        }
+
+    }
 
     private boolean isPhoneNumberValid(String phoneNumber) {
         // TODO: Implement phone number validator

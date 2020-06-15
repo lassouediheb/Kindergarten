@@ -16,4 +16,12 @@ public class Service {
     public void sendSms(SmsRequest smsRequest) {
         smsSender.sendSms(smsRequest);
     }
+    
+    public void sendmsg(String smsRequest) {
+        smsSender.sendsmms(smsRequest);
+    }
+    
+    public void msg(String tel) {
+    	smsSender.sendsmms(tel);
+    }
 }

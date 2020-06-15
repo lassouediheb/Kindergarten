@@ -55,7 +55,7 @@ public class ParticipantsServiceImpl implements ParticipantsService{
 		if (getParticip(mailP,idEvent)==1){
 			FacesMessage facesMessage =
 
-					new FacesMessage("Error: vous avez participé!");
+					new FacesMessage("Error: vous aviez déjà participé! Vérifiez votre email.");
 
 					FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
 		}
@@ -68,6 +68,11 @@ public class ParticipantsServiceImpl implements ParticipantsService{
 				evenementsManagedEntity.setStatutE("Complet");
 				
 			}
+			FacesMessage facesMessage =
+
+					new FacesMessage("Confiramation: Votre réservation est confirmée. Vérifiez votre email.");
+
+					FacesContext.getCurrentInstance().addMessage("form1:btn",facesMessage);
 			 String recipientAddress = parentManagedEntity.getEmail();
 		        String subject = "Confirmation de la paticipation";
 		         

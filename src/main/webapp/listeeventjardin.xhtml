@@ -127,7 +127,7 @@
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{evenementsController.removeEvent(idEvent)}"
+										action="#{evenementsController.removeEvent(idEvent)}" class="btn btn-success"
 										value="Supprimer" />
 								</h:column>
 								<h:column>
@@ -135,7 +135,7 @@
 										<h:outputText value="Action" />
 									</f:facet>
 									<h:commandButton
-										action="#{evenementsController.displayEvent(event)}"
+										action="#{evenementsController.displayEvent(event)}" class="btn btn-success"
 										value="Modifier" />
 								</h:column>
 							</h:dataTable>
@@ -145,21 +145,21 @@
 						<table>
 							<tr>
 								<td><h:outputText value="Nom Event"></h:outputText></td>
-								<td><h:inputText
+								<td><h:inputText class="form-control"
 										id="vNom" value="#{evenementsController.nomE}" required="true"
 										requiredMessage="Veuillez préciser le nom"></h:inputText></td>
 										<h:message for="vNom" style="color:green" /> 
 							</tr>
 							<tr>
 								<td><h:outputText value="Adresse"></h:outputText></td>
-								<td><h:inputText
+								<td><h:inputText class="form-control"
 										id="vAdresse" value="#{evenementsController.adresseE}"
 										required="true" requiredMessage="Veuillez préciser l'adresse"></h:inputText></td>
 										<h:message for="vAdresse" style="color:green" /> 
 							</tr>
 							<tr>
 								<td><h:outputText value="Date"></h:outputText></td>
-								<td><h:inputText
+								<td><h:inputText class="form-control"
 										id="vDate" value="#{evenementsController.dateE}"
 										required="true" requiredMessage="Veuillez préciser la date">
 										<f:convertDateTime pattern="yyyy-MM-dd" />
@@ -168,16 +168,16 @@
 							</tr>
 							<tr>
 								<td><h:outputText value="Décrire"></h:outputText></td>
-								<td><h:inputText value="#{evenementsController.descripE}"></h:inputText></td>
+								<td><h:inputText value="#{evenementsController.descripE}" class="form-control"></h:inputText></td>
 							</tr>
 							<tr>
 								<td><h:outputText value="Image"></h:outputText></td>
-								<td><h:inputText value="#{evenementsController.imageE}"></h:inputText></td>
+								<td><h:inputText value="#{evenementsController.imageE}" class="form-control"></h:inputText></td>
 							</tr>
 							<tr>
 								
 									<td><h:outputText value="Nombre de places"></h:outputText></td>
-									<td><h:inputText id="vPlace"
+									<td><h:inputText id="vPlace" class="form-control"
 											value="#{evenementsController.nbPlace}" required="true"
 											requiredMessage="Veuillez préciser le nombre de place"
 											validatorMessage="Le nombre de place doit être compris entre entre 1 et 300">
@@ -189,9 +189,9 @@
 						<br></br>
 						<br></br>
 						<tr>
-							<td><h:commandButton value="Ajouter Event"
+							<td><h:commandButton value="Ajouter Event" class="btn btn-success"
 									action="#{evenementsController.addEvent(userController.autheticatedUser)}" /></td>
-							<td><h:commandButton value="Modifier Event"
+							<td><h:commandButton value="Modifier Event" class="btn btn-success"
 									action="#{evenementsController.updateEvent(userController.autheticatedUser)}" /></td>
 						</tr>
 

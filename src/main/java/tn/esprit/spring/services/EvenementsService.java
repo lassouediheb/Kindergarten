@@ -14,13 +14,11 @@ public interface EvenementsService {
 	
 	Evenements retrieveEvenements(String id);
 	
-	Evenements addEvenements(Evenements e); 
+	Evenements addEvenements(Evenements e,long id);
 	
 	Evenements updateEvenements(Evenements e);
 	
 	void deleteEvenements(String id);
 	
 	public List<Evenements> listAll(String keyword);
-	
-	//public List<Evenements> getAllEventByIdJardin(long id);
 }

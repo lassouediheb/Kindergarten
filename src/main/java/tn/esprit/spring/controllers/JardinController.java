@@ -92,7 +92,7 @@ public class JardinController {
 	}
 
 	// Display jardin
-		public void displayJardin(Jardin jardin) {
+		public String displayJardin(Jardin jardin) {
 			this.setUsername(jardin.getUsername());
 			this.setPassword(jardin.getPassword());
 			this.setNomJ(jardin.getNomJ());
@@ -104,11 +104,11 @@ public class JardinController {
 			this.setTarifJ(jardin.getTarifJ());
 			this.setEmail(jardin.getEmail());
 			this.setJardinIdToBeUpdated(jardin.getId());
+			return "/updateprofiljardin.xhtml?faces-redirect=true";
 		}
-
-	
-	// Modifier un jardin
-	public void updateJardin() {
+		
+	//Modifier profil jardin
+	public String updateProfil(){
 		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ,
 				adresseJ, numJ, dateCrea, descripJ, tarifJ);
 		Set<Role> roles = new HashSet<>();
@@ -117,6 +117,21 @@ public class JardinController {
 		roles.add(userRole);
 		jardin.setRoles(roles);
 		userRepository.save(jardin);
+		return "/profiljardin.xhtml?faces-redirect=true";
+	}
+
+	
+	// Modifier un jardin
+	public 	String updateJardin() {
+		Jardin jardin = new Jardin(jardinIdToBeUpdated, username, email, encoder.encode(password), true, nomJ, logoJ,
+				adresseJ, numJ, dateCrea, descripJ, tarifJ);
+		Set<Role> roles = new HashSet<>();
+		Role userRole = roleRepository.findByName(ERole.ROLE_JARDINDENFANT)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles.add(userRole);
+		jardin.setRoles(roles);
+		userRepository.save(jardin);
+		return "/profiljardin.xhtml?faces-redirect=true";
 	}
 
 	// Supprimer un jardin
@@ -484,6 +499,58 @@ public class JardinController {
 	public void setNomD(String nomD) {
 		this.nomD = nomD;
 	}
+	
+	
+	/*public void upload() {
+		if (file != null) {
+			FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else
+			System.out.println("file is null");
+	}
+	public void handleFileUpload(FileUploadEvent event) {
+		l.info("ddddddddddddddd " + event.getFile().getFileName());
+		FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	public void TransferTile(String fileName, InputStream in) {
+		try {
+			OutputStream out = new FileOutputStream(new File(destination + fileName));
+			int reader = 0;
+			byte[] bytes = new byte[(int) file.getSize()];
+			while ((reader = in.read(bytes)) != -1) {
+				out.write(bytes, 0, reader);
+			}
+			in.close();
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
