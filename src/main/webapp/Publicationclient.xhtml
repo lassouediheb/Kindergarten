@@ -59,51 +59,81 @@
 					<table>
 
 						<tr>
-							<td><h:outputText value="Publication :" style="color: red" ></h:outputText></td>
-							<td><h:inputText class="form-control form-control-lg" value="#{publicationController.pubContenu}"></h:inputText>
-							</td>
-							<td colspan="2"><h:commandButton value="Ajouter Publication" id="btn" class="btn btn-danger"
-									action="#{publicationController.addPublication(userController.autheticatedUser)}" styleClass="GreenButton" /></td>
+							<td><h:outputText value="Publication :" style="color: red"></h:outputText></td>
+							<td><h:inputText id="vA" class="form-control form-control-lg" required="true" requiredMessage="Veuillez écrire votre publication"
+									value="#{publicationController.pubContenu}"></h:inputText> <input
+								type="file" name="..."
+								value="#{publicationController.pubContenu}"></input></td>
+								<h:message for="vA" style="color:red" />
+							<td colspan="2"><h:commandButton value="Ajouter Publication"
+									id="btn" class="btn btn-danger"
+									action="#{publicationController.addPublication(userController.autheticatedUser)}"
+									styleClass="GreenButton" /></td>
 
 						</tr>
 					</table>
 				</h:form>
 			</div>
-			
-			
-		
-		<h:panelGroup columns="2">
-			<h:form>
-				<table>
 
-					<tr>
-						<td><h:outputText value="commentaire : "  style="color: red" ></h:outputText></td>
-						<td><h:inputText class="form-control form-control-lg" value="#{commentaireController.comContenu}"></h:inputText></td>
-						<td colspan="2"><h:commandButton value="Ajouter commentaire" id="btn" class="btn btn-danger"
-								action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton" />
-														
-							</td>
-					</tr>
-				</table>
-			</h:form>
-		</h:panelGroup>
-	<h:panelGroup columns="2">
+
+
+			<h:panelGroup columns="2">
+				<h:form>
+					<table>
+
+						<tr>
+							<td><h:outputText value="commentaire : " style="color: red"></h:outputText></td>
+							<td><h:inputText id="da" class="form-control form-control-lg" required="true" requiredMessage="Veuillez écrire votre commentaire"
+									value="#{commentaireController.comContenu}"></h:inputText></td>
+									<h:message for="da" style="color:red" />
+							<td colspan="2"><h:commandButton value="Ajouter commentaire"
+									id="btn" class="btn btn-danger"
+									action="#{commentaireController.addCommentaire(publicationController.publication,userController.autheticatedUser)}"
+									styleClass="GreenButton" /></td>
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
 			
-			<h:form>
-				<table>
+			<h:panelGroup columns="2">
 
-					<tr>
-						<td><h:outputText value="Recherche:" style="color: red"></h:outputText></td>
-						<td><h:inputText class="form-control form-control-lg" value="#{publicationController.keyword}"></h:inputText>
-						</td>
-						<td colspan="2"><h:commandButton value="Rechercher" id="btn" class="btn btn-warning"
-								action="#{publicationController.listAll(keyword)}"  />
-							</td>
+				<h:form>
+					<table>
 
-					</tr>
-				</table>
-			</h:form>
-		</h:panelGroup>
+						<tr>
+							<td><h:outputText value="Recherche:" style="color: red"></h:outputText></td>
+							<td><h:inputText class="form-control form-control-lg"
+									value="#{publicationController.keyword}"></h:inputText></td>
+							<td colspan="2"><h:commandButton value="Rechercher" id="btn"
+									class="btn btn-warning"
+									action="#{publicationController.listAll(keyword)}" /></td>
+
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
+			<h:panelGroup columns="2">
+
+				<h:form>
+					<table>
+
+						<tr>
+							<td><h:outputText value="Reaction :" style="color: red"></h:outputText></td>
+                                  
+										<td><h:selectOneMenu value="#{reactionPubController.typeReaction}">
+											<f:selectItem itemLabel="Choisir la reaction"
+												itemValue="#{null}" />
+											<f:selectItems value="#{reactionPubController.typeReactions}" />
+										</h:selectOneMenu></td>
+										<td colspan="2"><h:commandButton value="Ajouter reaction" 
+											class="btn btn-danger"
+											action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"
+											styleClass="GreenButton" /></td>
+
+						</tr>
+					</table>
+				</h:form>
+			</h:panelGroup>
 			<h:form>
 				<div class="container">
 					<div class="row">
@@ -113,15 +143,14 @@
 								<div class="card h-100">
 									<div class="card-body">
 										<h3>
-											<h:outputText value="Username :"   />
-											<h:outputText value="#{publication.user.username}" />
-										</h3>
+											<h:outputText value="Username :" />
+											<h:outputText value="#{publication.user.username}" />		
+										</h3> 
+										
 										<h3>
 											<h:outputText value="Publication:" />
-											<br />
-											<h:outputText value="#{publication.pubContenu}" />
-
 										</h3>
+										<h:outputText value="#{publication.pubContenu}" />
 
 										<h5>
 											<h:outputText value="Date de Publication:" />
@@ -143,8 +172,9 @@
 											value="reagir" />
 										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{reactionPubController.reactionPub(publication)}"
-											value="afficher les reactions" /><BR />
-										
+											value="afficher les reactions" />
+										<BR />
+
 
 
 										<h:commandButton class="btn btn-secondary btn-lg active"
@@ -153,29 +183,19 @@
 										<h:commandButton class="btn btn-secondary btn-lg active"
 											action="#{commentaireController.reactionPub(publication)}"
 											value="afficher les commentaires" />
+
 										
-						<h:outputText value="Reaction :" style="color: red" ></h:outputText>
-					
-						
-						<h:selectOneMenu
-								value="#{reactionPubController.typeReaction}">
-								<f:selectItem itemLabel="Choisir la reaction"
-									itemValue="#{null}" />
-								<f:selectItems value="#{reactionPubController.typeReactions}" />
-							</h:selectOneMenu>
-						<h:commandButton value="Ajouter reaction" id="btn" class="btn btn-danger"
-								action="#{reactionPubController.addReactionPub(publicationController.publication,userController.autheticatedUser)}"  styleClass="GreenButton"/>
-				
-                              		</div>
+                                     
+									</div>
 
 								</div>
-								<br></br>
+							
 							</div>
 						</ui:repeat>
 					</div>
 				</div>
 			</h:form>
-				
+
 		</h:body>
 	</ui:define>
 </ui:composition>

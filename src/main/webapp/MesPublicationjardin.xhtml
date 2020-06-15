@@ -49,8 +49,9 @@ template="/templatejardin.xhtml">
 
 						<tr>
 							<td><h:outputText value="Publication : "></h:outputText></td>
-							<td><h:inputText class="form-control form-control-lg" value="#{publicationController.pubContenu}"></h:inputText>
+							<td><h:inputText id="p" class="form-control form-control-lg" required="true" requiredMessage="Veuillez écrire votre publication" value="#{publicationController.pubContenu}"></h:inputText>
 							</td>
+							<h:message for="p" style="color:red" />
 
 						</tr>
 						<tr>
@@ -76,10 +77,9 @@ template="/templatejardin.xhtml">
 										</h3>
 										<h3>
 											<h:outputText value="Publication:" />
-											<br />
-											<h:outputText value="#{pubidusers.pubContenu}" />
-
+										
 										</h3>
+										<h:outputText value="#{pubidusers.pubContenu}" />
 
 										<h5>
 											<h:outputText value="Date de Publication:" />

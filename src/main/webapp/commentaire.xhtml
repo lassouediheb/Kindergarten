@@ -90,9 +90,9 @@
 										</h3>
 										<h3>
 											<h:outputText value="Commentaire : " />
-											<br />
-											<h:outputText value="#{commentaire.comContenu}" />
+											
 										</h3>
+										<h:outputText value="#{commentaire.comContenu}" />
 
 										<h5>
 											<h:outputText value="Date de Commentaire :" />
@@ -125,7 +125,8 @@
 
 						<tr>
 							<td><h:outputText value="commentaire :"></h:outputText></td>
-							<td><h:inputText class="form-control form-control-lg" value="#{commentaireController.comContenu}"></h:inputText></td>
+							<td><h:inputText id="k" class="form-control form-control-lg" required="true" requiredMessage="Veuillez écrire votre publication"  value="#{commentaireController.comContenu}"></h:inputText></td>
+							<h:message for="k" style="color:red" />
 						</tr>
 						<tr>
 							<td colspan="2"><h:commandButton id="btn" class="btn btn-danger"

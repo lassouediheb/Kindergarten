@@ -66,7 +66,7 @@ template="/templatejardin.xhtml">
 
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable class="table table-dark" value="#{reactionComController.getAllReactionPubByIdcommentaire(reactionComController.commentaire.id)}"
+				<h:dataTable class="table table-striped" value="#{reactionComController.getAllReactionPubByIdcommentaire(reactionComController.commentaire.id)}"
 					var="reactionComids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -100,7 +100,7 @@ template="/templatejardin.xhtml">
 		<h:outputText value="ma reaction:" style="color: red"></h:outputText>
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable class="table table-dark" value="#{reactionComController.getAllReactionComByIdcommentaireetuser(reactionComController.commentaire.id,userController.autheticatedUser.id)}"
+				<h:dataTable class="table table-striped" value="#{reactionComController.getAllReactionComByIdcommentaireetuser(reactionComController.commentaire.id,userController.autheticatedUser.id)}"
 					var="reactionComids" border="5">
 					<h:column>
 						<f:facet name="header">

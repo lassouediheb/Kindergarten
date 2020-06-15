@@ -68,7 +68,7 @@ template="/templatejardin.xhtml">
 
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable class="table table-dark" value="#{reactionPubController.getAllReactionPubByIdpublication(reactionPubController.publication.id)}"
+				<h:dataTable class="table table-striped" value="#{reactionPubController.getAllReactionPubByIdpublication(reactionPubController.publication.id)}"
 					var="reactionPubids" border="5">
 					<h:column>
 						<f:facet name="header">
@@ -94,7 +94,7 @@ template="/templatejardin.xhtml">
 		<h:outputText value="ma reaction:" style="color: red"></h:outputText>
 		<h:panelGroup columns="2">
 			<h:form >
-				<h:dataTable class="table table-dark" value="#{reactionPubController.getAllReactionPubByIdpublicationetuser(reactionPubController.publication.id,userController.autheticatedUser.id)}"
+				<h:dataTable class="table table-striped" value="#{reactionPubController.getAllReactionPubByIdpublicationetuser(reactionPubController.publication.id,userController.autheticatedUser.id)}"
 					var="reactionPubids" border="5">
 					<h:column>
 						<f:facet name="header">
